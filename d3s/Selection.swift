@@ -9,68 +9,17 @@
 import UIKit
 import QuartzCore
 
-extension CALayer {
-    func querySelector(_ p: NSPredicate) -> CALayer? {
-        if let sublayers = sublayers {
-            for l in sublayers {
-                if p.evaluate(with: l) {
-                    return l
-                }
-            }
-        }
-        return nil
-    }
-    
-    func querySelectorAll(_ p: NSPredicate) -> [CALayer] {
-        if let sublayers = sublayers {
-            return sublayers.filter { p.evaluate(with: $0) }
-        }
-        return []
-    }
-}
-
 class Selection {
-    var parents : [CALayer]
-    var groups : [[CALayer]]
+    var _parents : [CALayer]
+    var _groups : [[CALayer]]
+    var _enter : [[EnterNode]]?
+    var _exit : [CALayer]?
     init(_ groups: [[CALayer]], parents: [CALayer]) {
-        self.parents = parents
-        self.groups = groups
-    }
-    func select(_ s: NSPredicate?) -> Selection {
-        let s1 = selector(s)
-        return select(s1)
+        _parents = parents
+        _groups = groups
     }
     
-    func select(_ s: (CALayer, Any?, Int, [CALayer]) -> CALayer?) -> Selection {
-        let subgroups : [[CALayer]] = groups.map { group -> [CALayer] in
-            let subgroup : [CALayer] = group.enumerated().flatMap({ (p: (index: Int, node: CALayer)) -> CALayer? in
-                let subnode = s(p.node, p.node.value(forKey: "__data__"), p.index, group)
-                if let nodeData = p.node.value(forKey: "__data__") {
-                    subnode?.setValue(nodeData, forKey: "__data__")
-                }
-                return subnode
-            })
-            return subgroup
-        }
-        return Selection(subgroups , parents: self.parents)
-    }
-    
-    func selectAll(_ p: NSPredicate?) -> Selection {
-        return selectAll(selectorAll(p))
-    }
-    
-    func selectAll(_ s: @escaping (CALayer, Any?, Int, [CALayer]) -> [CALayer]) -> Selection {
-        var subgroups : [[CALayer]] = []
-        var parents : [CALayer] = []
-        for group in groups {
-            for (idx, node) in group.enumerated() {
-                subgroups.append(s(node, node.value(forKey: "__data__"), idx, group))
-                parents.append(node)
-            }
-        }
-    
-        return Selection(subgroups, parents: parents)
-    }
+        
 }
 
 func selector(_ s: NSPredicate?) -> (CALayer, Any?, Int, [CALayer]) -> CALayer? {
@@ -87,14 +36,5 @@ func selectorAll(_ s: NSPredicate?) -> (CALayer, Any?, Int, [CALayer]) -> [CALay
     } else {
         return { _, _, _, _ in return []}
     }
-}
-
-extension UIView {
-    
-    func selectAll(_ p: NSPredicate) -> Selection {
-        return Selection([self.layer.querySelectorAll(p)], parents: [self.layer])
-    }
-    
-    
 }
 

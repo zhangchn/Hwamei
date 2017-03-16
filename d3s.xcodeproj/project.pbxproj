@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB00002B1E799FB600531CD6 /* Enter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00002A1E799FB600531CD6 /* Enter.swift */; };
+		DB00002D1E799FC300531CD6 /* Exit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00002C1E799FC300531CD6 /* Exit.swift */; };
 		DB3B644C1E779A3F00474CBD /* d3s.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* d3s.framework */; };
 		DB3B64511E779A3F00474CBD /* d3sTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3B64501E779A3F00474CBD /* d3sTests.swift */; };
 		DB3B64531E779A3F00474CBD /* d3s.h in Headers */ = {isa = PBXBuildFile; fileRef = DB3B64451E779A3F00474CBD /* d3s.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB3B645D1E779A5C00474CBD /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3B645C1E779A5C00474CBD /* Selection.swift */; };
+		DB9511BF1E78E7B6000E253F /* Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9511BE1E78E7B6000E253F /* Select.swift */; };
+		DB9511C11E78E81E000E253F /* SelectAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9511C01E78E81E000E253F /* SelectAll.swift */; };
+		DB9511C31E78E8DC000E253F /* UIView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9511C21E78E8DC000E253F /* UIView+Selection.swift */; };
+		DB9511C51E78EB1E000E253F /* CALayer+DOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9511C41E78EB1E000E253F /* CALayer+DOM.swift */; };
+		DB9511C71E78EF88000E253F /* Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9511C61E78EF88000E253F /* Append.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -24,6 +31,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB00002A1E799FB600531CD6 /* Enter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enter.swift; sourceTree = "<group>"; };
+		DB00002C1E799FC300531CD6 /* Exit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exit.swift; sourceTree = "<group>"; };
 		DB3B64421E779A3F00474CBD /* d3s.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = d3s.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3B64451E779A3F00474CBD /* d3s.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = d3s.h; sourceTree = "<group>"; };
 		DB3B64461E779A3F00474CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +40,11 @@
 		DB3B64501E779A3F00474CBD /* d3sTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = d3sTests.swift; sourceTree = "<group>"; };
 		DB3B64521E779A3F00474CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3B645C1E779A5C00474CBD /* Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
+		DB9511BE1E78E7B6000E253F /* Select.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Select.swift; sourceTree = "<group>"; };
+		DB9511C01E78E81E000E253F /* SelectAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAll.swift; sourceTree = "<group>"; };
+		DB9511C21E78E8DC000E253F /* UIView+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Selection.swift"; sourceTree = "<group>"; };
+		DB9511C41E78EB1E000E253F /* CALayer+DOM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+DOM.swift"; sourceTree = "<group>"; };
+		DB9511C61E78EF88000E253F /* Append.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Append.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				DB3B64451E779A3F00474CBD /* d3s.h */,
-				DB3B645C1E779A5C00474CBD /* Selection.swift */,
+				DB9511BD1E78E789000E253F /* Selection */,
 				DB3B64461E779A3F00474CBD /* Info.plist */,
 			);
 			path = d3s;
@@ -87,6 +101,21 @@
 				DB3B64521E779A3F00474CBD /* Info.plist */,
 			);
 			path = d3sTests;
+			sourceTree = "<group>";
+		};
+		DB9511BD1E78E789000E253F /* Selection */ = {
+			isa = PBXGroup;
+			children = (
+				DB3B645C1E779A5C00474CBD /* Selection.swift */,
+				DB9511BE1E78E7B6000E253F /* Select.swift */,
+				DB9511C01E78E81E000E253F /* SelectAll.swift */,
+				DB9511C61E78EF88000E253F /* Append.swift */,
+				DB00002A1E799FB600531CD6 /* Enter.swift */,
+				DB00002C1E799FC300531CD6 /* Exit.swift */,
+				DB9511C21E78E8DC000E253F /* UIView+Selection.swift */,
+				DB9511C41E78EB1E000E253F /* CALayer+DOM.swift */,
+			);
+			name = Selection;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,6 +232,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DB3B645D1E779A5C00474CBD /* Selection.swift in Sources */,
+				DB9511C11E78E81E000E253F /* SelectAll.swift in Sources */,
+				DB9511C51E78EB1E000E253F /* CALayer+DOM.swift in Sources */,
+				DB9511C71E78EF88000E253F /* Append.swift in Sources */,
+				DB9511C31E78E8DC000E253F /* UIView+Selection.swift in Sources */,
+				DB00002B1E799FB600531CD6 /* Enter.swift in Sources */,
+				DB9511BF1E78E7B6000E253F /* Select.swift in Sources */,
+				DB00002D1E799FC300531CD6 /* Exit.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -410,6 +446,7 @@
 				DB3B64581E779A3F00474CBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB3B64591E779A3F00474CBD /* Build configuration list for PBXNativeTarget "d3sTests" */ = {
 			isa = XCConfigurationList;
@@ -418,6 +455,7 @@
 				DB3B645B1E779A3F00474CBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
