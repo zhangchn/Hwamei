@@ -64,18 +64,16 @@ func bind(_ parent: CALayer, group: [CALayer], data: [Any], keyFunc: SelectionDa
     guard keyFunc != nil else {
         return bindIndex(parent, group: group, data: data)
     }
-//    var update : [CALayer] = []
-//    var enter: [EnterNode] = []
-//    var exit : [CALayer] = []
+    
     var transitionNodes : [TransitionNode] = []
 
-    var keyValues : [String] = []
+    var oldKeys : [String] = []
     var duplicated: [TransitionNode] = []
     var nodeByKeyValue : [String: CALayer] = [:]
     
     for (idx, node) in group.enumerated() {
         let key = keyFunc!(node, node.value(forKey: "__data__"), idx, .group(group))
-        keyValues.append(key)
+        oldKeys.append(key)
         if nodeByKeyValue[key] != nil {
             //mark nodes with duplicated keys as exit
             duplicated.append(.exit(node))
@@ -84,17 +82,17 @@ func bind(_ parent: CALayer, group: [CALayer], data: [Any], keyFunc: SelectionDa
         }
     }
     for (idx, datum) in data.enumerated() {
-        let key = keyFunc!(parent, datum, idx, .data(data))
-        if let node = nodeByKeyValue[key] {
+        let newKey = keyFunc!(parent, datum, idx, .data(data))
+        if let node = nodeByKeyValue[newKey] {
             transitionNodes.append(.update(node))
             node.setValue(datum, forKey: "__data__")
-            nodeByKeyValue.removeValue(forKey: key)
+            nodeByKeyValue.removeValue(forKey: newKey)
         } else {
             transitionNodes.append(.enter(EnterNode(parent, datum: datum)))
         }
     }
     for (idx, node) in group.enumerated() {
-        if nodeByKeyValue[keyValues[idx]] === node {
+        if nodeByKeyValue[oldKeys[idx]] === node {
             transitionNodes.append(.exit(node))
         }
     }
@@ -147,7 +145,6 @@ extension Selection: SelectionData {
             
             var i1 = 0
             for i0 in 0..<data.count {
-
                 switch transitionNodes[i0] {
                 case .enter(let p):
                     i1 = max(i0 + 1, i1)
@@ -163,7 +160,7 @@ extension Selection: SelectionData {
                         break
                     }
                     p._next = next
-                    transitionNodes[i0] = .enter(p)
+//                    transitionNodes[i0] = .enter(p)
                 default:
                     break
                 }
