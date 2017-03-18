@@ -10,6 +10,10 @@
 		DB00002B1E799FB600531CD6 /* Enter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00002A1E799FB600531CD6 /* Enter.swift */; };
 		DB00002D1E799FC300531CD6 /* Exit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00002C1E799FC300531CD6 /* Exit.swift */; };
 		DB00008B1E7D993400531CD6 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00008A1E7D993400531CD6 /* Data.swift */; };
+		DB00008D1E7DAA5200531CD6 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00008C1E7DAA5200531CD6 /* Datum.swift */; };
+		DB00008F1E7DAAE000531CD6 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00008E1E7DAAE000531CD6 /* Node.swift */; };
+		DB0000911E7DB0DE00531CD6 /* Each.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0000901E7DB0DE00531CD6 /* Each.swift */; };
+		DB0000931E7DB10300531CD6 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0000921E7DB10200531CD6 /* Property.swift */; };
 		DB3B644C1E779A3F00474CBD /* d3s.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* d3s.framework */; };
 		DB3B64511E779A3F00474CBD /* d3sTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3B64501E779A3F00474CBD /* d3sTests.swift */; };
 		DB3B64531E779A3F00474CBD /* d3s.h in Headers */ = {isa = PBXBuildFile; fileRef = DB3B64451E779A3F00474CBD /* d3s.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -35,6 +39,10 @@
 		DB00002A1E799FB600531CD6 /* Enter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enter.swift; sourceTree = "<group>"; };
 		DB00002C1E799FC300531CD6 /* Exit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exit.swift; sourceTree = "<group>"; };
 		DB00008A1E7D993400531CD6 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		DB00008C1E7DAA5200531CD6 /* Datum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
+		DB00008E1E7DAAE000531CD6 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
+		DB0000901E7DB0DE00531CD6 /* Each.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Each.swift; sourceTree = "<group>"; };
+		DB0000921E7DB10200531CD6 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		DB3B64421E779A3F00474CBD /* d3s.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = d3s.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3B64451E779A3F00474CBD /* d3s.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = d3s.h; sourceTree = "<group>"; };
 		DB3B64461E779A3F00474CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,8 +121,12 @@
 				DB9511C01E78E81E000E253F /* SelectAll.swift */,
 				DB9511C61E78EF88000E253F /* Append.swift */,
 				DB00008A1E7D993400531CD6 /* Data.swift */,
+				DB00008C1E7DAA5200531CD6 /* Datum.swift */,
+				DB0000901E7DB0DE00531CD6 /* Each.swift */,
 				DB00002A1E799FB600531CD6 /* Enter.swift */,
 				DB00002C1E799FC300531CD6 /* Exit.swift */,
+				DB00008E1E7DAAE000531CD6 /* Node.swift */,
+				DB0000921E7DB10200531CD6 /* Property.swift */,
 				DB9511C21E78E8DC000E253F /* UIView+Selection.swift */,
 				DB9511C41E78EB1E000E253F /* CALayer+DOM.swift */,
 			);
@@ -237,12 +249,16 @@
 				DB3B645D1E779A5C00474CBD /* Selection.swift in Sources */,
 				DB9511C11E78E81E000E253F /* SelectAll.swift in Sources */,
 				DB9511C51E78EB1E000E253F /* CALayer+DOM.swift in Sources */,
+				DB00008F1E7DAAE000531CD6 /* Node.swift in Sources */,
 				DB9511C71E78EF88000E253F /* Append.swift in Sources */,
 				DB9511C31E78E8DC000E253F /* UIView+Selection.swift in Sources */,
+				DB0000931E7DB10300531CD6 /* Property.swift in Sources */,
+				DB0000911E7DB0DE00531CD6 /* Each.swift in Sources */,
 				DB00002B1E799FB600531CD6 /* Enter.swift in Sources */,
 				DB9511BF1E78E7B6000E253F /* Select.swift in Sources */,
 				DB00008B1E7D993400531CD6 /* Data.swift in Sources */,
 				DB00002D1E799FC300531CD6 /* Exit.swift in Sources */,
+				DB00008D1E7DAA5200531CD6 /* Datum.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
