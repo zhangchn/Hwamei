@@ -33,3 +33,19 @@ class EnterNode {
         return _parent?.querySelectorAll(selector) ?? []
     }
 }
+
+class EnterSelection {
+    var _enterGroups : [[EnterNode]]
+    var _parents: [CALayer]
+    init(_ groups: [[EnterNode]] , parents: [CALayer]) {
+        _parents = parents
+        _enterGroups = groups
+    }
+}
+
+extension Selection {
+    func enter() -> EnterSelection {
+        let enter = _enter ?? [[EnterNode]](repeating: [], count: _groups.count)
+        return EnterSelection(enter , parents: _parents)
+    }
+}
