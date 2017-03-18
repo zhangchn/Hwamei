@@ -9,11 +9,11 @@
 import QuartzCore
 
 
-enum CreatorClass {
+enum CreatorType {
     case shape, tile, text, gradient, layer
 }
-func creator(name: CreatorClass) -> Selection.SelectorFunc {
-    return { (node, _, _, _) -> CALayer? in
+func creator(name: CreatorType) -> Selection.SelectorFunc {
+    return { (_, _, _, _) -> CALayer? in
         switch name {
         case .shape:
             return CAShapeLayer()
@@ -40,7 +40,7 @@ extension Selection {
         }
     }
     
-    func append(name: CreatorClass) -> Selection {
+    func append(name: CreatorType) -> Selection {
         let create = creator(name: name)
         return append(name: create)
     }
