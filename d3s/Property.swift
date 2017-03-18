@@ -14,13 +14,13 @@ extension Selection {
     }
     
     func property(_ name: String, value: Any?) -> Selection {
-        return each(callback: { (node, _, _, _) in
+        return each({ (node, _, _, _) in
             node.setValue(value, forKey: name)
         })
     }
     
     func property(_ name: String, value: (CALayer, Any?, Int, [CALayer]) -> Any?) -> Selection {
-        return each(callback: { (node, datum, idx, group) in
+        return each({ (node, datum, idx, group) in
             node.setValue(value(node, datum, idx, group), forKey: name)
         })
     }

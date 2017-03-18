@@ -9,7 +9,7 @@
 import Foundation
 
 extension Selection {
-    func each (callback: (CALayer, Any?, Int, [CALayer]) -> () ) -> Selection {
+    func each (_ callback: (CALayer, Any?, Int, [CALayer]) -> () ) -> Selection {
         for group in _groups {
             for (idx, node) in group.enumerated() {
                 callback(node, node.value(forKey:"__data__"), idx, group)
