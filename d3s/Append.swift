@@ -45,3 +45,31 @@ extension Selection {
         return append(name: create)
     }
 }
+
+extension EnterSelection {
+    typealias SelectorFunc = (EnterNode, Any?, Int, [EnterNode]) -> CALayer?
+
+    func select(_ s: @escaping SelectorFunc) -> Selection {
+        let subgroups : [[CALayer]] = _enterGroups.map { group -> [CALayer] in
+            let subgroup : [CALayer] = group.enumerated().flatMap({ (p: (index: Int, node: EnterNode)) -> CALayer? in
+                let subnode = s(p.node, p.node._data, p.index, group)
+                if let nodeData = p.node._data {
+                    subnode?.setValue(nodeData, forKey: "__data__")
+                }
+                return subnode
+            })
+            return subgroup
+        }
+        return Selection(subgroups , parents: _parents)
+    }
+
+    func append(name: @escaping SelectorFunc) -> Selection {
+        return select() { (node, data, index, group) -> CALayer? in
+            if let layer = name(node, data, index, group) {
+                node._parent?.addSublayer(layer)
+                return layer
+            }
+            return nil
+        }
+    }
+}

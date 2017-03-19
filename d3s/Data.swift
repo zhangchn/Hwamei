@@ -11,10 +11,10 @@ import QuartzCore
 protocol SelectionData {
     // KeyFunc is type for a function which would be called in two ways, passing arguments of: 1) a node, the corresponding data for this node, its index and the group of the node where the node is an element of the group being tranversed; and 2) the parent node of the group, a datum, its index, and the new data of the group, where the datum is an element of new data of the group.
     typealias KeyFunc = (CALayer, Any?, Int, KeyArgument) -> String
-    typealias ValueFunc = (CALayer, Any?, Int, [CALayer]) -> [Any]
+    typealias ValueFunc = (CALayer, Any?, Int, [CALayer]) -> [Any?]
     func data(value: ValueFunc, key: KeyFunc?) -> Selection
-    func data(value: [[Any?]], key: KeyFunc?) -> Selection
-    var data: [Any] { get }
+    func data(value: [Any?], key: KeyFunc?) -> Selection
+    var data: [Any?] { get }
 }
 
 fileprivate enum TransitionNode {
@@ -94,7 +94,7 @@ fileprivate func bindIndex(_ parent: CALayer, group: [CALayer], data: [Any]) -> 
 
 extension Selection: SelectionData {
     
-    var data: [Any] {
+    var data: [Any?] {
         get {
             let d: [Any] = []
             // TODO: each data
@@ -109,7 +109,10 @@ extension Selection: SelectionData {
         for (idx, group) in _groups.enumerated() {
             let parent = _parents[idx]
             let data = value(parent, parent.value(forKey: "__data__"), idx, _parents)
-            var transitionNodes = bind(parent, group: group, data: data, keyFunc: key)
+            var transitionNodes = bind(parent,
+                                       group: group,
+                                       data: data,
+                                       keyFunc: key)
             
             var i1 = 0
             for i0 in 0..<data.count {
@@ -151,11 +154,14 @@ extension Selection: SelectionData {
             enterGroups.append(enterGroup)
             exitGroups.append(exitGroup)
         }
-        let update = Selection(updateGroups, parents: _parents, enter: enterGroups, exit: exitGroups)
+        let update = Selection(updateGroups,
+                               parents: _parents,
+                               enter: enterGroups,
+                               exit: exitGroups)
         return update
     }
     
-    func data(value: [[Any?]], key: SelectionData.KeyFunc? = nil) -> Selection {
+    func data(value: [Any?], key: SelectionData.KeyFunc? = nil) -> Selection {
         let valueFunc: SelectionData.ValueFunc = { _, _, _, _ in
             return value
         }
