@@ -9,11 +9,11 @@
 import Foundation
 
 extension Selection {
-    func property(_ name: String) -> Any? {
+    public func property(_ name: String) -> Any? {
         return node()?.value(forKey: name)
     }
     
-    func property(_ name: String, value: Any?) -> Selection {
+    public func property(_ name: String, value: Any?) -> Selection {
         return each({ (node, _, _, _) in
             node.setValue(value, forKey: name)
         })

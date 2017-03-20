@@ -8,14 +8,14 @@
 
 import QuartzCore
 
-protocol SelectionSelect {
+public protocol SelectionSelect {
     func select(_ s: NSPredicate?) -> Selection
     //func select(_ s: (CALayer, Any?, Int, [CALayer]) -> CALayer?) -> Selection
 }
 
 extension Selection: SelectionSelect {
     typealias SelectorFunc = (CALayer, Any?, Int, [CALayer]) -> CALayer?
-    func select(_ s: NSPredicate?) -> Selection {
+    public func select(_ s: NSPredicate?) -> Selection {
         let s1 = selector(s)
         return select(s1)
     }

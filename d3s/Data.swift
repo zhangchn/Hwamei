@@ -8,7 +8,7 @@
 
 import QuartzCore
 
-protocol SelectionData {
+public protocol SelectionData {
     // KeyFunc is type for a function which would be called in two ways, passing arguments of: 1) a node, the corresponding data for this node, its index and the group of the node where the node is an element of the group being tranversed; and 2) the parent node of the group, a datum, its index, and the new data of the group, where the datum is an element of new data of the group.
     typealias KeyFunc = (CALayer, Any?, Int, KeyArgument) -> String
     typealias ValueFunc = (CALayer, Any?, Int, [CALayer]) -> [Any?]
@@ -23,7 +23,7 @@ fileprivate enum TransitionNode {
     case exit(CALayer)
 }
 
-enum KeyArgument {
+public enum KeyArgument {
     case group([CALayer])
     case data([Any])
 }
@@ -94,7 +94,7 @@ fileprivate func bindIndex(_ parent: CALayer, group: [CALayer], data: [Any]) -> 
 
 extension Selection: SelectionData {
     
-    var data: [Any?] {
+    public var data: [Any?] {
         get {
             let d: [Any] = []
             // TODO: each data
@@ -102,7 +102,7 @@ extension Selection: SelectionData {
         }
     }
     
-    func data(value: SelectionData.ValueFunc, key: SelectionData.KeyFunc? = nil) -> Selection {
+    public func data(value: SelectionData.ValueFunc, key: SelectionData.KeyFunc? = nil) -> Selection {
         var updateGroups : [[CALayer]] = []
         var enterGroups : [[EnterNode]] = []
         var exitGroups : [[CALayer]] = []
@@ -161,7 +161,7 @@ extension Selection: SelectionData {
         return update
     }
     
-    func data(value: [Any?], key: SelectionData.KeyFunc? = nil) -> Selection {
+    public func data(value: [Any?], key: SelectionData.KeyFunc? = nil) -> Selection {
         let valueFunc: SelectionData.ValueFunc = { _, _, _, _ in
             return value
         }

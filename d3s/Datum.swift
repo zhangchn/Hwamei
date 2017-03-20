@@ -9,10 +9,10 @@
 import Foundation
 
 extension Selection {
-    func datum() -> Any? {
+    public func datum() -> Any? {
         return node()?.value(forKey: "__data__")
     }
-    func datum(_ value: Any?) -> Selection {
+    public func datum(_ value: Any?) -> Selection {
         return property("__data__", value: value)
     }
 }

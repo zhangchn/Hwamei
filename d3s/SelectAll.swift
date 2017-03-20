@@ -15,12 +15,12 @@ protocol SelectionSelectAll {
 
 extension Selection : SelectionSelectAll {
     
-    typealias SelectorAllFunc = (CALayer, Any?, Int, [CALayer]) -> [CALayer]
-    func selectAll(_ p: NSPredicate?) -> Selection {
+    public typealias SelectorAllFunc = (CALayer, Any?, Int, [CALayer]) -> [CALayer]
+    public func selectAll(_ p: NSPredicate?) -> Selection {
         return selectAll(selectorAll(p))
     }
     
-    func selectAll(_ s: @escaping SelectorAllFunc) -> Selection {
+    public func selectAll(_ s: @escaping SelectorAllFunc) -> Selection {
         var subgroups : [[CALayer]] = []
         var parents : [CALayer] = []
         for group in _groups {

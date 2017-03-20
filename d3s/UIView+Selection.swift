@@ -10,20 +10,20 @@ import Foundation
 import QuartzCore
 
 extension UIView : SelectionSelectAll {
-    func selectAll(_ p: NSPredicate?) -> Selection {
+    public func selectAll(_ p: NSPredicate?) -> Selection {
         return Selection([self.layer.querySelectorAll(p)], parents: [self.layer])
     }
-    func selectAll(_ layers: [CALayer]) -> Selection {
+    public func selectAll(_ layers: [CALayer]) -> Selection {
         return Selection([layers], parents: [self.layer])
     }
 }
 
 extension UIView : SelectionSelect {
-    func select(_ p: NSPredicate?) -> Selection {
+    public func select(_ p: NSPredicate?) -> Selection {
         return Selection([[self.layer.querySelector(p)].flatMap { $0 }], parents:[self.layer])
     }
     
-    func select(_ l: CALayer) -> Selection {
+    public func select(_ l: CALayer) -> Selection {
         return Selection([[l]], parents: [self.layer])
     }
 }

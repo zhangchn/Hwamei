@@ -9,7 +9,7 @@
 import UIKit
 import QuartzCore
 
-class Selection {
+public class Selection {
     var _parents : [CALayer]
     var _groups : [[CALayer]]
     var _enter : [[EnterNode]]?

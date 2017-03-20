@@ -9,7 +9,7 @@
 import Foundation
 
 extension Selection {
-    func exit() -> Selection {
+    public func exit() -> Selection {
         let exit = _exit ?? [[CALayer]](repeating: [], count: _groups.count)
         return Selection(exit , parents: _parents)
     }

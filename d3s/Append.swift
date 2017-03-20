@@ -9,7 +9,7 @@
 import QuartzCore
 
 
-enum CreatorType {
+public enum CreatorType {
     case shape, tile, text, gradient, layer
 }
 func creator(name: CreatorType) -> Selection.SelectorFunc {
@@ -30,7 +30,7 @@ func creator(name: CreatorType) -> Selection.SelectorFunc {
 }
 
 extension Selection {
-    func append(name: SelectorFunc ) -> Selection {
+    public func append(name: SelectorFunc ) -> Selection {
         return select() { (node, data, index, group) -> CALayer? in
             if let layer = name(node, data, index, group) {
                 node.addSublayer(layer)
@@ -40,16 +40,16 @@ extension Selection {
         }
     }
     
-    func append(name: CreatorType) -> Selection {
+    public func append(name: CreatorType) -> Selection {
         let create = creator(name: name)
         return append(name: create)
     }
 }
 
 extension EnterSelection {
-    typealias SelectorFunc = (EnterNode, Any?, Int, [EnterNode]) -> CALayer?
+    public typealias SelectorFunc = (EnterNode, Any?, Int, [EnterNode]) -> CALayer?
 
-    func select(_ s: @escaping SelectorFunc) -> Selection {
+    public func select(_ s: @escaping SelectorFunc) -> Selection {
         let subgroups : [[CALayer]] = _enterGroups.map { group -> [CALayer] in
             let subgroup : [CALayer] = group.enumerated().flatMap({ (p: (index: Int, node: EnterNode)) -> CALayer? in
                 let subnode = s(p.node, p.node._data, p.index, group)
@@ -63,7 +63,7 @@ extension EnterSelection {
         return Selection(subgroups , parents: _parents)
     }
 
-    func append(name: @escaping SelectorFunc) -> Selection {
+    public func append(name: @escaping SelectorFunc) -> Selection {
         return select() { (node, data, index, group) -> CALayer? in
             if let layer = name(node, data, index, group) {
                 node._parent?.addSublayer(layer)

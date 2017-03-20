@@ -9,7 +9,7 @@
 import Foundation
 
 extension Selection {
-    func node() -> CALayer? {
+    public func node() -> CALayer? {
         for group in _groups {
             for node in group {
                 return node

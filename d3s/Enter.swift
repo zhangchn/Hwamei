@@ -8,7 +8,7 @@
 
 import QuartzCore
 
-class EnterNode {
+public class EnterNode {
     var _data: Any?
     weak var _parent: CALayer?
     weak var _next: CALayer?
@@ -34,7 +34,7 @@ class EnterNode {
     }
 }
 
-class EnterSelection {
+public class EnterSelection {
     var _enterGroups : [[EnterNode]]
     var _parents: [CALayer]
     init(_ groups: [[EnterNode]] , parents: [CALayer]) {
@@ -44,7 +44,7 @@ class EnterSelection {
 }
 
 extension Selection {
-    func enter() -> EnterSelection {
+    public func enter() -> EnterSelection {
         let enter = _enter ?? [[EnterNode]](repeating: [], count: _groups.count)
         return EnterSelection(enter , parents: _parents)
     }
