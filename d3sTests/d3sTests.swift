@@ -52,6 +52,36 @@ class d3sTests: XCTestCase {
         XCTAssertTrue(groups[0][0] == layer1)
         
     }
+    
+    func testDataUpdateEnterMerge() {
+        let predicate1 = NSPredicate(format: "cls = 3")
+        
+        let view1 = view!
+        
+        func f1 (d: [Int]) {
+            let update = view1.selectAll(predicate1).data(value: d)
+            let enter = update.enter()
+                .append(name: .layer)
+                .property("cls", value: 3)
+            
+            _ = update.exit().remove()
+            
+            _ = update.merge(enter).property("v") { (layer, datum, idx, group) -> Any? in
+                return datum
+            }
+        }
+        f1(d: [2, 3, 4])
+        f1(d: [11, 2, 4, 5, 7])
+        let v = view1.layer.sublayers!.flatMap { layer in
+            layer.value(forKey: "v")
+        } as! [Int]
+        XCTAssertTrue(v.contains(11))
+        XCTAssertTrue(v.contains(2))
+        XCTAssertTrue(v.contains(4))
+        XCTAssertTrue(v.contains(5))
+        XCTAssertTrue(v.contains(7))
+        XCTAssertTrue(v.count == 5)
+    }
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.
 //        self.measure {
