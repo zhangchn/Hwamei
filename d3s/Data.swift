@@ -130,7 +130,6 @@ extension Selection: SelectionData {
                         break
                     }
                     p._next = next
-                //                    transitionNodes[i0] = .enter(p)
                 default:
                     break
                 }

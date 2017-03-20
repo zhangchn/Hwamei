@@ -9,7 +9,7 @@
 import Foundation
 
 extension Selection {
-    func merge(_ selection: Selection) -> Selection {
+    public func merge(_ selection: Selection) -> Selection {
         let minCount = min(_groups.count , selection._groups.count)
         var merges: [[CALayer]] = zip(_groups, selection._groups).map { (group0, group1) -> [CALayer] in
             return  group0 + Array(Set(group1).subtracting(group0))
