@@ -14,13 +14,13 @@ public protocol SelectionSelect {
 }
 
 extension Selection: SelectionSelect {
-    typealias SelectorFunc = (CALayer, Any?, Int, [CALayer]) -> CALayer?
+    public typealias SelectorFunc = (CALayer, Any?, Int, [CALayer]) -> CALayer?
     public func select(_ s: NSPredicate?) -> Selection {
         let s1 = selector(s)
         return select(s1)
     }
     
-    func select(_ s: SelectorFunc) -> Selection {
+    public func select(_ s: SelectorFunc) -> Selection {
         let subgroups : [[CALayer]] = _groups.map { group -> [CALayer] in
             let subgroup : [CALayer] = group.enumerated().flatMap({ (p: (index: Int, node: CALayer)) -> CALayer? in
                 let subnode = s(p.node, p.node.value(forKey: "__data__"), p.index, group)
