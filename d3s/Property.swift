@@ -24,7 +24,7 @@ extension Selection {
             node.setValue(value(node, datum, idx, group), forKey: name)
         })
     }
-    
+    /*
     public func position(_ point: (CALayer, Any?, Int, [CALayer]) -> CGPoint?) -> Selection {
         return each({ (node, datum, idx, group) in
             if let p = point(node, datum, idx, group) {
@@ -42,4 +42,5 @@ extension Selection {
     public func position(_ point: CGPoint) -> Selection {
         return each({ (node, _, _, _) in node.position = point})
     }
+     */
 }
