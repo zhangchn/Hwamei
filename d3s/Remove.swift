@@ -10,8 +10,8 @@ import Foundation
 
 extension Selection {
     public func remove() -> Selection {
-        return each({ (node, data, idx, group) in
+        return each() { (node, data, idx, group) in
             node.removeFromSuperlayer()
-        })
+        }
     }
 }

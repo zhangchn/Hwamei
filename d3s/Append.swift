@@ -66,6 +66,9 @@ extension EnterSelection {
     public func append(name: @escaping SelectorFunc) -> Selection {
         return select() { (node, data, index, group) -> CALayer? in
             if let layer = name(node, data, index, group) {
+                if layer.style == nil {
+                    layer.style = [:]
+                }
                 node._parent?.addSublayer(layer)
                 return layer
             }
