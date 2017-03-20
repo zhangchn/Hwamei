@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "self:d3s.xcodeproj">
+      location = "group:MyPlayground.playground">
+   </FileRef>
+   <FileRef
+      location = "container:d3s.xcodeproj">
    </FileRef>
 </Workspace>
