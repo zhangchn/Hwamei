@@ -65,17 +65,17 @@ func rebind(view: UIView, data: [Any]) {
         }
     }
 }
-view
-rebind(view: view, data: [2, 3, 5])
-view
+//view
+//rebind(view: view, data: [2, 3, 5])
+//view
 
-rebind(view: view, data: [11, 12, 5, 7, 9])
-view
+//rebind(view: view, data: [11, 12, 5, 7, 9])
+//view
 
 let view2 = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 1024))
 let hexbin = HexBin.init(radius: 32)
-let points = (0..<300).map { _ in CGPoint(x: Int(arc4random() % 320 + 512), y: Int(arc4random() % 320 + 512)) }
-points.count
+let points = (0..<500).map { _ in CGPoint(x: Int(arc4random() % 1024), y: Int(arc4random() % 1024)) }
+//points.count
 
 let bins = hexbin.hexbin(points)
 bins[0].center
@@ -87,8 +87,13 @@ view2.select(view2.layer)
     .enter()
     .append(name: .shape)
     .property("cls", value: "hexagon")
-    .property("fillColor", value: UIColor.clear.cgColor)
-    .property("strokeColor", value: UIColor.black.cgColor)
+    .property("fillColor") {(node, datum, idx, group) -> AnyObject?  in
+        let p = datum as! HexBin.Bin
+        let c = p.center
+        let r = sqrt((c.x - 512) * (c.x - 512) + (c.y - 512) * (c.y - 512))
+        let hue: CGFloat = 0.5, saturation: CGFloat = r / 512.0
+        return UIColor(hue: hue, saturation: 0.8, brightness: 1.0 - r / 512, alpha: 1.0).cgColor
+    }.property("strokeColor", value: UIColor.black.cgColor)
     .style(name: "transform") { (node, datum, idx, group) -> AnyObject? in
         let p = datum as! HexBin.Bin
         return CATransform3DMakeTranslation(p.center.x, p.center.y, 0) as AnyObject?
