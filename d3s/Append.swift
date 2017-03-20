@@ -12,24 +12,25 @@ import QuartzCore
 public enum CreatorType {
     case shape, tile, text, gradient, layer
 }
-func creator(name: CreatorType) -> Selection.SelectorFunc {
-    return { (_, _, _, _) -> CALayer? in
-        switch name {
-        case .shape:
-            return CAShapeLayer()
-        case .gradient:
-            return CAGradientLayer()
-        case .text:
-            return CATextLayer()
-        case .tile:
-            return CATiledLayer()
-        case .layer:
-            return CALayer()
-        }
-    }
-}
 
 extension Selection {
+    internal class func creator(name: CreatorType) -> Selection.SelectorFunc {
+        return { (_, _, _, _) -> CALayer? in
+            switch name {
+            case .shape:
+                return CAShapeLayer()
+            case .gradient:
+                return CAGradientLayer()
+            case .text:
+                return CATextLayer()
+            case .tile:
+                return CATiledLayer()
+            case .layer:
+                return CALayer()
+            }
+        }
+    }
+
     public func append(name: SelectorFunc ) -> Selection {
         return select() { (node, data, index, group) -> CALayer? in
             if let layer = name(node, data, index, group) {
@@ -41,7 +42,7 @@ extension Selection {
     }
     
     public func append(name: CreatorType) -> Selection {
-        let create = creator(name: name)
+        let create = type(of: self).creator(name: name)
         return append(name: create)
     }
 }
@@ -74,5 +75,27 @@ extension EnterSelection {
             }
             return nil
         }
+    }
+    
+    internal class func creator(name: CreatorType) -> SelectorFunc {
+        return { (_, _, _, _) -> CALayer? in
+            switch name {
+            case .shape:
+                return CAShapeLayer()
+            case .gradient:
+                return CAGradientLayer()
+            case .text:
+                return CATextLayer()
+            case .tile:
+                return CATiledLayer()
+            case .layer:
+                return CALayer()
+            }
+        }
+    }
+
+    public func append(name: CreatorType) -> Selection {
+        let create =  type(of: self).creator(name: name)
+        return append(name: create)
     }
 }
