@@ -93,12 +93,11 @@ fileprivate func bindIndex(_ parent: CALayer, group: [CALayer], data: [Any]) -> 
 }
 
 extension Selection: SelectionData {
-    
     public var data: [Any?] {
         get {
-            let d: [Any] = []
-            // TODO: each data
-            return d
+            return _groups.flatMap { $0 }.flatMap {
+                $0.value(forKey: "__data__")
+            }
         }
     }
     

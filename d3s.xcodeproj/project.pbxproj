@@ -17,6 +17,7 @@
 		DB0000951E7DB4F000531CD6 /* Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0000941E7DB4F000531CD6 /* Remove.swift */; };
 		DB00009D1E7F85DC00531CD6 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00009C1E7F85DC00531CD6 /* Style.swift */; };
 		DB00009F1E7FBC1E00531CD6 /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00009E1E7FBC1E00531CD6 /* Merge.swift */; };
+		DB0000A11E7FCDAA00531CD6 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0000A01E7FCDAA00531CD6 /* Call.swift */; };
 		DB3B644C1E779A3F00474CBD /* d3s.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* d3s.framework */; };
 		DB3B64511E779A3F00474CBD /* d3sTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3B64501E779A3F00474CBD /* d3sTests.swift */; };
 		DB3B64531E779A3F00474CBD /* d3s.h in Headers */ = {isa = PBXBuildFile; fileRef = DB3B64451E779A3F00474CBD /* d3s.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -49,6 +50,7 @@
 		DB0000941E7DB4F000531CD6 /* Remove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remove.swift; sourceTree = "<group>"; };
 		DB00009C1E7F85DC00531CD6 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		DB00009E1E7FBC1E00531CD6 /* Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merge.swift; sourceTree = "<group>"; };
+		DB0000A01E7FCDAA00531CD6 /* Call.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
 		DB3B64421E779A3F00474CBD /* d3s.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = d3s.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3B64451E779A3F00474CBD /* d3s.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = d3s.h; sourceTree = "<group>"; };
 		DB3B64461E779A3F00474CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 				DB9511BE1E78E7B6000E253F /* Select.swift */,
 				DB9511C01E78E81E000E253F /* SelectAll.swift */,
 				DB9511C61E78EF88000E253F /* Append.swift */,
+				DB0000A01E7FCDAA00531CD6 /* Call.swift */,
 				DB00008A1E7D993400531CD6 /* Data.swift */,
 				DB00008C1E7DAA5200531CD6 /* Datum.swift */,
 				DB0000901E7DB0DE00531CD6 /* Each.swift */,
@@ -268,6 +271,7 @@
 				DB00002B1E799FB600531CD6 /* Enter.swift in Sources */,
 				DB0000951E7DB4F000531CD6 /* Remove.swift in Sources */,
 				DB9511BF1E78E7B6000E253F /* Select.swift in Sources */,
+				DB0000A11E7FCDAA00531CD6 /* Call.swift in Sources */,
 				DB00008B1E7D993400531CD6 /* Data.swift in Sources */,
 				DB00002D1E799FC300531CD6 /* Exit.swift in Sources */,
 				DB00008D1E7DAA5200531CD6 /* Datum.swift in Sources */,
