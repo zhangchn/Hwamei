@@ -42,10 +42,10 @@ func rebind(view: UIView, data: [Any]) {
     
     updateSet.exit().remove()
     
-    updateSet.each { (layer, datum, idx, group) in
-        datum!
-        idx
-    }
+//    updateSet.each { (layer, datum, idx, group) in
+//        datum!
+//        idx
+//    }
     // XXX: Always merge update set with enter set
     updateSet.merge(enterSet)
         .property("position", value: { (_, datum, idx, _) -> Any? in
@@ -71,4 +71,27 @@ view
 
 rebind(view: view, data: [11, 12, 5, 7, 9])
 view
+
+let view2 = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 1024))
+let hexbin = HexBin.init(radius: 32)
+let points = (0..<300).map { _ in CGPoint(x: Int(arc4random() % 320 + 512), y: Int(arc4random() % 320 + 512)) }
+points.count
+
+let bins = hexbin.hexbin(points)
+bins[0].center
+bins[0].points
+
+view2.select(view2.layer)
+    .selectAll(NSPredicate(format: "cls = 'hexagon'"))
+    .data(value: bins)
+    .enter()
+    .append(name: .shape)
+    .property("cls", value: "hexagon")
+    .property("fillColor", value: UIColor.clear.cgColor)
+    .property("strokeColor", value: UIColor.black.cgColor)
+    .style(name: "transform") { (node, datum, idx, group) -> AnyObject? in
+        let p = datum as! HexBin.Bin
+        return CATransform3DMakeTranslation(p.center.x, p.center.y, 0) as AnyObject?
+    }.property("path", value: hexbin.hexagon())
+view2
 
