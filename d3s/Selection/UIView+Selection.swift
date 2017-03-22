@@ -9,16 +9,14 @@
 import Foundation
 import QuartzCore
 
-extension UIView : SelectionSelectAll {
+extension UIView {
     public func selectAll(_ p: NSPredicate?) -> Selection {
         return Selection([self.layer.querySelectorAll(p)], parents: [self.layer])
     }
     public func selectAll(_ layers: [CALayer]) -> Selection {
         return Selection([layers], parents: [self.layer])
     }
-}
 
-extension UIView : SelectionSelect {
     public func select(_ p: NSPredicate?) -> Selection {
         return Selection([[self.layer.querySelector(p)].flatMap { $0 }], parents:[self.layer])
     }

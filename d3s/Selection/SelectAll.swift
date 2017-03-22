@@ -8,18 +8,34 @@
 
 import QuartzCore
 
-protocol SelectionSelectAll {
-    func selectAll(_ p: NSPredicate?) -> Selection
-    //func selectAll(_ s: @escaping (CALayer, Any?, Int, [CALayer]) -> [CALayer]) -> Selection
-}
-
-extension Selection : SelectionSelectAll {
+extension Selection {
+    /**
+     A type of function to be mapped over subgroups in SelectorAll
     
+     -  A sub-node of CALayer type
+     -  Data bound to the parent node
+     -  Index of the node being mapped over
+     -  The group of sub-nodes being mapped over
+     */
     public typealias SelectorAllFunc = (CALayer, Any?, Int, [CALayer]) -> [CALayer]
+    
+    /**
+     Select all CALayer sub-nodes in a selection, filtering with a predicate object.
+     
+     - parameter p: a predicate object.
+     - returns: See `selectAll(_ s: @escaping SelectorAllFunc) -> Selection`
+     */
     public func selectAll(_ p: NSPredicate?) -> Selection {
         return selectAll(selectorAll(p))
     }
-    
+    /**
+     Select all CALayer sub-nodes in a selection, filtering with a predicate.
+     
+     - parameter s:  a predicate function, see `SelectorAllFunc`
+     
+     - returns: a Selection object containing selected sub-nodes.
+        The dimension of returned groups = (#-of-groups * #-of-node-in-group , #-of-matches-in-node)
+     */
     public func selectAll(_ s: @escaping SelectorAllFunc) -> Selection {
         var subgroups : [[CALayer]] = []
         var parents : [CALayer] = []
