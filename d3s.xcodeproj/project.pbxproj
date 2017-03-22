@@ -7,27 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB00002B1E799FB600531CD6 /* Enter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00002A1E799FB600531CD6 /* Enter.swift */; };
-		DB00002D1E799FC300531CD6 /* Exit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00002C1E799FC300531CD6 /* Exit.swift */; };
-		DB00008B1E7D993400531CD6 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00008A1E7D993400531CD6 /* Data.swift */; };
-		DB00008D1E7DAA5200531CD6 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00008C1E7DAA5200531CD6 /* Datum.swift */; };
-		DB00008F1E7DAAE000531CD6 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00008E1E7DAAE000531CD6 /* Node.swift */; };
-		DB0000911E7DB0DE00531CD6 /* Each.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0000901E7DB0DE00531CD6 /* Each.swift */; };
-		DB0000931E7DB10300531CD6 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0000921E7DB10200531CD6 /* Property.swift */; };
-		DB0000951E7DB4F000531CD6 /* Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0000941E7DB4F000531CD6 /* Remove.swift */; };
-		DB00009D1E7F85DC00531CD6 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00009C1E7F85DC00531CD6 /* Style.swift */; };
-		DB00009F1E7FBC1E00531CD6 /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB00009E1E7FBC1E00531CD6 /* Merge.swift */; };
-		DB0000A11E7FCDAA00531CD6 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0000A01E7FCDAA00531CD6 /* Call.swift */; };
 		DB0000A41E80154700531CD6 /* HexBin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0000A31E80154700531CD6 /* HexBin.swift */; };
+		DB0000A81E80BF0300531CD6 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB0000A71E80BF0200531CD6 /* Area.swift */; };
 		DB3B644C1E779A3F00474CBD /* d3s.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* d3s.framework */; };
 		DB3B64511E779A3F00474CBD /* d3sTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3B64501E779A3F00474CBD /* d3sTests.swift */; };
 		DB3B64531E779A3F00474CBD /* d3s.h in Headers */ = {isa = PBXBuildFile; fileRef = DB3B64451E779A3F00474CBD /* d3s.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		DB3B645D1E779A5C00474CBD /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3B645C1E779A5C00474CBD /* Selection.swift */; };
-		DB9511BF1E78E7B6000E253F /* Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9511BE1E78E7B6000E253F /* Select.swift */; };
-		DB9511C11E78E81E000E253F /* SelectAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9511C01E78E81E000E253F /* SelectAll.swift */; };
-		DB9511C31E78E8DC000E253F /* UIView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9511C21E78E8DC000E253F /* UIView+Selection.swift */; };
-		DB9511C51E78EB1E000E253F /* CALayer+DOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9511C41E78EB1E000E253F /* CALayer+DOM.swift */; };
-		DB9511C71E78EF88000E253F /* Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9511C61E78EF88000E253F /* Append.swift */; };
+		DB3D6DD41E827D4900C253E7 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DD31E827D4900C253E7 /* Path.swift */; };
+		DB3D6DE61E827EBB00C253E7 /* Append.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DD51E827EBB00C253E7 /* Append.swift */; };
+		DB3D6DE71E827EBB00C253E7 /* CALayer+DOM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DD61E827EBB00C253E7 /* CALayer+DOM.swift */; };
+		DB3D6DE81E827EBB00C253E7 /* Call.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DD71E827EBB00C253E7 /* Call.swift */; };
+		DB3D6DE91E827EBB00C253E7 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DD81E827EBB00C253E7 /* Data.swift */; };
+		DB3D6DEA1E827EBB00C253E7 /* Datum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DD91E827EBB00C253E7 /* Datum.swift */; };
+		DB3D6DEB1E827EBB00C253E7 /* Each.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DDA1E827EBB00C253E7 /* Each.swift */; };
+		DB3D6DEC1E827EBB00C253E7 /* Enter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DDB1E827EBB00C253E7 /* Enter.swift */; };
+		DB3D6DED1E827EBB00C253E7 /* Exit.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DDC1E827EBB00C253E7 /* Exit.swift */; };
+		DB3D6DEE1E827EBB00C253E7 /* Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DDD1E827EBB00C253E7 /* Merge.swift */; };
+		DB3D6DEF1E827EBB00C253E7 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DDE1E827EBB00C253E7 /* Node.swift */; };
+		DB3D6DF01E827EBB00C253E7 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DDF1E827EBB00C253E7 /* Property.swift */; };
+		DB3D6DF11E827EBB00C253E7 /* Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE01E827EBB00C253E7 /* Remove.swift */; };
+		DB3D6DF21E827EBB00C253E7 /* Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE11E827EBB00C253E7 /* Select.swift */; };
+		DB3D6DF31E827EBB00C253E7 /* SelectAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE21E827EBB00C253E7 /* SelectAll.swift */; };
+		DB3D6DF41E827EBB00C253E7 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE31E827EBB00C253E7 /* Selection.swift */; };
+		DB3D6DF51E827EBB00C253E7 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE41E827EBB00C253E7 /* Style.swift */; };
+		DB3D6DF61E827EBB00C253E7 /* UIView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE51E827EBB00C253E7 /* UIView+Selection.swift */; };
+		DB9946C61E820E9C008B161B /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9946C51E820E9C008B161B /* Arc.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,30 +44,33 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DB00002A1E799FB600531CD6 /* Enter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Enter.swift; sourceTree = "<group>"; };
-		DB00002C1E799FC300531CD6 /* Exit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Exit.swift; sourceTree = "<group>"; };
-		DB00008A1E7D993400531CD6 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
-		DB00008C1E7DAA5200531CD6 /* Datum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Datum.swift; sourceTree = "<group>"; };
-		DB00008E1E7DAAE000531CD6 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
-		DB0000901E7DB0DE00531CD6 /* Each.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Each.swift; sourceTree = "<group>"; };
-		DB0000921E7DB10200531CD6 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
-		DB0000941E7DB4F000531CD6 /* Remove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remove.swift; sourceTree = "<group>"; };
-		DB00009C1E7F85DC00531CD6 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		DB00009E1E7FBC1E00531CD6 /* Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Merge.swift; sourceTree = "<group>"; };
-		DB0000A01E7FCDAA00531CD6 /* Call.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Call.swift; sourceTree = "<group>"; };
-		DB0000A31E80154700531CD6 /* HexBin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexBin.swift; sourceTree = "<group>"; };
+		DB0000A31E80154700531CD6 /* HexBin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HexBin.swift; path = HexBin/HexBin.swift; sourceTree = "<group>"; };
+		DB0000A71E80BF0200531CD6 /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Area.swift; path = Geo/Path/Area.swift; sourceTree = "<group>"; };
 		DB3B64421E779A3F00474CBD /* d3s.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = d3s.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3B64451E779A3F00474CBD /* d3s.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = d3s.h; sourceTree = "<group>"; };
 		DB3B64461E779A3F00474CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3B644B1E779A3F00474CBD /* d3sTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = d3sTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3B64501E779A3F00474CBD /* d3sTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = d3sTests.swift; sourceTree = "<group>"; };
 		DB3B64521E779A3F00474CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DB3B645C1E779A5C00474CBD /* Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
-		DB9511BE1E78E7B6000E253F /* Select.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Select.swift; sourceTree = "<group>"; };
-		DB9511C01E78E81E000E253F /* SelectAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAll.swift; sourceTree = "<group>"; };
-		DB9511C21E78E8DC000E253F /* UIView+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Selection.swift"; sourceTree = "<group>"; };
-		DB9511C41E78EB1E000E253F /* CALayer+DOM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CALayer+DOM.swift"; sourceTree = "<group>"; };
-		DB9511C61E78EF88000E253F /* Append.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Append.swift; sourceTree = "<group>"; };
+		DB3D6DD31E827D4900C253E7 /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Path.swift; path = Path/Path.swift; sourceTree = "<group>"; };
+		DB3D6DD51E827EBB00C253E7 /* Append.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Append.swift; path = Selection/Append.swift; sourceTree = "<group>"; };
+		DB3D6DD61E827EBB00C253E7 /* CALayer+DOM.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CALayer+DOM.swift"; path = "Selection/CALayer+DOM.swift"; sourceTree = "<group>"; };
+		DB3D6DD71E827EBB00C253E7 /* Call.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Call.swift; path = Selection/Call.swift; sourceTree = "<group>"; };
+		DB3D6DD81E827EBB00C253E7 /* Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Data.swift; path = Selection/Data.swift; sourceTree = "<group>"; };
+		DB3D6DD91E827EBB00C253E7 /* Datum.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Datum.swift; path = Selection/Datum.swift; sourceTree = "<group>"; };
+		DB3D6DDA1E827EBB00C253E7 /* Each.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Each.swift; path = Selection/Each.swift; sourceTree = "<group>"; };
+		DB3D6DDB1E827EBB00C253E7 /* Enter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Enter.swift; path = Selection/Enter.swift; sourceTree = "<group>"; };
+		DB3D6DDC1E827EBB00C253E7 /* Exit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Exit.swift; path = Selection/Exit.swift; sourceTree = "<group>"; };
+		DB3D6DDD1E827EBB00C253E7 /* Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Merge.swift; path = Selection/Merge.swift; sourceTree = "<group>"; };
+		DB3D6DDE1E827EBB00C253E7 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = Selection/Node.swift; sourceTree = "<group>"; };
+		DB3D6DDF1E827EBB00C253E7 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Property.swift; path = Selection/Property.swift; sourceTree = "<group>"; };
+		DB3D6DE01E827EBB00C253E7 /* Remove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Remove.swift; path = Selection/Remove.swift; sourceTree = "<group>"; };
+		DB3D6DE11E827EBB00C253E7 /* Select.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Select.swift; path = Selection/Select.swift; sourceTree = "<group>"; };
+		DB3D6DE21E827EBB00C253E7 /* SelectAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectAll.swift; path = Selection/SelectAll.swift; sourceTree = "<group>"; };
+		DB3D6DE31E827EBB00C253E7 /* Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Selection.swift; path = Selection/Selection.swift; sourceTree = "<group>"; };
+		DB3D6DE41E827EBB00C253E7 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Style.swift; path = Selection/Style.swift; sourceTree = "<group>"; };
+		DB3D6DE51E827EBB00C253E7 /* UIView+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Selection.swift"; path = "Selection/UIView+Selection.swift"; sourceTree = "<group>"; };
+		DB9946C51E820E9C008B161B /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arc.swift; path = Shape/Arc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +100,22 @@
 			name = Hexbin;
 			sourceTree = "<group>";
 		};
+		DB0000A51E80BEE100531CD6 /* Geo */ = {
+			isa = PBXGroup;
+			children = (
+				DB0000A61E80BEF000531CD6 /* Path */,
+			);
+			name = Geo;
+			sourceTree = "<group>";
+		};
+		DB0000A61E80BEF000531CD6 /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				DB0000A71E80BF0200531CD6 /* Area.swift */,
+			);
+			name = Path;
+			sourceTree = "<group>";
+		};
 		DB3B64381E779A3F00474CBD = {
 			isa = PBXGroup;
 			children = (
@@ -116,8 +138,11 @@
 			isa = PBXGroup;
 			children = (
 				DB3B64451E779A3F00474CBD /* d3s.h */,
+				DB9946C31E8206A2008B161B /* Path */,
 				DB0000A21E80152D00531CD6 /* Hexbin */,
+				DB0000A51E80BEE100531CD6 /* Geo */,
 				DB9511BD1E78E789000E253F /* Selection */,
+				DB9946C41E820E80008B161B /* Shape */,
 				DB3B64461E779A3F00474CBD /* Info.plist */,
 			);
 			path = d3s;
@@ -135,25 +160,41 @@
 		DB9511BD1E78E789000E253F /* Selection */ = {
 			isa = PBXGroup;
 			children = (
-				DB3B645C1E779A5C00474CBD /* Selection.swift */,
-				DB9511BE1E78E7B6000E253F /* Select.swift */,
-				DB9511C01E78E81E000E253F /* SelectAll.swift */,
-				DB9511C61E78EF88000E253F /* Append.swift */,
-				DB0000A01E7FCDAA00531CD6 /* Call.swift */,
-				DB00008A1E7D993400531CD6 /* Data.swift */,
-				DB00008C1E7DAA5200531CD6 /* Datum.swift */,
-				DB0000901E7DB0DE00531CD6 /* Each.swift */,
-				DB00002A1E799FB600531CD6 /* Enter.swift */,
-				DB00002C1E799FC300531CD6 /* Exit.swift */,
-				DB00009E1E7FBC1E00531CD6 /* Merge.swift */,
-				DB00008E1E7DAAE000531CD6 /* Node.swift */,
-				DB0000921E7DB10200531CD6 /* Property.swift */,
-				DB0000941E7DB4F000531CD6 /* Remove.swift */,
-				DB00009C1E7F85DC00531CD6 /* Style.swift */,
-				DB9511C21E78E8DC000E253F /* UIView+Selection.swift */,
-				DB9511C41E78EB1E000E253F /* CALayer+DOM.swift */,
+				DB3D6DD51E827EBB00C253E7 /* Append.swift */,
+				DB3D6DD61E827EBB00C253E7 /* CALayer+DOM.swift */,
+				DB3D6DD71E827EBB00C253E7 /* Call.swift */,
+				DB3D6DD81E827EBB00C253E7 /* Data.swift */,
+				DB3D6DD91E827EBB00C253E7 /* Datum.swift */,
+				DB3D6DDA1E827EBB00C253E7 /* Each.swift */,
+				DB3D6DDB1E827EBB00C253E7 /* Enter.swift */,
+				DB3D6DDC1E827EBB00C253E7 /* Exit.swift */,
+				DB3D6DDD1E827EBB00C253E7 /* Merge.swift */,
+				DB3D6DDE1E827EBB00C253E7 /* Node.swift */,
+				DB3D6DDF1E827EBB00C253E7 /* Property.swift */,
+				DB3D6DE01E827EBB00C253E7 /* Remove.swift */,
+				DB3D6DE11E827EBB00C253E7 /* Select.swift */,
+				DB3D6DE21E827EBB00C253E7 /* SelectAll.swift */,
+				DB3D6DE31E827EBB00C253E7 /* Selection.swift */,
+				DB3D6DE41E827EBB00C253E7 /* Style.swift */,
+				DB3D6DE51E827EBB00C253E7 /* UIView+Selection.swift */,
 			);
 			name = Selection;
+			sourceTree = "<group>";
+		};
+		DB9946C31E8206A2008B161B /* Path */ = {
+			isa = PBXGroup;
+			children = (
+				DB3D6DD31E827D4900C253E7 /* Path.swift */,
+			);
+			name = Path;
+			sourceTree = "<group>";
+		};
+		DB9946C41E820E80008B161B /* Shape */ = {
+			isa = PBXGroup;
+			children = (
+				DB9946C51E820E9C008B161B /* Arc.swift */,
+			);
+			name = Shape;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,24 +310,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB3B645D1E779A5C00474CBD /* Selection.swift in Sources */,
-				DB9511C11E78E81E000E253F /* SelectAll.swift in Sources */,
-				DB9511C51E78EB1E000E253F /* CALayer+DOM.swift in Sources */,
-				DB00008F1E7DAAE000531CD6 /* Node.swift in Sources */,
-				DB00009D1E7F85DC00531CD6 /* Style.swift in Sources */,
-				DB9511C71E78EF88000E253F /* Append.swift in Sources */,
-				DB00009F1E7FBC1E00531CD6 /* Merge.swift in Sources */,
-				DB9511C31E78E8DC000E253F /* UIView+Selection.swift in Sources */,
-				DB0000931E7DB10300531CD6 /* Property.swift in Sources */,
-				DB0000911E7DB0DE00531CD6 /* Each.swift in Sources */,
-				DB00002B1E799FB600531CD6 /* Enter.swift in Sources */,
-				DB0000951E7DB4F000531CD6 /* Remove.swift in Sources */,
-				DB9511BF1E78E7B6000E253F /* Select.swift in Sources */,
-				DB0000A11E7FCDAA00531CD6 /* Call.swift in Sources */,
-				DB00008B1E7D993400531CD6 /* Data.swift in Sources */,
-				DB00002D1E799FC300531CD6 /* Exit.swift in Sources */,
-				DB00008D1E7DAA5200531CD6 /* Datum.swift in Sources */,
+				DB3D6DF01E827EBB00C253E7 /* Property.swift in Sources */,
+				DB3D6DF31E827EBB00C253E7 /* SelectAll.swift in Sources */,
+				DB0000A81E80BF0300531CD6 /* Area.swift in Sources */,
+				DB3D6DEE1E827EBB00C253E7 /* Merge.swift in Sources */,
+				DB3D6DE61E827EBB00C253E7 /* Append.swift in Sources */,
+				DB3D6DEB1E827EBB00C253E7 /* Each.swift in Sources */,
+				DB3D6DF11E827EBB00C253E7 /* Remove.swift in Sources */,
+				DB3D6DEC1E827EBB00C253E7 /* Enter.swift in Sources */,
+				DB3D6DD41E827D4900C253E7 /* Path.swift in Sources */,
+				DB9946C61E820E9C008B161B /* Arc.swift in Sources */,
+				DB3D6DF61E827EBB00C253E7 /* UIView+Selection.swift in Sources */,
+				DB3D6DE71E827EBB00C253E7 /* CALayer+DOM.swift in Sources */,
+				DB3D6DED1E827EBB00C253E7 /* Exit.swift in Sources */,
+				DB3D6DE81E827EBB00C253E7 /* Call.swift in Sources */,
+				DB3D6DF21E827EBB00C253E7 /* Select.swift in Sources */,
+				DB3D6DF41E827EBB00C253E7 /* Selection.swift in Sources */,
 				DB0000A41E80154700531CD6 /* HexBin.swift in Sources */,
+				DB3D6DE91E827EBB00C253E7 /* Data.swift in Sources */,
+				DB3D6DEA1E827EBB00C253E7 /* Datum.swift in Sources */,
+				DB3D6DEF1E827EBB00C253E7 /* Node.swift in Sources */,
+				DB3D6DF51E827EBB00C253E7 /* Style.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

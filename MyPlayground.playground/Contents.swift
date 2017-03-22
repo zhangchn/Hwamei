@@ -72,31 +72,65 @@ func rebind(view: UIView, data: [Any]) {
 //rebind(view: view, data: [11, 12, 5, 7, 9])
 //view
 
-let view2 = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 1024))
-let hexbin = HexBin.init(radius: 32)
-let points = (0..<500).map { _ in CGPoint(x: Int(arc4random() % 1024), y: Int(arc4random() % 1024)) }
 //points.count
+func renderHexagon(points: [CGPoint], in view: UIView) {
+    let hexbin = HexBin.init(radius: 24)
+    let bins = hexbin.hexbin(points)
 
-let bins = hexbin.hexbin(points)
-bins[0].center
-bins[0].points
+    view.select(view.layer)
+        .selectAll(NSPredicate(format: "cls = 'hexagon'"))
+        .data(value: bins)
+        .enter()
+        .append(name: .shape)
+        .property("cls", value: "hexagon")
+        .property("fillColor") {(node, datum, idx, group) -> AnyObject?  in
+            let p = datum as! HexBin.Bin
+            let c = p.center
+            let r = sqrt((c.x - 512) * (c.x - 512) + (c.y - 512) * (c.y - 512))
+            let hue: CGFloat = 0.5, saturation: CGFloat = r / 512.0
+            return UIColor(hue: c.x / 512, saturation: 0.8, brightness: 1.0 - r / 512, alpha: 1.0).cgColor
+        }.property("strokeColor", value: UIColor(white: 0.7, alpha: 1.0).cgColor)
+        .style(name: "transform") { (node, datum, idx, group) -> AnyObject? in
+            let p = datum as! HexBin.Bin
+            return CATransform3DMakeTranslation(p.center.x, p.center.y, 0) as AnyObject?
+        }.property("path", value: hexbin.hexagon())
+}
+let view2 = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 1024))
+//let points = (0..<600).map { _ in CGPoint(x: Int(arc4random() % 1024), y: Int(arc4random() % 1024)) }
+//
+//renderHexagon(points: points, in: view2)
+//
+//view2
 
-view2.select(view2.layer)
-    .selectAll(NSPredicate(format: "cls = 'hexagon'"))
-    .data(value: bins)
-    .enter()
-    .append(name: .shape)
-    .property("cls", value: "hexagon")
-    .property("fillColor") {(node, datum, idx, group) -> AnyObject?  in
-        let p = datum as! HexBin.Bin
-        let c = p.center
-        let r = sqrt((c.x - 512) * (c.x - 512) + (c.y - 512) * (c.y - 512))
-        let hue: CGFloat = 0.5, saturation: CGFloat = r / 512.0
-        return UIColor(hue: hue, saturation: 0.8, brightness: 1.0 - r / 512, alpha: 1.0).cgColor
-    }.property("strokeColor", value: UIColor.black.cgColor)
-    .style(name: "transform") { (node, datum, idx, group) -> AnyObject? in
-        let p = datum as! HexBin.Bin
-        return CATransform3DMakeTranslation(p.center.x, p.center.y, 0) as AnyObject?
-    }.property("path", value: hexbin.hexagon())
+let a = Arc().innerRadius(20).outerRadius(80)
+
+let p = a.arc().path
+
+
+//let p = UIBezierPath.init(arcCenter: .zero, radius: 40, startAngle: 0, endAngle: 2 * .pi, clockwise: true).cgPath
+
+view2.select(NSPredicate()).data(value: [0, 1, 2, 3, 4, 5, 6, 7])
+    .enter().append(name: .shape)
+    .property("bounds", value: NSValue(cgRect: CGRect(x: 0, y: 0, width: 80, height: 80)))
+    .style(name: "alpha", value: NSNumber(value: 0.5))
+    .property("lineWidth", value: 1)
+    .property("strokeColor", value: UIColor.red.cgColor)
+    .property("fillColor") { _, _, idx, _ in
+        let hue : CGFloat = 0.1 * CGFloat(idx)
+        let sat : CGFloat = 0.8
+        let bri : CGFloat = 0.4 + 0.1 * CGFloat(idx)
+        
+        return UIColor(hue: hue, saturation:sat, brightness: bri, alpha: 1.0).cgColor
+    }
+    .style(name: "transform") { _, _, idx, _ -> AnyObject? in
+        return CATransform3DMakeTranslation(CGFloat(140), CGFloat(140 + 100), 0) as AnyObject?
+    }
+    .property("path") { _, _, idx, _ -> AnyObject? in
+        return a.startAngle(CGFloat(idx) * 0.25 * .pi).endAngle(CGFloat(idx + 1) * 0.25 * .pi).arc().path
+}
+
+
 view2
+
+
 
