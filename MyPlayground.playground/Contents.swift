@@ -102,7 +102,7 @@ let view2 = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 1024))
 //
 //view2
 
-let a = Arc().innerRadius(20).outerRadius(80)
+let a = Arc().innerRadius(20).outerRadius(380).cornerRadius(15)
 
 let p = a.arc().path
 

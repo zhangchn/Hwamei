@@ -30,6 +30,7 @@
 		DB3D6DF41E827EBB00C253E7 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE31E827EBB00C253E7 /* Selection.swift */; };
 		DB3D6DF51E827EBB00C253E7 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE41E827EBB00C253E7 /* Style.swift */; };
 		DB3D6DF61E827EBB00C253E7 /* UIView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE51E827EBB00C253E7 /* UIView+Selection.swift */; };
+		DB98D5D21E830B97003AAC86 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB98D5D11E830B97003AAC86 /* Value.swift */; };
 		DB9946C61E820E9C008B161B /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9946C51E820E9C008B161B /* Arc.swift */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,7 @@
 		DB3D6DE31E827EBB00C253E7 /* Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Selection.swift; path = Selection/Selection.swift; sourceTree = "<group>"; };
 		DB3D6DE41E827EBB00C253E7 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Style.swift; path = Selection/Style.swift; sourceTree = "<group>"; };
 		DB3D6DE51E827EBB00C253E7 /* UIView+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Selection.swift"; path = "Selection/UIView+Selection.swift"; sourceTree = "<group>"; };
+		DB98D5D11E830B97003AAC86 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Value.swift; path = Interpolate/Value.swift; sourceTree = "<group>"; };
 		DB9946C51E820E9C008B161B /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arc.swift; path = Shape/Arc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -143,6 +145,7 @@
 				DB0000A51E80BEE100531CD6 /* Geo */,
 				DB9511BD1E78E789000E253F /* Selection */,
 				DB9946C41E820E80008B161B /* Shape */,
+				DB98D5D01E830B7E003AAC86 /* Interpolate */,
 				DB3B64461E779A3F00474CBD /* Info.plist */,
 			);
 			path = d3s;
@@ -179,6 +182,14 @@
 				DB3D6DE51E827EBB00C253E7 /* UIView+Selection.swift */,
 			);
 			name = Selection;
+			sourceTree = "<group>";
+		};
+		DB98D5D01E830B7E003AAC86 /* Interpolate */ = {
+			isa = PBXGroup;
+			children = (
+				DB98D5D11E830B97003AAC86 /* Value.swift */,
+			);
+			name = Interpolate;
 			sourceTree = "<group>";
 		};
 		DB9946C31E8206A2008B161B /* Path */ = {
@@ -323,6 +334,7 @@
 				DB3D6DF61E827EBB00C253E7 /* UIView+Selection.swift in Sources */,
 				DB3D6DE71E827EBB00C253E7 /* CALayer+DOM.swift in Sources */,
 				DB3D6DED1E827EBB00C253E7 /* Exit.swift in Sources */,
+				DB98D5D21E830B97003AAC86 /* Value.swift in Sources */,
 				DB3D6DE81E827EBB00C253E7 /* Call.swift in Sources */,
 				DB3D6DF21E827EBB00C253E7 /* Select.swift in Sources */,
 				DB3D6DF41E827EBB00C253E7 /* Selection.swift in Sources */,
