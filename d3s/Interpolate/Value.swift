@@ -8,7 +8,30 @@
 
 import Foundation
 
-public func interpolate<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
+
+protocol Interpolatable: Bisectible {
+    static var one: Self {get}
+    static var zero: Self {get}
+    static func interpolate(a: Self, b: Self) -> (Self) -> Self
+}
+
+extension Double : Interpolatable {
+    static var one: Double { return 1.0 }
+    static var zero: Double { return 0 }
+    static func interpolate(a: Double, b: Double) -> (Double) -> Double {
+        return interpolateFloat(a: a, b: b)
+    }
+}
+
+extension Float: Interpolatable {
+    static var one: Float { return 1.0 }
+    static var zero: Float { return 0 }
+    static func interpolate(a: Float, b: Float) -> (Float) -> Float {
+        return interpolateFloat(a: a, b: b)
+    }
+}
+
+func interpolateFloat<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
     let d = b - a
     return { t in
         a + d * t
@@ -48,7 +71,7 @@ public func interpolate<K: Hashable, V: FloatingPoint>(a: [K: V], b: [K: V]) -> 
     }
 }
 
-public func interpolate(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor? {
+public func interpolateColor(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor {
     if let model = a.colorSpace?.model {
         switch model {
         case .rgb:
@@ -58,10 +81,10 @@ public func interpolate(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor? {
         case .monochrome:
             return interpolateNoGamma(a: a, b: b)
         default:
-            return { _ in nil }
+            return { _ in UIColor.clear.cgColor }
         }
     } else {
-        return {_ in nil }
+        return {_ in UIColor.clear.cgColor }
     }
 }
 
@@ -98,7 +121,7 @@ public func gammaInterpolate(y: CGFloat) -> (CGFloat, CGFloat) -> (CGFloat) -> C
     }
 }
 
-public func interpolateGamma(a: CGColor, b: CGColor, gamma y: CGFloat = 1.0) -> (CGFloat) -> CGColor? {
+public func interpolateGamma(a: CGColor, b: CGColor, gamma y: CGFloat = 1.0) -> (CGFloat) -> CGColor {
     let g = gammaInterpolate(y: y)
     return { t in
         var components = [CGFloat]()
@@ -106,12 +129,12 @@ public func interpolateGamma(a: CGColor, b: CGColor, gamma y: CGFloat = 1.0) -> 
             let c = g(a.components![x], b.components![x])(t)
             components.append(c)
         }
-        let result = CGColor.init(colorSpace: a.colorSpace!, components: &components)
-        return result
+        let result = CGColor(colorSpace: a.colorSpace!, components: &components)
+        return result!
     }
 }
 
-public func interpolateNoGamma(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor? {
+public func interpolateNoGamma(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor {
     return { t in
         var components = [CGFloat]()
         for x in 0..<a.numberOfComponents {
@@ -119,6 +142,6 @@ public func interpolateNoGamma(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor? 
             components.append(c)
         }
         let result = CGColor.init(colorSpace: a.colorSpace!, components: &components)
-        return result
+        return result!
     }
 }
