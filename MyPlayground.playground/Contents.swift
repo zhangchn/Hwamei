@@ -105,32 +105,36 @@ let view2 = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 1024))
 let a = Arc().innerRadius(20).outerRadius(380).cornerRadius(15)
 
 let p = a.arc().path
-
-
-//let p = UIBezierPath.init(arcCenter: .zero, radius: 40, startAngle: 0, endAngle: 2 * .pi, clockwise: true).cgPath
-
-view2.select(NSPredicate()).data(value: [0, 1, 2, 3, 4, 5, 6, 7])
-    .enter().append(name: .shape)
-    .property("bounds", value: NSValue(cgRect: CGRect(x: 0, y: 0, width: 80, height: 80)))
-    .style(name: "alpha", value: NSNumber(value: 0.5))
-    .property("lineWidth", value: 1)
-    .property("strokeColor", value: UIColor.red.cgColor)
-    .property("fillColor") { _, _, idx, _ in
-        let hue : CGFloat = 0.1 * CGFloat(idx)
-        let sat : CGFloat = 0.8
-        let bri : CGFloat = 0.4 + 0.1 * CGFloat(idx)
-        
-        return UIColor(hue: hue, saturation:sat, brightness: bri, alpha: 1.0).cgColor
+func testPath(p: CGPath, view: UIView) {
+    view.select(NSPredicate()).data(value: [0, 1, 2, 3, 4, 5, 6, 7])
+        .enter().append(name: .shape)
+        .property("bounds", value: NSValue(cgRect: CGRect(x: 0, y: 0, width: 80, height: 80)))
+        .style(name: "alpha", value: NSNumber(value: 0.5))
+        .property("lineWidth", value: 1)
+        .property("strokeColor", value: UIColor.red.cgColor)
+        .property("fillColor") { _, _, idx, _ in
+            let hue : CGFloat = 0.1 * CGFloat(idx)
+            let sat : CGFloat = 0.8
+            let bri : CGFloat = 0.4 + 0.1 * CGFloat(idx)
+            
+            return UIColor(hue: hue, saturation:sat, brightness: bri, alpha: 1.0).cgColor
+        }
+        .style(name: "transform") { _, _, idx, _ -> AnyObject? in
+            return CATransform3DMakeTranslation(CGFloat(140), CGFloat(140 + 100), 0) as AnyObject?
+        }
+        .property("path") { _, _, idx, _ -> AnyObject? in
+            return p
+//            return a.startAngle(CGFloat(idx) * 0.25 * .pi).endAngle(CGFloat(idx + 1) * 0.25 * .pi).arc().path
     }
-    .style(name: "transform") { _, _, idx, _ -> AnyObject? in
-        return CATransform3DMakeTranslation(CGFloat(140), CGFloat(140 + 100), 0) as AnyObject?
-    }
-    .property("path") { _, _, idx, _ -> AnyObject? in
-        return a.startAngle(CGFloat(idx) * 0.25 * .pi).endAngle(CGFloat(idx + 1) * 0.25 * .pi).arc().path
 }
 
+//testPath(p: p, view: view2)
+//view2
+let c1 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+let c2 = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+let c : CGColor? = interpolateGamma(a: c1.cgColor, b: c2.cgColor, gamma: 0.40)(0.5)
+let uc = UIColor.init(cgColor: c!)
 
-view2
-
-
-
+let b = [1, 3, 5, 7, 9]
+bisectRight()(b, 4, 0, 4)
+bisectLeft()(b, 1, 0, 4)

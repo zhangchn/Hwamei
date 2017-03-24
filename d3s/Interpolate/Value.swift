@@ -8,14 +8,14 @@
 
 import Foundation
 
-func interpolate<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
+public func interpolate<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
     let d = b - a
     return { t in
         a + d * t
     }
 }
 
-func interpolate<T: FloatingPoint>(a: [T], b: [T]) -> (T) -> [T] {
+public func interpolate<T: FloatingPoint>(a: [T], b: [T]) -> (T) -> [T] {
     let m = a.count < b.count ? a + b[a.count ..< b.count] : a
     let n = a.count > b.count ? b + a[b.count ..< a.count] : b
     
@@ -26,7 +26,7 @@ func interpolate<T: FloatingPoint>(a: [T], b: [T]) -> (T) -> [T] {
     }
 }
 
-func interpolate<K: Hashable, V: FloatingPoint>(a: [K: V], b: [K: V]) -> (V) -> [K: V] {
+public func interpolate<K: Hashable, V: FloatingPoint>(a: [K: V], b: [K: V]) -> (V) -> [K: V] {
     var m = a, n = b
     for (k, v) in b {
         if a[k] == nil {
@@ -48,7 +48,7 @@ func interpolate<K: Hashable, V: FloatingPoint>(a: [K: V], b: [K: V]) -> (V) -> 
     }
 }
 
-func interpolate(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor? {
+public func interpolate(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor? {
     if let model = a.colorSpace?.model {
         switch model {
         case .rgb:
@@ -80,13 +80,13 @@ func exponentialInterpolate(a: CGFloat, b: CGFloat, y: CGFloat) -> (CGFloat) -> 
     }
 }
 
-func nogammaInterpolate(a: CGFloat, b: CGFloat) -> (CGFloat) -> CGFloat {
+public func nogammaInterpolate(a: CGFloat, b: CGFloat) -> (CGFloat) -> CGFloat {
     let d = b - a
     return d != 0 ? linearInterpolate(a: a, d: d) : { _ in
         a.isNaN ? b : a
     }
 }
-func gammaInterpolate(y: CGFloat) -> (CGFloat, CGFloat) -> (CGFloat) -> CGFloat {
+public func gammaInterpolate(y: CGFloat) -> (CGFloat, CGFloat) -> (CGFloat) -> CGFloat {
     if y == 1.0 {
         return nogammaInterpolate
     } else {
@@ -98,7 +98,7 @@ func gammaInterpolate(y: CGFloat) -> (CGFloat, CGFloat) -> (CGFloat) -> CGFloat 
     }
 }
 
-func interpolateGamma(a: CGColor, b: CGColor, gamma y: CGFloat = 1.0) -> (CGFloat) -> CGColor? {
+public func interpolateGamma(a: CGColor, b: CGColor, gamma y: CGFloat = 1.0) -> (CGFloat) -> CGColor? {
     let g = gammaInterpolate(y: y)
     return { t in
         var components = [CGFloat]()
@@ -111,7 +111,7 @@ func interpolateGamma(a: CGColor, b: CGColor, gamma y: CGFloat = 1.0) -> (CGFloa
     }
 }
 
-func interpolateNoGamma(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor? {
+public func interpolateNoGamma(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor? {
     return { t in
         var components = [CGFloat]()
         for x in 0..<a.numberOfComponents {
