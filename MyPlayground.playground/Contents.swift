@@ -130,11 +130,14 @@ func testPath(p: CGPath, view: UIView) {
 
 //testPath(p: p, view: view2)
 //view2
-let c1 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-let c2 = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-let c : CGColor? = interpolateGamma(a: c1.cgColor, b: c2.cgColor, gamma: 0.40)(0.5)
-let uc = UIColor.init(cgColor: c!)
+//let c1 = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+//let c2 = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
+//let c : CGColor? = interpolateGamma(a: c1.cgColor, b: c2.cgColor, gamma: 0.40)(0.5)
+//let uc = UIColor.init(cgColor: c!)
 
-let b = [1, 3, 5, 7, 9]
-bisectRight()(b, 4, 0, 4)
-bisectLeft()(b, 1, 0, 4)
+//let b = [1, 3, 5, 7, 9]
+//bisectRight()(b, 4, 0, 4)
+//bisectLeft()(b, 1, 0, 4)
+let c = Continuous<Double, Double>.init(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
+c.domain([1, 10]).range([10, 100]).scale(10)
+

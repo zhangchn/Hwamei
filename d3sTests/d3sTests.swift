@@ -97,6 +97,16 @@ class d3sTests: XCTestCase {
             .style(name: "transform", value: CATransform3DMakeTranslation(140, 140, 0) as AnyObject?)
             .property("path", value: p)
     }
+    
+    func testContinuousScale() {
+        let c = Continuous<Double, Double>.init(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
+        _ = c.domain([1, 10]).range([10, 100])
+        XCTAssertTrue(c.scale(10) == 100.0)
+        XCTAssertTrue(c.scale(1) == 10.0)
+        XCTAssertTrue(c.scale(5) == 50.0)
+        XCTAssertTrue(c.scale(5.5) == 55.0)
+        XCTAssertEqualWithAccuracy(c.scale(6.6), 66.0, accuracy: 0.00001)
+    }
 //    func testPerformanceExample() {
 //        // This is an example of a performance test case.
 //        self.measure {

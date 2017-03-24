@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Scale<T: Interpolatable> {
+public class Scale<T: Interpolatable> {
 //    class func linear() -> Scale<T> {
 //        let scale = Continuous(deinterpolate: deinterpolateLinear, reinterpolate: d3s.interpolate)
 //        return Linear.linearish(scale: scale)
@@ -24,144 +24,39 @@ let unit = [0, 1.0]
 
 
 
-
-
-class Continuous<T: Interpolatable>: Scale<T> {
-    typealias Interpolator = (T) -> T
-    typealias InterpolateFunc = (T, T) -> Interpolator
-
-    var _deinterpolate : InterpolateFunc
-    var _interpolate : InterpolateFunc = T.interpolate
-    var _reinterpolate : InterpolateFunc
-
-    var _domain = [T.zero, T.one] // unit
-    var _range = [T.zero, T.one] // unit
-    var _input: Interpolator?
-    var _output: Interpolator?
-    var _clamp = false
-    
-    var _piecewise: ([T], [T], @escaping InterpolateFunc, @escaping InterpolateFunc) -> Interpolator
-    
-    
-    init(deinterpolate deinterp: @escaping InterpolateFunc, reinterpolate reinterp: @escaping InterpolateFunc) {
-        _deinterpolate = deinterp
-        _reinterpolate = reinterp
-        _piecewise = Continuous.bimap
-    }
-    
-    func invert(_ y: T) -> T {
-        if _input == nil {
-            _input = _piecewise(_range, _domain, _deinterpolate, _clamp ? Continuous.reinterpolateClamp(_interpolate) : _interpolate)
-        }
-        return _input!(y)
-    }
-    
-    func scale(_ x: T) -> T {
-        if _output == nil {
-            _output = _piecewise(_domain, _range, _clamp ? Continuous.deinterpolateClamp(_deinterpolate) : _deinterpolate, _interpolate)
-        }
-        return _output!(x)
-    }
-    
-    var domain: [T] { get { return _domain } }
-    
-    func domain(_ d: () -> [T]) -> Self {
-        _domain = d()
-        return rescale()
-    }
-    
-    var range: [T] { get { return _range } }
-    func range(_ r: () -> [T]) -> Self {
-        _range = r()
-        return rescale()
-    }
-    
-    func domain(_ d: [T]) -> Self {
-        _domain = d
-        return rescale()
-    }
-    
-    func range(_ r: [T]) -> Self {
-        _range = r
-        return rescale()
-    }
-    
-    var clamp: Bool { get { return _clamp } }
-
-    func clamp(_ c: Bool) -> Self {
-        _clamp = c
-        return rescale()
-    }
-    
-//    func interpolate() -> InterpolateFunc {
-//        return _interpolate
-//    }
-    
-    func interpolate(_ f: @escaping InterpolateFunc) -> Self {
-        _interpolate = f
-        return rescale()
-    }
-    
-    func rescale() -> Self {
-        _piecewise = min(_domain.count, _range.count) > 2 ? Continuous.polymap : Continuous.bimap
-        _output = nil
-        _input = nil
-        return self
-    }
-    
-    
-    
-    class func polymap(domain: [T], range: [T], deinterpolate: @escaping InterpolateFunc, reinterpolate: @escaping InterpolateFunc) -> Interpolator {
-        let j = min(domain.count, range.count) - 1
-        let inversed = domain[j] < domain[0]
-        let domain = inversed ? domain.reversed() : domain
-        let range = inversed ? range.reversed() : range
-        
-        let d = (0..<j).map { deinterpolate(domain[$0], domain[$0 + 1])}
-        let r = (0..<j).map { reinterpolate(range[$0], range[$0 + 1])}
-        return { x in
-            let i = bisect()(domain, x, 1, j) - 1
-            return r[i](d[i](x))
-        }
-    }
-    
-    class func bimap(domain: [T], range: [T], deinterpolate: @escaping InterpolateFunc, reinterpolate: @escaping InterpolateFunc) -> Interpolator {
-        let d0 = domain[0], d1 = domain[1], r0 = range[0], r1 = range[1]
-        var d : Interpolator!, r: Interpolator!
-        if d1 < d0 {
-            d = deinterpolate(d1, d0)
-            r = reinterpolate(r1, r0)
-        } else {
-            d = deinterpolate(d0, d1)
-            r = reinterpolate(r0, r1)
-        }
-        return { x in
-            return r(d(x))
-        }
-    }
-    
-    class func deinterpolateClamp(_ deinterpolate: @escaping InterpolateFunc) -> InterpolateFunc {
-        return { a, b in
-            let d = deinterpolate(a, b)
-            return { x in
-                return x <= a ? T.zero : (x >= b ? T.one : d(x))
-            }
-        }
-    }
-    
-    class func reinterpolateClamp(_ reinterpolate: @escaping InterpolateFunc) -> InterpolateFunc {
-        return { a, b in
-            let r = reinterpolate(a, b)
-            return { t in
-                return t <= T.zero ? a : (t >= T.one ? b : r(t))
-            }
-        }
-    }
-
-}
-
-//internal class Linear: Scale {
-//    class func linearish(scale: Continuous) -> Scale {
-//        
+//func polymap<P: Interpolatable, Q: Interpolatable>(domain: [P], range: [Q], deinterpolate: @escaping (P, P) -> (P) -> Double, reinterpolate: @escaping (Q, Q) -> (Double) -> Q) -> (P) -> Q {
+//    let j = min(domain.count, range.count) - 1
+//    let inversed = domain[j] < domain[0]
+//    let domain = inversed ? domain.reversed() : domain
+//    let range = inversed ? range.reversed() : range
+//    
+//    let d = (0..<j).map { deinterpolate(domain[$0], domain[$0 + 1])}
+//    let r = (0..<j).map { reinterpolate(range[$0], range[$0 + 1])}
+//    return { x in
+//        let i = bisect()(domain, x, 1, j) - 1
+//        return r[i](d[i](x))
 //    }
 //}
+//
+//func bimap<P: Interpolatable, Q: Interpolatable>(domain: [P], range: [Q], deinterpolate: @escaping (P, P) -> (P) -> Double, reinterpolate: @escaping (Q, Q) ->(Double) -> Q) -> (P) -> Q {
+//    let d0 = domain[0], d1 = domain[1], r0 = range[0], r1 = range[1]
+//    var d : ((P) -> Double)!, r: ((Double) -> Q)!
+//    if d1 < d0 {
+//        d = deinterpolate(d1, d0)
+//        r = reinterpolate(r1, r0)
+//    } else {
+//        d = deinterpolate(d0, d1)
+//        r = reinterpolate(r0, r1)
+//    }
+//    return { x in
+//        return r(d(x))
+//    }
+//}
+
+//func deinterpolateLinear<P: Interpolatable>(a: P, b: P) -> (P) -> Double {
+//    let m = 2 * a
+//    let n = b - m
+//    
+//}
+
+

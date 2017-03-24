@@ -9,26 +9,41 @@
 import Foundation
 
 
-protocol Interpolatable: Bisectible {
+public protocol Interpolatable: Bisectible {
     static var one: Self {get}
     static var zero: Self {get}
-    static func interpolate(a: Self, b: Self) -> (Self) -> Self
+    static func interpolate(a: Self, b: Self) -> (Double) -> Self
 }
 
-extension Double : Interpolatable {
-    static var one: Double { return 1.0 }
-    static var zero: Double { return 0 }
-    static func interpolate(a: Double, b: Double) -> (Double) -> Double {
+public protocol ReversibleInterpolatable: Interpolatable {
+    static func reverseInterpolate(a: Self, b: Self) -> (Self) -> Double
+}
+
+extension Double : ReversibleInterpolatable {
+    public static var one: Double { return 1.0 }
+    public static var zero: Double { return 0 }
+    public static func interpolate(a: Double, b: Double) -> (Double) -> Double {
         return interpolateFloat(a: a, b: b)
+    }
+    public static func reverseInterpolate(a: Double, b: Double) -> (Double) -> Double {
+        return reverseInterpolateFloat(a: a, b: b)
     }
 }
 
 extension Float: Interpolatable {
-    static var one: Float { return 1.0 }
-    static var zero: Float { return 0 }
-    static func interpolate(a: Float, b: Float) -> (Float) -> Float {
-        return interpolateFloat(a: a, b: b)
+    public static var one: Float { return 1.0 }
+    public static var zero: Float { return 0 }
+    public static func interpolate(a: Float, b: Float) -> (Double) -> Float {
+        return { t in
+            return interpolateFloat(a: a, b: b)(Float(t))
+        }
     }
+    public static func reverseInterpolate(a: Float, b: Float) -> (Float) -> Double {
+        return { x in
+            return reverseInterpolateFloat(a: Double(a), b: Double(b))(Double(x))
+        }
+    }
+
 }
 
 func interpolateFloat<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
@@ -37,6 +52,13 @@ func interpolateFloat<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
         a + d * t
     }
 }
+
+func reverseInterpolateFloat<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
+    return { x in
+        a == b ? .nan: (x - a) / (b - a)
+    }
+}
+
 
 public func interpolate<T: FloatingPoint>(a: [T], b: [T]) -> (T) -> [T] {
     let m = a.count < b.count ? a + b[a.count ..< b.count] : a
