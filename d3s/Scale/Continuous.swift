@@ -50,7 +50,7 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
     
     public func scale(_ x: S) -> T {
         if _output == nil {
-            _output = _piecewise1(_domain, _range, _counterinterpolate, _interpolate)
+            _output = _piecewise1(_domain, _range, _clamp ? deinterpolateClamp(_counterinterpolate) : _counterinterpolate, _interpolate)
         }
         return _output!(x)
     }
@@ -159,7 +159,7 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
         }
     }
     
-    func reinterpolateClamp(_ reinterpolate: @escaping (S, S) -> (Double) -> S) -> (S, S) -> (Double) -> S {
+    func reinterpolateClamp(_ reinterpolate: @escaping ReinterpolateFunc) -> ReinterpolateFunc {
         return { a, b in
             let r = reinterpolate(a, b)
             return { t in
@@ -168,30 +168,13 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
         }
     }
     
-    func reinterpolateClamp(_ reinterpolate: @escaping (T, T) -> (Double) -> T) -> (T, T) -> (Double) -> T {
+    func deinterpolateClamp(_ deinterpolate: @escaping DereinterpolateFunc) -> DereinterpolateFunc {
         return { a, b in
-            let r = reinterpolate(a, b)
-            return { t in
-                return t <= 0 ? a : (t >= 1.0 ? b : r(t))
+            let d = deinterpolate(a, b)
+            return { x in
+                return x <= a ? 0 : (x >= b ? 1 : d(x))
             }
         }
     }
-    
+
 }
-//
-//func reinterpolateClamp<P: Interpolatable>(_ reinterpolate: @escaping (P, P) -> (Double) -> P) -> (P, P) -> (Double) -> P {
-//    return { a, b in
-//        let r = reinterpolate(a, b)
-//        return { t in
-//            return t <= 0 ? a : (t >= 1.0 ? b : r(t))
-//        }
-//    }
-//}
-//func deinterpolateClamp<P: Interpolatable>(_ deinterpolate: @escaping (P, P) -> (P) -> Double) -> (P, P) -> (P) -> Double {
-//    return { a, b in
-//        let d = deinterpolate(a, b)
-//        return { x in
-//            return x <= a ? 0 : (x >= b ? 1 : d(x))
-//        }
-//    }
-//}
