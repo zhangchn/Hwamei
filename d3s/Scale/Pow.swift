@@ -15,6 +15,9 @@ func raise(_ x: Double, _ exponent: Double)-> Double {
 
 
 func interpolateDomainPow(exponent: Double) -> (Double, Double) -> (Double) -> Double {
+    if exponent == 1.0 {
+        return Double.interpolate
+    }
     return {a, b in
         let m = raise(a, exponent)
         let n = raise(b, exponent) - m
@@ -23,6 +26,9 @@ func interpolateDomainPow(exponent: Double) -> (Double, Double) -> (Double) -> D
     }
 }
 func deinterpolateDomainPow(exponent: Double) -> (Double, Double) -> (Double) -> Double {
+    if exponent == 1.0 {
+        return Double.reverseInterpolate
+    }
     return {a, b in
         let n = raise(b, exponent), m = raise(a, exponent)
         if (n - m) != 0 {
@@ -47,9 +53,6 @@ public class Power: Linear<Double, Double> {
     public init(exponent: Double = 1) {
         _exponent = exponent
         super.init(deinterpolate: deinterpolateDomainPow(exponent: _exponent), reinterpolate: interpolateDomainPow(exponent: _exponent))
-//        _interpolateDomain = interpolateDomain
-//        _deinterpolateDomain = deinterpolateDomain
-//        _ = rescale()
     }
     
 }
