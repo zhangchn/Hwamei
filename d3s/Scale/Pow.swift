@@ -14,29 +14,42 @@ func raise(_ x: Double, _ exponent: Double)-> Double {
 
 
 
-
-class Pow: Linear<Double, Double> {
-    func interpolateRange(a: Double, b: Double) -> (Double) -> Double {
-        let m = raise(a, _exponent)
-        let n = raise(b, _exponent) - m
+func interpolateDomainPow(exponent: Double) -> (Double, Double) -> (Double) -> Double {
+    return {a, b in
+        let m = raise(a, exponent)
+        let n = raise(b, exponent) - m
         
-        return { t in raise(m + n * t, 1 / self._exponent) }
+        return { t in raise(m + n * t, 1 / exponent) }
     }
-
-    func deinterpolateDomain(a: Double, b: Double) -> (Double) -> Double {
-        let n = raise(b, _exponent), m = raise(a, _exponent)
+}
+func deinterpolateDomainPow(exponent: Double) -> (Double, Double) -> (Double) -> Double {
+    return {a, b in
+        let n = raise(b, exponent), m = raise(a, exponent)
         if (n - m) != 0 {
-            return { x in (raise(x, self._exponent) - m) / n }
+            return { x in (raise(x, exponent) - m) / n }
         } else {
             return { _ in n }
         }
     }
+}
+
+public class Power: Linear<Double, Double> {
+
     var _exponent: Double
-    init(exponent: Double = 1) {
+    public var exponent: Double { get { return _exponent } }
+    public func exponent(_ e: Double) -> Self {
+        _exponent = e
+        _deinterpolateDomain = deinterpolateDomainPow(exponent: _exponent)
+        _interpolateDomain = interpolateDomainPow(exponent: _exponent)
+        return rescale()
+    }
+    
+    public init(exponent: Double = 1) {
         _exponent = exponent
-        super.init()
-        _interpolateRange = interpolateRange
-        _deinterpolateDomain = deinterpolateDomain
+        super.init(deinterpolate: deinterpolateDomainPow(exponent: _exponent), reinterpolate: interpolateDomainPow(exponent: _exponent))
+//        _interpolateDomain = interpolateDomain
+//        _deinterpolateDomain = deinterpolateDomain
+//        _ = rescale()
     }
     
 }

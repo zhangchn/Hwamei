@@ -16,9 +16,9 @@ public class Continuous<S: ReversibleInterpolatable, T: ReversibleInterpolatable
     public typealias DeinterpolateDomain    = (S, S) -> (S) -> Double
     
     internal var _deinterpolateRange : DeinterpolateRange    = T.reverseInterpolate
-    internal var _interpolateDomain : InterpolateDomain      = S.interpolate
+    internal var _interpolateDomain : InterpolateDomain      //= S.interpolate
     internal var _interpolateRange : InterpolateRange        = T.interpolate
-    internal var _deinterpolateDomain : DeinterpolateDomain  = S.reverseInterpolate
+    internal var _deinterpolateDomain : DeinterpolateDomain  //= S.reverseInterpolate
     
     var _domain: [S] = [S.zero, S.one] // unit
     var _range: [T] = [T.zero, T.one] // unit
@@ -29,30 +29,26 @@ public class Continuous<S: ReversibleInterpolatable, T: ReversibleInterpolatable
     var _piecewise1 : ([S], [T], @escaping DeinterpolateDomain, @escaping InterpolateRange) -> (S) -> T
     var _piecewise2 : ([T], [S], @escaping DeinterpolateRange, @escaping InterpolateDomain) -> (T) -> S
 
-    public override init() {
-        _piecewise1 = Continuous.bimap
-        _piecewise2 = Continuous.bimap
-    }
+//    public override init() {
+//        _piecewise1 = Continuous.bimap
+//        _piecewise2 = Continuous.bimap
+//    }
     
-    public init(deinterpolate deinterp: @escaping DeinterpolateRange, reinterpolate reinterp: @escaping InterpolateDomain) {
-        _deinterpolateRange = deinterp
+    public init(deinterpolate deinterp: @escaping DeinterpolateDomain, reinterpolate reinterp: @escaping InterpolateDomain) {
+        _deinterpolateDomain = deinterp
         _interpolateDomain = reinterp
         _piecewise1 = Continuous.bimap
         _piecewise2 = Continuous.bimap
     }
     
     public func invert(_ y: T) -> S {
-        if _input == nil {
-            _input = _piecewise2(_range, _domain, _deinterpolateRange, _clamp ? reinterpolateClamp(_interpolateDomain) : _interpolateDomain)
-        }
-        return _input!(y)
+        let input = _input ?? _piecewise2(_range, _domain, _deinterpolateRange, _clamp ? reinterpolateClamp(_interpolateDomain) : _interpolateDomain)
+        return input(y)
     }
     
     public func scale(_ x: S) -> T {
-        if _output == nil {
-            _output = _piecewise1(_domain, _range, _clamp ? deinterpolateClamp(_deinterpolateDomain) : _deinterpolateDomain, _interpolateRange)
-        }
-        return _output!(x)
+        let output = _output ?? _piecewise1(_domain, _range, _clamp ? deinterpolateClamp(_deinterpolateDomain) : _deinterpolateDomain, _interpolateRange)
+        return output(x)
     }
     
     public var domain: [S] { get { return _domain } }
@@ -110,7 +106,7 @@ public class Continuous<S: ReversibleInterpolatable, T: ReversibleInterpolatable
         _deinterpolateDomain = f
         return rescale()
     }
-    func rescale() -> Self {
+    internal func rescale() -> Self {
         _piecewise1 = min(_domain.count, _range.count) > 2 ? Continuous.polymap : Continuous.bimap
         _piecewise2 = min(_domain.count, _range.count) > 2 ? Continuous.polymap : Continuous.bimap
         _output = nil
