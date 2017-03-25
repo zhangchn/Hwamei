@@ -15,10 +15,6 @@ public class Scale<T: Interpolatable> {
 //    }
 }
 
-func deinterpolateLinear<T: FloatingPoint>(a: T, b: T) -> (T) -> T {
-    let d = b - a
-    return d != 0 ? { x in (x - a) / d } : { _ in b }
-}
 
 
 

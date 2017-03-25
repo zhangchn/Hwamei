@@ -36,6 +36,7 @@
 		DB6BDC811E84C3C900330892 /* Range.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BDC801E84C3C900330892 /* Range.swift */; };
 		DB6BDC891E855E8E00330892 /* Continuous.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BDC881E855E8E00330892 /* Continuous.swift */; };
 		DB6BDC8B1E855E9B00330892 /* Linear.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BDC8A1E855E9B00330892 /* Linear.swift */; };
+		DB6BDC8D1E857B0200330892 /* Pow.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BDC8C1E857B0200330892 /* Pow.swift */; };
 		DB98D5D21E830B97003AAC86 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB98D5D11E830B97003AAC86 /* Value.swift */; };
 		DB9946C61E820E9C008B161B /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9946C51E820E9C008B161B /* Arc.swift */; };
 /* End PBXBuildFile section */
@@ -83,6 +84,7 @@
 		DB6BDC801E84C3C900330892 /* Range.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Range.swift; path = Array/Range.swift; sourceTree = "<group>"; };
 		DB6BDC881E855E8E00330892 /* Continuous.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Continuous.swift; path = Scale/Continuous.swift; sourceTree = "<group>"; };
 		DB6BDC8A1E855E9B00330892 /* Linear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Linear.swift; path = Scale/Linear.swift; sourceTree = "<group>"; };
+		DB6BDC8C1E857B0200330892 /* Pow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pow.swift; path = Scale/Pow.swift; sourceTree = "<group>"; };
 		DB98D5D11E830B97003AAC86 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Value.swift; path = Interpolate/Value.swift; sourceTree = "<group>"; };
 		DB9946C51E820E9C008B161B /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arc.swift; path = Shape/Arc.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -190,6 +192,7 @@
 				DB6BDC7B1E84C32700330892 /* Scale.swift */,
 				DB6BDC881E855E8E00330892 /* Continuous.swift */,
 				DB6BDC8A1E855E9B00330892 /* Linear.swift */,
+				DB6BDC8C1E857B0200330892 /* Pow.swift */,
 			);
 			name = Scale;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				DB3D6DE71E827EBB00C253E7 /* CALayer+DOM.swift in Sources */,
 				DB3D6DED1E827EBB00C253E7 /* Exit.swift in Sources */,
 				DB98D5D21E830B97003AAC86 /* Value.swift in Sources */,
+				DB6BDC8D1E857B0200330892 /* Pow.swift in Sources */,
 				DB6BDC811E84C3C900330892 /* Range.swift in Sources */,
 				DB3D6DE81E827EBB00C253E7 /* Call.swift in Sources */,
 				DB3D6DF21E827EBB00C253E7 /* Select.swift in Sources */,

@@ -8,7 +8,12 @@
 
 import Foundation
 
-//public class Linear<S: Interpolatable, T: Interpolatable>: Continuous<S,T> {
-////    func tickFormat(count: Int, specifier: ) ->
-//    
-//}
+
+func deinterpolateLinear<T: FloatingPoint>(a: T, b: T) -> (T) -> T {
+    let d = b - a
+    return d != 0 ? { x in (x - a) / d } : { _ in b }
+}
+
+public class Linear<S: ReversibleInterpolatable, T: ReversibleInterpolatable>: Continuous<S,T> {
+// TODO:
+}

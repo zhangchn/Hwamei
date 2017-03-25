@@ -8,22 +8,17 @@
 
 import Foundation
 
-public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S> {
-    //    typealias Interpolator = (Double) -> S
-    //    typealias Deinterpolator = (S) -> Double
-    //    typealias Reinterpolator = (Double) -> T
-    //    typealias Dereinterpolator = (T) -> Double
+public class Continuous<S: ReversibleInterpolatable, T: ReversibleInterpolatable>: Scale<S> {
+
+    public typealias DeinterpolateRange     = (T, T) -> (T) -> Double
+    public typealias InterpolateDomain      = (S, S) -> (Double) -> S
+    public typealias InterpolateRange       = (T, T) -> (Double) -> T
+    public typealias DeinterpolateDomain    = (S, S) -> (S) -> Double
     
-    public typealias DeinterpolateFunc      = (T, T) -> (T) -> Double
-    public typealias ReinterpolateFunc      = (S, S) -> (Double) -> S
-    public typealias InterpolateFunc        = (T, T) -> (Double) -> T
-    public typealias DereinterpolateFunc    = (S, S) -> (S) -> Double
-    
-    var _deinterpolate : DeinterpolateFunc
-    var _reinterpolate : ReinterpolateFunc
-    
-    var _interpolate        : InterpolateFunc = T.interpolate
-    var _counterinterpolate : DereinterpolateFunc = S.reverseInterpolate
+    internal var _deinterpolateRange : DeinterpolateRange    = T.reverseInterpolate
+    internal var _interpolateDomain : InterpolateDomain      = S.interpolate
+    internal var _interpolateRange : InterpolateRange        = T.interpolate
+    internal var _deinterpolateDomain : DeinterpolateDomain  = S.reverseInterpolate
     
     var _domain: [S] = [S.zero, S.one] // unit
     var _range: [T] = [T.zero, T.one] // unit
@@ -31,26 +26,31 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
     var _output: ((S) -> T)?
     var _clamp = false
     
-    var _piecewise1 : ([S], [T], @escaping (S, S) -> (S) -> Double, @escaping (T, T) -> (Double) -> T) -> (S)->T
-    var _piecewise2 : ([T], [S], @escaping (T, T) -> (T) -> Double, @escaping (S, S) -> (Double) -> S) -> (T) -> S
-    
-    public init(deinterpolate deinterp: @escaping DeinterpolateFunc, reinterpolate reinterp: @escaping ReinterpolateFunc) {
-        _deinterpolate = deinterp
-        _reinterpolate = reinterp
+    var _piecewise1 : ([S], [T], @escaping DeinterpolateDomain, @escaping InterpolateRange) -> (S) -> T
+    var _piecewise2 : ([T], [S], @escaping DeinterpolateRange, @escaping InterpolateDomain) -> (T) -> S
+
+    public override init() {
         _piecewise1 = Continuous.bimap
         _piecewise2 = Continuous.bimap
     }
     
-    func invert(_ y: T) -> S {
+    public init(deinterpolate deinterp: @escaping DeinterpolateRange, reinterpolate reinterp: @escaping InterpolateDomain) {
+        _deinterpolateRange = deinterp
+        _interpolateDomain = reinterp
+        _piecewise1 = Continuous.bimap
+        _piecewise2 = Continuous.bimap
+    }
+    
+    public func invert(_ y: T) -> S {
         if _input == nil {
-            _input = _piecewise2(_range, _domain, _deinterpolate, _clamp ? reinterpolateClamp(_reinterpolate) : _reinterpolate)
+            _input = _piecewise2(_range, _domain, _deinterpolateRange, _clamp ? reinterpolateClamp(_interpolateDomain) : _interpolateDomain)
         }
         return _input!(y)
     }
     
     public func scale(_ x: S) -> T {
         if _output == nil {
-            _output = _piecewise1(_domain, _range, _clamp ? deinterpolateClamp(_counterinterpolate) : _counterinterpolate, _interpolate)
+            _output = _piecewise1(_domain, _range, _clamp ? deinterpolateClamp(_deinterpolateDomain) : _deinterpolateDomain, _interpolateRange)
         }
         return _output!(x)
     }
@@ -78,9 +78,9 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
         return rescale()
     }
     
-    var clamp: Bool { get { return _clamp } }
+    public var clamp: Bool { get { return _clamp } }
     
-    func clamp(_ c: Bool) -> Self {
+    public func clamp(_ c: Bool) -> Self {
         _clamp = c
         return rescale()
     }
@@ -89,11 +89,27 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
     //        return _interpolate
     //    }
     
-    func interpolate(_ f: @escaping InterpolateFunc) -> Self {
-        _interpolate = f
+    public var interpolateRange : InterpolateRange { return _interpolateRange }
+    public var interpolateDomain : InterpolateDomain { return _interpolateDomain }
+    public var deinterpolateRange : DeinterpolateRange { return _deinterpolateRange }
+    public var deinterpolateDomain : DeinterpolateDomain { return _deinterpolateDomain }
+    
+    public func interpolateRange(_ f: @escaping InterpolateRange) -> Self {
+        _interpolateRange = f
         return rescale()
     }
-    
+    public func interpolateDomain(_ f: @escaping InterpolateDomain) -> Self {
+        _interpolateDomain = f
+        return rescale()
+    }
+    public func deinterpolateRange(_ f: @escaping DeinterpolateRange) -> Self {
+        _deinterpolateRange = f
+        return rescale()
+    }
+    public func deinterpolateDomain(_ f: @escaping DeinterpolateDomain) -> Self {
+        _deinterpolateDomain = f
+        return rescale()
+    }
     func rescale() -> Self {
         _piecewise1 = min(_domain.count, _range.count) > 2 ? Continuous.polymap : Continuous.bimap
         _piecewise2 = min(_domain.count, _range.count) > 2 ? Continuous.polymap : Continuous.bimap
@@ -102,7 +118,7 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
         return self
     }
     
-    class func polymap(domain: [S], range: [T], deinterpolate: @escaping (S, S) -> (S) -> Double, reinterpolate: @escaping (T, T) -> (Double) -> T) -> (S) -> T {
+    class func polymap(domain: [S], range: [T], deinterpolate: @escaping DeinterpolateDomain, reinterpolate: @escaping InterpolateRange) -> (S) -> T {
         let j = min(domain.count, range.count) - 1
         let inversed = domain[j] < domain[0]
         let domain = inversed ? domain.reversed() : domain
@@ -116,7 +132,7 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
         }
     }
     
-    class func polymap(domain: [T], range: [S], deinterpolate: @escaping (T, T) -> (T) -> Double, reinterpolate: @escaping (S, S) -> (Double) -> S) -> (T) -> S {
+    class func polymap(domain: [T], range: [S], deinterpolate: @escaping DeinterpolateRange, reinterpolate: @escaping InterpolateDomain) -> (T) -> S {
         let j = min(domain.count, range.count) - 1
         let inversed = domain[j] < domain[0]
         let domain = inversed ? domain.reversed() : domain
@@ -130,7 +146,7 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
         }
     }
     
-    class func bimap(domain: [S], range: [T], deinterpolate: @escaping (S, S) -> (S) -> Double, reinterpolate: @escaping (T, T) ->(Double) -> T) -> (S) -> T {
+    class func bimap(domain: [S], range: [T], deinterpolate: @escaping DeinterpolateDomain, reinterpolate: @escaping InterpolateRange) -> (S) -> T {
         let d0 = domain[0], d1 = domain[1], r0 = range[0], r1 = range[1]
         var d : ((S) -> Double)!, r: ((Double) -> T)!
         if d1 < d0 {
@@ -144,7 +160,7 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
             return r(d(x))
         }
     }
-    class func bimap(domain: [T], range: [S], deinterpolate: @escaping (T, T) -> (T) -> Double, reinterpolate: @escaping (S, S) ->(Double) -> S) -> (T) -> S {
+    class func bimap(domain: [T], range: [S], deinterpolate: @escaping DeinterpolateRange, reinterpolate: @escaping InterpolateDomain) -> (T) -> S {
         let d0 = domain[0], d1 = domain[1], r0 = range[0], r1 = range[1]
         var d : ((T) -> Double)!, r: ((Double) -> S)!
         if d1 < d0 {
@@ -159,7 +175,7 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
         }
     }
     
-    func reinterpolateClamp(_ reinterpolate: @escaping ReinterpolateFunc) -> ReinterpolateFunc {
+    func reinterpolateClamp(_ reinterpolate: @escaping InterpolateDomain) -> InterpolateDomain {
         return { a, b in
             let r = reinterpolate(a, b)
             return { t in
@@ -168,7 +184,7 @@ public class Continuous<S: ReversibleInterpolatable, T: Interpolatable>: Scale<S
         }
     }
     
-    func deinterpolateClamp(_ deinterpolate: @escaping DereinterpolateFunc) -> DereinterpolateFunc {
+    func deinterpolateClamp(_ deinterpolate: @escaping DeinterpolateDomain) -> DeinterpolateDomain {
         return { a, b in
             let d = deinterpolate(a, b)
             return { x in
