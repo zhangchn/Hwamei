@@ -139,9 +139,11 @@ func testPath(p: CGPath, view: UIView) {
 //bisectRight()(b, 4, 0, 4)
 //bisectLeft()(b, 1, 0, 4)
 let c = Continuous<Double, Double>.init(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
-c.domain([1, 10]).range([10, 100]).scale(20)
-c.invert(200)
+c.domain([0, 10]).scale(20)
+c.scale(300)
 
-let e = Power().domain([1,10]).exponent(3)
-e.scale(3)
+let e = Power().domain([0,10.0]).exponent(3.3)
+e.scale(300.0)
+e.scale(20)
+e.invert(8)
 

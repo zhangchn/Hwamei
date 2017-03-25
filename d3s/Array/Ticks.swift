@@ -10,7 +10,7 @@ import Foundation
 
 fileprivate let e10 = sqrt(50), e5 = sqrt(10), e2 = M_SQRT2
 
-func ticks(start: Double, stop: Double, count: Int) -> StrideThrough<Double> {
+public func ticks(start: Double, stop: Double, count: Int) -> StrideThrough<Double> {
     let step = tickStep(start: start, stop: stop, count: count)
     return range(start: ceil(start / step) * step, end: floor(stop / step) * step + step / 2, step: step)
 }
@@ -30,3 +30,26 @@ func tickStep(start: Double, stop: Double, count: Int) -> Double {
     
     return stop < start ? -step1 : step1
 }
+
+public protocol Tickable: Strideable {
+    func asDouble() -> Double
+    init(_ doubleValue: Double)
+}
+
+extension Double: Tickable {
+    public func asDouble() -> Double {
+        return self
+    }
+    
+    public init(_ doubleValue: Double) {
+        self = doubleValue
+    }
+}
+
+//func tickStep<S: Tickable>(start: S, stop: S, count: Int) -> S {
+//    return S(tickStep(start: start.asDouble(), stop: stop.asDouble(), count: count))
+//}
+
+//public func ticks<S: Tickable>(start: S, stop: S, count: Int) -> StrideThrough<Double> {
+//    return ticks(start: start.asDouble(), stop: stop.asDouble(), count: count)
+//}
