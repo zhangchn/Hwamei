@@ -22,6 +22,12 @@ public class Linear<S: ReversibleInterpolatable & Tickable, T: ReversibleInterpo
         return d3s.ticks(start: first.asDouble(), stop: last.asDouble(), count: count)
     }
     
+    public func tickFormat(count: Int, specifier: String = "") -> FormatFunc {
+        return d3s.tickFormat(domain: _domain.map { $0.asDouble() },
+                              count: count,
+                              specifier: specifier)
+    }
+    
     public func nice(count: Int = 10) -> Self {
         var d = domain
         let i = d.count - 1

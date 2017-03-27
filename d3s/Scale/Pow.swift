@@ -14,7 +14,7 @@ func raise(_ x: Double, _ exponent: Double)-> Double {
 
 
 
-func interpolateDomainPow(exponent: Double) -> (Double, Double) -> (Double) -> Double {
+func interpolatePow(exponent: Double) -> (Double, Double) -> (Double) -> Double {
     if exponent == 1.0 {
         return Double.interpolate
     }
@@ -25,7 +25,7 @@ func interpolateDomainPow(exponent: Double) -> (Double, Double) -> (Double) -> D
         return { t in raise(m + n * t, 1 / exponent) }
     }
 }
-func deinterpolateDomainPow(exponent: Double) -> (Double, Double) -> (Double) -> Double {
+func deinterpolatePow(exponent: Double) -> (Double, Double) -> (Double) -> Double {
     if exponent == 1.0 {
         return Double.reverseInterpolate
     }
@@ -45,14 +45,14 @@ public class Power: Linear<Double, Double> {
     public var exponent: Double { get { return _exponent } }
     public func exponent(_ e: Double) -> Self {
         _exponent = e
-        _deinterpolateDomain = deinterpolateDomainPow(exponent: _exponent)
-        _interpolateDomain = interpolateDomainPow(exponent: _exponent)
+        _deinterpolateDomain = deinterpolatePow(exponent: _exponent)
+        _interpolateDomain = interpolatePow(exponent: _exponent)
         return rescale()
     }
     
     public init(exponent: Double = 1) {
         _exponent = exponent
-        super.init(deinterpolate: deinterpolateDomainPow(exponent: _exponent), reinterpolate: interpolateDomainPow(exponent: _exponent))
+        super.init(deinterpolate: deinterpolatePow(exponent: _exponent), reinterpolate: interpolatePow(exponent: _exponent))
     }
     
 }
