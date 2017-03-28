@@ -73,7 +73,7 @@ public class Arc {
     public typealias ArcParameters = [ArcParameter: CGFloat]
     public typealias ArcFunc1 = ([ArcParameter: CGFloat]) -> CGFloat
     
-    internal var constant: (CGFloat) -> ArcFunc1 = { v in { v }}
+    internal var constant: (CGFloat) -> ArcFunc1 = { v in { _ in v }}
     
     var _innerRadius: ArcFunc1 = { params in
         return params[.innerRadius] ?? 0

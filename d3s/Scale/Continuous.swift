@@ -8,8 +8,11 @@
 
 import Foundation
 
-public class Continuous<S: ReversibleInterpolatable, T: ReversibleInterpolatable>: Scale<S> {
+public class Continuous<S: ReversibleInterpolatable, T: ReversibleInterpolatable>: Scale {
 
+    public typealias DomainType = S
+    public typealias RangeType = T
+    
     public typealias DeinterpolateRange     = (T, T) -> (T) -> Double
     public typealias InterpolateDomain      = (S, S) -> (Double) -> S
     public typealias InterpolateRange       = (T, T) -> (Double) -> T
@@ -106,7 +109,7 @@ public class Continuous<S: ReversibleInterpolatable, T: ReversibleInterpolatable
         _deinterpolateDomain = f
         return rescale()
     }
-    internal func rescale() -> Self {
+    public func rescale() -> Self {
         _piecewise1 = min(_domain.count, _range.count) > 2 ? Continuous.polymap : Continuous.bimap
         _piecewise2 = min(_domain.count, _range.count) > 2 ? Continuous.polymap : Continuous.bimap
         _output = nil

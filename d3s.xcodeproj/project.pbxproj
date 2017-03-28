@@ -30,6 +30,7 @@
 		DB3D6DF41E827EBB00C253E7 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE31E827EBB00C253E7 /* Selection.swift */; };
 		DB3D6DF51E827EBB00C253E7 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE41E827EBB00C253E7 /* Style.swift */; };
 		DB3D6DF61E827EBB00C253E7 /* UIView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D6DE51E827EBB00C253E7 /* UIView+Selection.swift */; };
+		DB417ECF1E8A0C6200E22DDE /* Quantize.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB417ECE1E8A0C6200E22DDE /* Quantize.swift */; };
 		DB6BDC791E84215F00330892 /* Bisect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BDC781E84215F00330892 /* Bisect.swift */; };
 		DB6BDC7C1E84C32700330892 /* Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BDC7B1E84C32700330892 /* Scale.swift */; };
 		DB6BDC7F1E84C3B300330892 /* Ticks.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB6BDC7E1E84C3B300330892 /* Ticks.swift */; };
@@ -82,6 +83,7 @@
 		DB3D6DE31E827EBB00C253E7 /* Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Selection.swift; path = Selection/Selection.swift; sourceTree = "<group>"; };
 		DB3D6DE41E827EBB00C253E7 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Style.swift; path = Selection/Style.swift; sourceTree = "<group>"; };
 		DB3D6DE51E827EBB00C253E7 /* UIView+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIView+Selection.swift"; path = "Selection/UIView+Selection.swift"; sourceTree = "<group>"; };
+		DB417ECE1E8A0C6200E22DDE /* Quantize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Quantize.swift; path = Scale/Quantize.swift; sourceTree = "<group>"; };
 		DB6BDC781E84215F00330892 /* Bisect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Bisect.swift; path = Array/Bisect.swift; sourceTree = "<group>"; };
 		DB6BDC7B1E84C32700330892 /* Scale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Scale.swift; path = Scale/Scale.swift; sourceTree = "<group>"; };
 		DB6BDC7E1E84C3B300330892 /* Ticks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Ticks.swift; path = Array/Ticks.swift; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 				DB7511C21E88A32F0014F778 /* Log.swift */,
 				DB7511CF1E8910C60014F778 /* TickFormat.swift */,
 				DB6BDC8C1E857B0200330892 /* Pow.swift */,
+				DB417ECE1E8A0C6200E22DDE /* Quantize.swift */,
 			);
 			name = Scale;
 			sourceTree = "<group>";
@@ -378,6 +381,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB417ECF1E8A0C6200E22DDE /* Quantize.swift in Sources */,
 				DB6BDC7F1E84C3B300330892 /* Ticks.swift in Sources */,
 				DB3D6DF01E827EBB00C253E7 /* Property.swift in Sources */,
 				DB7511C31E88A32F0014F778 /* Log.swift in Sources */,

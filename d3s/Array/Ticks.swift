@@ -8,7 +8,7 @@
 
 import Foundation
 
-fileprivate let e10 = sqrt(50), e5 = sqrt(10), e2 = M_SQRT2
+fileprivate let e10 = 50.squareRoot(), e5 = 10.squareRoot(), e2 = 2.squareRoot()
 
 public func ticks(start: Double, stop: Double, count: Int) -> StrideThrough<Double> {
     let step = tickStep(start: start, stop: stop, count: count)

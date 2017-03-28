@@ -83,20 +83,21 @@ class d3sTests: XCTestCase {
         XCTAssertTrue(v.count == 5)
     }
     
-    func testArc() {
-        let a = Arc().innerRadius(0).outerRadius(30).startAngle(-.pi).endAngle(.pi)
-        
-        let p = a.arc()
-
-        view!.select(NSPredicate()).data(value: [0, 1 ,2])
-            .enter().append(name: .shape)
-            .property("bounds", value: NSValue(cgRect: CGRect(x: 0, y: 0, width: 80, height: 80)))
-            .property("backgroundColor", value: UIColor.yellow.cgColor)
-            .property("strokeColor", value: UIColor.red.cgColor)
-            .property("fillColor", value: UIColor.red.cgColor)
-            .style(name: "transform", value: CATransform3DMakeTranslation(140, 140, 0) as AnyObject?)
-            .property("path", value: p)
-    }
+//    func testArc() {
+//        let a = Arc().innerRadius(0).outerRadius(30).startAngle(-.pi).endAngle(.pi)
+//        
+//        let p = a.arc()
+//
+//        let circular = view!.select(NSPredicate()).data(value: [0, 1 ,2])
+//            .enter().append(name: .shape)
+//            .property("bounds", value: NSValue(cgRect: CGRect(x: 0, y: 0, width: 80, height: 80)))
+//            .property("backgroundColor", value: UIColor.yellow.cgColor)
+//            .property("strokeColor", value: UIColor.red.cgColor)
+//            .property("fillColor", value: UIColor.red.cgColor)
+//            .style(name: "transform", value: CATransform3DMakeTranslation(140, 140, 0) as AnyObject?)
+//            .property("path", value: p)
+//        XCTAssert(<#T##expression: Bool##Bool#>)
+//    }
     
     func testContinuousScale() {
         let c = Continuous<Double, Double>.init(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)

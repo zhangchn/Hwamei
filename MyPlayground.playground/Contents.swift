@@ -25,9 +25,8 @@ func rebind(view: UIView, data: [Any]) {
         .style(name: "borderWidth", value: NSNumber(value: 2.0))
         .style(name: "borderColor", value: UIColor(white: 1.0, alpha: 0.5).cgColor)
 
-    let textUpdateSet = enterSet.selectAll(NSPredicate(format: "cls = 4")).data(value: { (node, datum, idx, group) -> [Any?] in
-        datum!
-            return [datum]
+    let textUpdateSet = enterSet.selectAll(NSPredicate(format: "cls = 4")).data(value: { (node, datum, idx, group) -> [Any] in
+            return [datum!]
         })
     let textEnterSet = textUpdateSet.enter().append(name: .text)
         .property("cls", value: 4)
@@ -65,12 +64,12 @@ func rebind(view: UIView, data: [Any]) {
         }
     }
 }
-//view
-//rebind(view: view, data: [2, 3, 5])
-//view
+view
+rebind(view: view, data: [2, 3, 5])
+view
 
-//rebind(view: view, data: [11, 12, 5, 7, 9])
-//view
+rebind(view: view, data: [11, 12, 5, 7, 9])
+view
 
 //points.count
 func renderHexagon(points: [CGPoint], in view: UIView) {
@@ -87,7 +86,7 @@ func renderHexagon(points: [CGPoint], in view: UIView) {
             let p = datum as! HexBin.Bin
             let c = p.center
             let r = sqrt((c.x - 512) * (c.x - 512) + (c.y - 512) * (c.y - 512))
-            let hue: CGFloat = 0.5, saturation: CGFloat = r / 512.0
+            //let hue: CGFloat = 0.5, saturation: CGFloat = r / 512.0
             return UIColor(hue: c.x / 512, saturation: 0.8, brightness: 1.0 - r / 512, alpha: 1.0).cgColor
         }.property("strokeColor", value: UIColor(white: 0.7, alpha: 1.0).cgColor)
         .style(name: "transform") { (node, datum, idx, group) -> AnyObject? in
@@ -96,11 +95,11 @@ func renderHexagon(points: [CGPoint], in view: UIView) {
         }.property("path", value: hexbin.hexagon())
 }
 let view2 = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 1024))
-//let points = (0..<600).map { _ in CGPoint(x: Int(arc4random() % 1024), y: Int(arc4random() % 1024)) }
+let points = (0..<600).map { _ in CGPoint(x: Int(arc4random() % 1024), y: Int(arc4random() % 1024)) }
 //
-//renderHexagon(points: points, in: view2)
+renderHexagon(points: points, in: view2)
 //
-//view2
+view2
 
 let a = Arc().innerRadius(20).outerRadius(380).cornerRadius(15)
 

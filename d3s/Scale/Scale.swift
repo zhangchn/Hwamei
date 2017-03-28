@@ -8,11 +8,13 @@
 
 import Foundation
 
-public class Scale<T: Interpolatable> {
-//    class func linear() -> Scale<T> {
-//        let scale = Continuous(deinterpolate: deinterpolateLinear, reinterpolate: d3s.interpolate)
-//        return Linear.linearish(scale: scale)
-//    }
+public protocol Scale {
+    associatedtype DomainType
+    associatedtype RangeType
+    var domain: [DomainType] { get }
+    var range: [RangeType] { get }
+    func rescale() -> Self
+    func scale(_ x: DomainType) -> RangeType
 }
 
 
