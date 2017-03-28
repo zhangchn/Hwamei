@@ -16,11 +16,11 @@ public protocol SelectionData {
     /**
      Type for a function which would be mapped over groups of CALayers. It would be passed with parameters of a parent node of the group being mapped over, the data object associated with this parent node, the index of group in all groups, and all the parent nodes.
      */
-    typealias ValueFunc = (CALayer, Any?, Int, [CALayer]) -> [Any?]
+    typealias ValueFunc = (CALayer, Any?, Int, [CALayer]) -> [Any]
     
     func data(value: ValueFunc, key: KeyFunc?) -> Selection
-    func data(value: [Any?], key: KeyFunc?) -> Selection
-    var data: [Any?] { get }
+    func data(value: [Any], key: KeyFunc?) -> Selection
+    var data: [Any] { get }
 }
 
 fileprivate enum TransitionNode {
@@ -99,7 +99,7 @@ fileprivate func bindIndex(_ parent: CALayer, group: [CALayer], data: [Any]) -> 
 }
 
 extension Selection: SelectionData {
-    public var data: [Any?] {
+    public var data: [Any] {
         get {
             return _groups.flatMap { $0 }.flatMap {
                 $0.value(forKey: "__data__")
@@ -165,7 +165,7 @@ extension Selection: SelectionData {
         return update
     }
     
-    public func data(value: [Any?], key: SelectionData.KeyFunc? = nil) -> Selection {
+    public func data(value: [Any], key: SelectionData.KeyFunc? = nil) -> Selection {
         let valueFunc: SelectionData.ValueFunc = { _, _, _, _ in
             return value
         }
