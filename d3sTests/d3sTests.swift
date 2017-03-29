@@ -58,7 +58,7 @@ class d3sTests: XCTestCase {
         
         let view1 = view!
         
-        func f1 (d: [Int]) {
+        func f1 (_ d: [Int]) {
             let update = view1.selectAll(predicate1).data(value: d)
             let enter = update.enter()
                 .append(name: .layer)
@@ -70,8 +70,8 @@ class d3sTests: XCTestCase {
                 return datum
             }
         }
-        f1(d: [2, 3, 4])
-        f1(d: [11, 2, 4, 5, 7])
+        f1( [2, 3, 4])
+        f1( [11, 2, 4, 5, 7])
         let v = view1.layer.sublayers!.flatMap { layer in
             layer.value(forKey: "v")
         } as! [Int]
