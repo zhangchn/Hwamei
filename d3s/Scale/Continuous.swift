@@ -10,6 +10,9 @@ import Foundation
 
 public class Continuous<S: ReversibleInterpolatable, T: ReversibleInterpolatable>: Scale {
 
+    public var ticks: (([String : Any]) -> [S])? { get { return nil } }
+    public var tickFormat: ((Int, String) -> FormatFunc)?  { get { return nil } }
+    
     public typealias DomainType = S
     public typealias RangeType = T
     

@@ -11,22 +11,26 @@ import Foundation
 
 /// Poor man's shim for d3-formats
 
-public typealias FormatFunc = (Double) -> String
+public typealias FormatFunc = (CustomStringConvertible) -> String
 public func format(_ f: String = "") -> FormatFunc {
-    let format = Format(format: f)
     return { t in
-        format.data = t
-        return format.description
+        if let t = t as? Double {
+            return String(format: "%" + f + "f", t)
+        } else if let t = t as? String {
+            return String(format: "%" + f + "s", t)
+        }
+        return t.description
     }
 }
 
 public class Format {
     var _format: String
-    internal var data: Double = 0
+//    internal var data: Any!
+//    internal var conversion: String!
     init(format: String) {
         _format = format
     }
-    var description: String {
-        return String.init(format: "%" + _format + "f", data)
-    }
+//    var description: String {
+//        return String.init(format: "%" + _format + conversion, data as! CVarArg)
+//    }
 }

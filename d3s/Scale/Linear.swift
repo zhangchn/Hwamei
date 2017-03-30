@@ -16,27 +16,47 @@ func deinterpolateLinear<T: FloatingPoint>(a: T, b: T) -> (T) -> T {
 
 
 public class Linear<S: ReversibleInterpolatable & Tickable, T: ReversibleInterpolatable>: Continuous<S,T> {
-    public func ticks(count: Int = 10) -> StrideThrough<Double> {
-        let first = _domain.first!
-        let last = _domain.last!
-        return d3s.ticks(start: first.asDouble(), stop: last.asDouble(), count: count)
+    typealias TickType = S
+    public override var ticks : (([String: Any]) -> [S])? {
+        get {
+            return { (arguments: [String: Any]) -> [S] in
+                let count: Int = (arguments["count"] as? Int) ?? 10
+                return self.ticks(count: count)
+            }
+        }
     }
     
-    public func tickFormat(count: Int, specifier: String = "") -> FormatFunc {
-        return d3s.tickFormat(domain: _domain.map { $0.asDouble() },
-                              count: count,
-                              specifier: specifier)
+    public func ticks(count: Int) -> [S] {
+        let first = _domain.first!
+        let last = _domain.last!
+        return d3s.ticks(start: first, stop: last, count: count)
     }
+    
+    public override var tickFormat: ((Int, String) -> FormatFunc)? {
+        get {
+            return {(count: Int, specifier: String) -> FormatFunc in
+                return d3s.tickFormat(domain: self.domain,
+                                      count: count,
+                                      specifier: specifier)
+            }
+        }
+    }
+    
+//    public func tickFormat(count: Int, specifier: String = "") -> FormatFunc {
+//        return d3s.tickFormat(domain: _domain.map { $0.tickValue() },
+//                              count: count,
+//                              specifier: specifier)
+//    }
     
     public func nice(count: Int = 10) -> Self {
         var d = domain
         let i = d.count - 1
-        let start = d.first!.asDouble()
-        let stop = d.last!.asDouble()
+        let start = d.first!
+        let stop = d.last!
         var step = tickStep(start: start, stop: stop, count: count)
         step = tickStep(start: floor(start/step)*step, stop: ceil(stop/step)*step, count: count)
-        d[0] = S(floor(start / step) * step)
-        d[i] = S(ceil(stop / step) * step)
+        d[0] = floor(start / step) * step
+        d[i] = ceil(stop / step) * step
         _ = domain(d)
         return self
     }

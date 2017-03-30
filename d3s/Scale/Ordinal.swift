@@ -9,6 +9,8 @@
 import Foundation
 
 class Ordinal<S: Hashable, T>: Scale {
+    var tickFormat: ((Int, String) -> FormatFunc)? = nil
+    var ticks: (([String : Any]) -> [S])? = nil
     typealias DomainType = S
     typealias RangeType = T?
     

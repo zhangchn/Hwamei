@@ -15,6 +15,8 @@ class ScaleQuantile<S: Bisectible & FloatingPoint & IntConvertible, T: Comparabl
     var _range: [T] = []
     var _thresholds: [S] = []
 
+    var tickFormat: ((Int, String) -> FormatFunc)? = nil
+    var ticks: (([String : Any]) -> [S])? = nil
     func scale(_ x: S) -> T {
         return _range[bisect()(_thresholds, x, 0, _thresholds.count)]
     }

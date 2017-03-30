@@ -8,7 +8,7 @@
 
 import Foundation
 
-public func tickFormat(domain: [Double], count: Int, specifier: String) -> FormatFunc {
+public func tickFormat<S: Tickable>(domain: [S], count: Int, specifier: String) -> FormatFunc {
     // TODO: support formatSpecifier
     return format(specifier)
 }

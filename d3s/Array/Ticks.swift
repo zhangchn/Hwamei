@@ -10,12 +10,15 @@ import Foundation
 
 fileprivate let e10 = 50.squareRoot(), e5 = 10.squareRoot(), e2 = 2.squareRoot()
 
-public func ticks(start: Double, stop: Double, count: Int) -> StrideThrough<Double> {
-    let step = tickStep(start: start, stop: stop, count: count)
-    return range(start: ceil(start / step) * step, end: floor(stop / step) * step + step / 2, step: step)
-}
+//public func _ticks(start: Double, stop: Double, count: Int) -> [Double] {
+//    let step = tickStep(start: start, stop: stop, count: count)
+////    return range(start: ceil(start / step) * step, end: floor(stop / step) * step + step / 2, step: step)
+//    return range(start: ceil(start / step) * step,
+//                 stop: floor(stop / step) * step + step / 2,
+//                 step: step)
+//}
 
-func tickStep(start: Double, stop: Double, count: Int) -> Double {
+func _tickStep(start: Double, stop: Double, count: Int) -> Double {
     let step0 = abs(stop - start) / max(0, Double(count))
     var step1 = pow(10, floor(log(step0) / M_LN10))
     let error = step0 / step1
@@ -31,13 +34,13 @@ func tickStep(start: Double, stop: Double, count: Int) -> Double {
     return stop < start ? -step1 : step1
 }
 
-public protocol Tickable: Strideable {
-    func asDouble() -> Double
+public protocol Tickable: FloatingPoint, IntConvertible {
+    func tickValue() -> Double
     init(_ doubleValue: Double)
 }
 
 extension Double: Tickable {
-    public func asDouble() -> Double {
+    public func tickValue() -> Double {
         return self
     }
     
@@ -46,10 +49,13 @@ extension Double: Tickable {
     }
 }
 
-//func tickStep<S: Tickable>(start: S, stop: S, count: Int) -> S {
-//    return S(tickStep(start: start.asDouble(), stop: stop.asDouble(), count: count))
-//}
+func tickStep<S: Tickable>(start: S, stop: S, count: Int) -> S {
+    return S(_tickStep(start: start.tickValue(), stop: stop.tickValue(), count: count))
+}
 
-//public func ticks<S: Tickable>(start: S, stop: S, count: Int) -> StrideThrough<Double> {
-//    return ticks(start: start.asDouble(), stop: stop.asDouble(), count: count)
-//}
+public func ticks<S: Tickable>(start: S, stop: S, count: Int) -> [S] {
+    let step = tickStep(start: start, stop: stop, count: count)
+    return range(start: ceil(start / step) * step,
+                 stop: floor(stop / step) * step + step / 2,
+                 step: step)
+}

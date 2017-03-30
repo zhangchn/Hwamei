@@ -93,7 +93,27 @@ class Log: Continuous<Double, Double> {
         )
         return domain(niced)
     }
-    func ticks(count: Int = 10) -> [Double] {
+    
+    public override var tickFormat: ((Int, String) -> FormatFunc)? {
+        get {
+            return {(count: Int, specifier: String) -> FormatFunc in
+                return d3s.tickFormat(domain: self.domain,
+                                      count: count,
+                                      specifier: specifier)
+            }
+        }
+    }
+
+    public override var ticks : (([String: Any]) -> [Double])? {
+        get {
+            return { (arguments: [String: Any]) -> [Double] in
+                let count: Int = (arguments["count"] as? Int) ?? 10
+                return self.ticks(count: count)
+            }
+        }
+    }
+
+    func ticks(count: Int) -> [Double] {
         let d = domain
         let u = min(d.first!, d.last!)
         let v = max(d.first!, d.last!)

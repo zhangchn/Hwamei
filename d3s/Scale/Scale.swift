@@ -15,8 +15,13 @@ public protocol Scale {
     var range: [RangeType] { get }
     func rescale() -> Self
     func scale(_ x: DomainType) -> RangeType
+    var ticks: (([String: Any]) -> [DomainType])? { get }
+    var tickFormat: ((Int, String) -> FormatFunc)? { get }
 }
 
-
-
-
+//public func tickFormat(count: Int, specifier: String = "") -> FormatFunc {
+//        return d3s.tickFormat(domain: domain.map { $0.tickValue() },
+//                              count: count,
+//                              specifier: specifier)
+//    }
+//}
