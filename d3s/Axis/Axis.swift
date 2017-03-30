@@ -82,9 +82,14 @@ class Axis<D, R, S: Scale> where S.DomainType == D, S.RangeType == R {
         _scale = scale
         _transform = orientation.isHorizontal ? translate(x:) : translate(y:)
         _k = orientation == .top || orientation == .left ? -1 : 1
+        
+        _tickArguments = ["count": _scale.domain.count, "specifier": ""]
     }
     
     func axis(_ context: Selection) {
+        // tick values
         let tvs = _tickValues ?? (_scale.ticks?(_tickArguments) ?? _scale.domain)
+        let tfs = _tickFormat ?? (_scale.tickFormat?(_tickArguments["count"] as! Int,
+                                                     _tickArguments["specifier"] as! String) ?? { x in x.description } )
     }
 }
