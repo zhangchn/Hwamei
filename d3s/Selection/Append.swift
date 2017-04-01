@@ -14,7 +14,7 @@ public enum CreatorType {
 }
 
 extension Selection {
-    internal class func creator(name: CreatorType) -> Selection.SelectorFunc {
+    class func creator(name: CreatorType) -> Selection.SelectorFunc {
         return { (_, _, _, _) -> CALayer? in
             switch name {
             case .shape:

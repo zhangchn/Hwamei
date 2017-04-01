@@ -19,7 +19,7 @@ public protocol SelectionData {
     typealias ValueFunc = (CALayer, Any?, Int, [CALayer]) -> [Any]
     
     func data(value: ValueFunc, key: KeyFunc?) -> Selection
-    func data(value: [Any], key: KeyFunc?) -> Selection
+    func data(_ dataValue: [Any], key: KeyFunc?) -> Selection
     var data: [Any] { get }
 }
 
@@ -165,9 +165,9 @@ extension Selection: SelectionData {
         return update
     }
     
-    public func data(value: [Any], key: SelectionData.KeyFunc? = nil) -> Selection {
+    public func data(_ dataValue: [Any], key: SelectionData.KeyFunc? = nil) -> Selection {
         let valueFunc: SelectionData.ValueFunc = { _, _, _, _ in
-            return value
+            return dataValue
         }
         return data(value: valueFunc, key: key)
     }

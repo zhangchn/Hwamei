@@ -23,7 +23,18 @@ public class Selection {
     }
 }
 
-func selector(_ s: NSPredicate?) -> (CALayer, Any?, Int, [CALayer]) -> CALayer? {
+func selector(_ s: NSPredicate?) -> EnterSelection.SelectorFunc {
+    if let s = s {
+        return { node, _, _, _ in
+            return node._parent?.querySelector(s)
+        }
+    } else {
+        return { _, _, _, _ in return nil }
+    }
+}
+
+
+func selector(_ s: NSPredicate?) -> Selection.SelectorFunc {
     if let s = s {
         return { node, _, _, _ in return node.querySelector(s)}
     } else {

@@ -15,7 +15,7 @@ func rebind(view: UIView, data: [Any]) {
     let colors : [CGColor] = [#colorLiteral(red: 0.9529411793, green: 0.6862745285, blue: 0.1333333403, alpha: 1),#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1),#colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1),#colorLiteral(red: 0.5568627715, green: 0.3529411852, blue: 0.9686274529, alpha: 1),#colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)].map { $0.cgColor }
     
     let updateSet = view.selectAll(NSPredicate(format: "cls = 3"))
-        .data(value: data)
+        .data(data)
     
     let enterSet = updateSet.enter()
         .append(name: .layer)
@@ -78,7 +78,7 @@ func renderHexagon(points: [CGPoint], in view: UIView) {
 
     view.select(view.layer)
         .selectAll(NSPredicate(format: "cls = 'hexagon'"))
-        .data(value: bins)
+        .data(bins)
         .enter()
         .append(name: .shape)
         .property("cls", value: "hexagon")
@@ -105,7 +105,7 @@ let a = Arc().innerRadius(20).outerRadius(380).cornerRadius(15)
 
 let p = a.arc().path
 func testPath(p: CGPath, view: UIView) {
-    view.select(NSPredicate()).data(value: [0, 1, 2, 3, 4, 5, 6, 7])
+    view.select(NSPredicate()).data([0, 1, 2, 3, 4, 5, 6, 7])
         .enter().append(name: .shape)
         .property("bounds", value: NSValue(cgRect: CGRect(x: 0, y: 0, width: 80, height: 80)))
         .style(name: "alpha", value: NSNumber(value: 0.5))
@@ -137,13 +137,13 @@ func testPath(p: CGPath, view: UIView) {
 //let b = [1, 3, 5, 7, 9]
 //bisectRight()(b, 4, 0, 4)
 //bisectLeft()(b, 1, 0, 4)
-let c = Continuous<Double, Double>.init(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
-c.domain([0, 10]).scale(20)
-c.scale(300)
-
-let e = Power().domain([0,10.0]).exponent(3.3)
-e.scale(300.0)
-e.scale(20)
-e.invert(8)
-
-format(".02")(3)
+//let c = Continuous<Double, Double>.init(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
+//c.domain([0, 10]).scale(20)
+//c.scale(300)
+//
+//let e = Power().domain([0,10.0]).exponent(3.3)
+//e.scale(300.0)
+//e.scale(20)
+//e.invert(8)
+//
+//format(".02")(3)

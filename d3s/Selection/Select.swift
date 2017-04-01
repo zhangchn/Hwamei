@@ -16,7 +16,7 @@ public protocol SelectionSelect {
 extension Selection: SelectionSelect {
     public typealias SelectorFunc = (CALayer, Any?, Int, [CALayer]) -> CALayer?
     public func select(_ s: NSPredicate?) -> Selection {
-        let s1 = selector(s)
+        let s1: SelectorFunc = selector(s)
         return select(s1)
     }
     
