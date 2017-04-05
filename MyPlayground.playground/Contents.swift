@@ -47,7 +47,7 @@ func rebind(view: UIView, data: [Any]) {
 //    }
     // XXX: Always merge update set with enter set
     updateSet.merge(enterSet)
-        .property("position", value: { (_, datum, idx, _) -> Any? in
+        .property("position", { (_, datum, idx, _) -> Any? in
             datum!
             return CGPoint(x: 15 + 8 * idx, y: 19 + 30 * idx)
         })
@@ -64,12 +64,12 @@ func rebind(view: UIView, data: [Any]) {
         }
     }
 }
-view
-rebind(view: view, data: [2, 3, 5])
-view
+//view
+//rebind(view: view, data: [2, 3, 5])
+//view
 
-rebind(view: view, data: [11, 12, 5, 7, 9])
-view
+//rebind(view: view, data: [11, 12, 5, 7, 9])
+//view
 
 //points.count
 func renderHexagon(points: [CGPoint], in view: UIView) {
@@ -95,11 +95,11 @@ func renderHexagon(points: [CGPoint], in view: UIView) {
         }.property("path", value: hexbin.hexagon())
 }
 let view2 = UIView(frame: CGRect(x: 0, y: 0, width: 1024, height: 1024))
-let points = (0..<600).map { _ in CGPoint(x: Int(arc4random() % 1024), y: Int(arc4random() % 1024)) }
+//let points = (0..<600).map { _ in CGPoint(x: Int(arc4random() % 1024), y: Int(arc4random() % 1024)) }
 //
-renderHexagon(points: points, in: view2)
+//renderHexagon(points: points, in: view2)
 //
-view2
+//view2
 
 let a = Arc().innerRadius(20).outerRadius(380).cornerRadius(15)
 
@@ -147,3 +147,16 @@ func testPath(p: CGPath, view: UIView) {
 //e.invert(8)
 //
 //format(".02")(3)
+
+let s = Linear<Double, CGFloat>(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
+s.range([10, 300]).domain([0, 1000])
+s.scale(1000)
+
+let a1 = Axis(orientation: AxisOrientation.left, scale: s)
+let view3 = UIView.init(frame: CGRect(x: 0, y:0 , width: 320, height: 320))
+view3.select(NSPredicate(format:"cls=graph")).data([[]])
+    .enter()
+    .append(name: .layer)
+    .call(a1.axis)
+view3
+

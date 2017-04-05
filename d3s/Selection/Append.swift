@@ -35,6 +35,10 @@ extension Selection {
         return select() { (node, data, index, group) -> CALayer? in
             if let layer = name(node, data, index, group) {
                 layer.contentsScale = UIScreen.main.scale
+                layer.masksToBounds = false
+                if layer.style == nil {
+                    layer.style = [:]
+                }
                 node.addSublayer(layer)
                 return layer
             }
@@ -69,6 +73,7 @@ extension EnterSelection {
         return select() { (node, data, index, group) -> CALayer? in
             if let layer = name(node, data, index, group) {
                 layer.contentsScale = UIScreen.main.scale
+                layer.masksToBounds = false
                 if layer.style == nil {
                     layer.style = [:]
                 }

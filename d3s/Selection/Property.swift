@@ -19,9 +19,9 @@ extension Selection {
         })
     }
     
-    public func property(_ name: String, value: (CALayer, Any?, Int, [CALayer]) -> Any?) -> Selection {
+    public func property(_ name: String, _ functional: (CALayer, Any?, Int, [CALayer]) -> Any?) -> Selection {
         return each({ (node, datum, idx, group) in
-            node.setValue(value(node, datum, idx, group), forKey: name)
+            node.setValue(functional(node, datum, idx, group), forKey: name)
         })
     }
     /*

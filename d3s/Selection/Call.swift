@@ -9,32 +9,32 @@
 import Foundation
 
 extension Selection {
-    func call(_ name: (Selection, Any, Any, Any, Any, Any) -> (), _ argument0: Any, _ argument1: Any, _ argument2: Any, _ argument3: Any, _ argument4: Any) -> Selection {
+    public func call(_ name: (Selection, Any, Any, Any, Any, Any) -> (), _ argument0: Any, _ argument1: Any, _ argument2: Any, _ argument3: Any, _ argument4: Any) -> Selection {
         name(self, argument0, argument1, argument2, argument3, argument4)
         return self
     }
     
-    func call(_ name: (Selection, Any, Any, Any, Any) -> (), _ argument0: Any, _ argument1: Any, _ argument2: Any, _ argument3: Any) -> Selection {
+    public func call(_ name: (Selection, Any, Any, Any, Any) -> (), _ argument0: Any, _ argument1: Any, _ argument2: Any, _ argument3: Any) -> Selection {
         name(self, argument0, argument1, argument2, argument3)
         return self
     }
     
-    func call(_ name: (Selection, Any, Any, Any) -> (), _ argument0: Any, _ argument1: Any, _ argument2: Any) -> Selection {
+    public func call(_ name: (Selection, Any, Any, Any) -> (), _ argument0: Any, _ argument1: Any, _ argument2: Any) -> Selection {
         name(self, argument0, argument1, argument2)
         return self
     }
 
-    func call(_ name: (Selection, Any, Any) -> (), _ argument0: Any, _ argument1: Any) -> Selection {
+    public func call(_ name: (Selection, Any, Any) -> (), _ argument0: Any, _ argument1: Any) -> Selection {
         name(self, argument0, argument1)
         return self
     }
 
-    func call(_ name: (Selection, Any) -> (), _ argument0: Any) -> Selection {
+    public func call(_ name: (Selection, Any) -> (), _ argument0: Any) -> Selection {
         name(self, argument0)
         return self
     }
 
-    func call(_ name: (Selection) -> ()) -> Selection {
+    public func call(_ name: (Selection) -> ()) -> Selection {
         name(self)
         return self
     }

@@ -13,7 +13,7 @@ public class Quantize: Linear<Double, Double> {
     var x1: Double = 1
     var n = 1
     
-    public init() {
+    public override init() {
         super.init(deinterpolate: deinterpolateLinear, reinterpolate: interpolateFloat)
         _ = domain([0.5])
         _ = range([0, 1])

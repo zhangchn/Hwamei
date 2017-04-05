@@ -23,6 +23,10 @@ extension Selection {
         return self.select({ (layer, datum, index, group) -> CALayer? in
             let beforeSublayer = select(layer, datum, index, group)
             let newLayer = create(layer, datum, index, group)
+            newLayer?.contentsScale = UIScreen.main.scale
+            if newLayer?.style == nil {
+                newLayer?.style = [:]
+            }
             layer.insertSublayer(newLayer!, below: beforeSublayer)
             return newLayer
         })
@@ -45,6 +49,10 @@ extension EnterSelection {
         return self.select({ (layer, datum, index, group) -> CALayer? in
             let beforeSublayer = select(layer, datum, index, group)
             let newLayer = create(layer, datum, index, group)
+            newLayer?.contentsScale = UIScreen.main.scale
+            if newLayer?.style == nil {
+                newLayer?.style = [:]
+            }
             layer._parent?.insertSublayer(newLayer!, below: beforeSublayer)
             return newLayer
         })

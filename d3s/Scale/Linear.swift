@@ -17,6 +17,13 @@ func deinterpolateLinear<T: FloatingPoint>(a: T, b: T) -> (T) -> T {
 
 public class Linear<S: ReversibleInterpolatable & Tickable, T: ReversibleInterpolatable>: Continuous<S,T> {
     typealias TickType = S
+    
+    public override init(deinterpolate deinterp: @escaping DeinterpolateDomain, reinterpolate reinterp: @escaping InterpolateDomain) {
+        super.init(deinterpolate: deinterp, reinterpolate: reinterp)
+    }
+    public init() {
+        super.init(deinterpolate: S.reverseInterpolate, reinterpolate: S.interpolate)
+    }
     public override var ticks : (([String: Any]) -> [S])? {
         get {
             return { (arguments: [String: Any]) -> [S] in

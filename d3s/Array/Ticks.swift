@@ -49,6 +49,19 @@ extension Double: Tickable {
     }
 }
 
+extension CGFloat: Tickable {
+    public func asInt() -> Int {
+        return Int(self)
+    }
+    public func tickValue() -> Double {
+        return Double(self)
+    }
+    
+//    public init(_ doubleValue: Double) {
+//        self = CGFloat(doubleValue)
+//    }
+}
+
 func tickStep<S: Tickable>(start: S, stop: S, count: Int) -> S {
     return S(_tickStep(start: start.tickValue(), stop: stop.tickValue(), count: count))
 }

@@ -9,7 +9,7 @@
 import QuartzCore
 
 extension CALayer {
-    func querySelector(_ p: NSPredicate?) -> CALayer? {
+    public func querySelector(_ p: NSPredicate?) -> CALayer? {
         guard let p = p else {
             return nil
         }
@@ -23,7 +23,7 @@ extension CALayer {
         return nil
     }
     
-    func querySelectorAll(_ p: NSPredicate?) -> [CALayer] {
+    public func querySelectorAll(_ p: NSPredicate?) -> [CALayer] {
         guard let p = p else {
             return []
         }

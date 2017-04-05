@@ -30,7 +30,7 @@ class d3sTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
         let predicate = NSPredicate(format: "%K = 's'", "age")
-        let sel = view!.selectAll(predicate).data(value: [[1, 2], [2, 3, 7]]).enter()
+        let sel = view!.selectAll(predicate).data([[1, 2], [2, 3, 7]]).enter()
         XCTAssertTrue(sel._enterGroups.count == 1)
         let newNodes = sel.append { (node, data, idx, group) -> CALayer? in
             return CALayer()
@@ -47,7 +47,7 @@ class d3sTests: XCTestCase {
         view!.layer.addSublayer(layer1)
         
         let p = NSPredicate(format: "cal = 3")
-        let update = view!.selectAll(p).data(value: [2, 3])
+        let update = view!.selectAll(p).data([2, 3])
         let groups = update._groups
         XCTAssertTrue(groups[0][0] == layer1)
         
@@ -59,7 +59,7 @@ class d3sTests: XCTestCase {
         let view1 = view!
         
         func f1 (_ d: [Int]) {
-            let update = view1.selectAll(predicate1).data(value: d)
+            let update = view1.selectAll(predicate1).data(d)
             let enter = update.enter()
                 .append(name: .layer)
                 .property("cls", value: 3)
@@ -99,6 +99,18 @@ class d3sTests: XCTestCase {
 //        XCTAssert(<#T##expression: Bool##Bool#>)
 //    }
     
+    func testAxis() {
+        let s = Linear<Double, CGFloat>(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
+        _ = s.range([0, 320]).domain([0, 1000])
+        let a1 = Axis(orientation: AxisOrientation.left, scale: s)
+        let view3 = UIView.init(frame: CGRect(x: 0, y:0 , width: 320, height: 320))
+        _ = view3.select(NSPredicate(format:"cls=graph")).data([[]])
+            .enter()
+            .append(name: .layer)
+            .call(a1.axis)
+
+        XCTAssertTrue(true)
+    }
     func testContinuousScale() {
         let c = Continuous<Double, Double>.init(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
         _ = c.domain([1, 10]).range([10, 100])

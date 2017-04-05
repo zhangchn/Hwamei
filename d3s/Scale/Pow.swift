@@ -49,7 +49,6 @@ public class Power: Linear<Double, Double> {
         _interpolateDomain = interpolatePow(exponent: _exponent)
         return rescale()
     }
-    
     public init(exponent: Double = 1) {
         _exponent = exponent
         super.init(deinterpolate: deinterpolatePow(exponent: _exponent), reinterpolate: interpolatePow(exponent: _exponent))

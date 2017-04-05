@@ -30,6 +30,23 @@ extension Double : ReversibleInterpolatable {
     }
 }
 
+extension CGFloat : ReversibleInterpolatable {
+    public static var one: CGFloat { return 1.0 }
+    public static var zero: CGFloat { return 0 }
+    public static func interpolate(a: CGFloat, b: CGFloat) -> (Double) -> CGFloat {
+        let d = b - a
+        return { t in
+            return a + d * CGFloat(t)
+        }
+    }
+    public static func reverseInterpolate(a: CGFloat, b: CGFloat) -> (CGFloat) -> Double {
+        let d = Double(b - a)
+        return { x in
+            a == b ? .nan: Double(x - a) / d
+        }
+    }
+}
+
 extension Float: Interpolatable {
     public static var one: Float { return 1.0 }
     public static var zero: Float { return 0 }
@@ -46,14 +63,14 @@ extension Float: Interpolatable {
 
 }
 
-func interpolateFloat<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
+public func interpolateFloat<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
     let d = b - a
     return { t in
         a + d * t
     }
 }
 
-func reverseInterpolateFloat<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
+public func reverseInterpolateFloat<V: FloatingPoint>(a: V, b: V) -> (V) -> V {
     return { x in
         a == b ? .nan: (x - a) / (b - a)
     }
