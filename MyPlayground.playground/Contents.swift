@@ -149,14 +149,17 @@ func testPath(p: CGPath, view: UIView) {
 //format(".02")(3)
 
 let s = Linear<Double, CGFloat>(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
-s.range([10, 300]).domain([0, 1000])
+s.range([300, 10]).domain([0, 1000])
 s.scale(1000)
 
 let a1 = Axis(orientation: AxisOrientation.left, scale: s)
+    .tickValues([0, 100, 200, 300, 400, 500, 700])
 let view3 = UIView.init(frame: CGRect(x: 0, y:0 , width: 320, height: 320))
 view3.select(NSPredicate(format:"cls=graph")).data([[]])
     .enter()
     .append(name: .layer)
+    .property("transform", value: CATransform3DMakeTranslation(30, 0 , 0))
     .call(a1.axis)
-view3
 
+view3.layer.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1).cgColor
+view3

@@ -29,43 +29,6 @@ func translate(x: CGFloat) -> CATransform3D {
 func translate(y: CGFloat) -> CATransform3D {
     return CATransform3DMakeScale(0, y, 0)
 }
-//enum Coordinate {
-//    case x
-//    case y
-//    var tangent1 : String {
-//        switch self {
-//        case .x:
-//            return "x1"
-//        case .y:
-//            return "y1"
-//        }
-//    }
-//    var tangent2 : String {
-//        switch self {
-//        case .x:
-//            return "x2"
-//        case .y:
-//            return "y2"
-//        }
-//    }
-//    var normal1 : String {
-//        switch self {
-//        case .x:
-//            return "y1"
-//        case .y:
-//            return "x1"
-//        }
-//    }
-//    var normal2 : String {
-//        switch self {
-//        case .x:
-//            return "y2"
-//        case .y:
-//            return "x2"
-//        }
-//    }
-//}
-
 
 public class Axis<D, S: Scale> where S.DomainType == D, S.RangeType == CGFloat {
     
@@ -182,14 +145,14 @@ public class Axis<D, S: Scale> where S.DomainType == D, S.RangeType == CGFloat {
         // tick values
         let tvs: [D] = _tickValues ?? (_scale.ticks?(_tickArguments) ?? _scale.domain)
         let tf = _tickFormat ?? (_scale.tickFormat?(_tickArguments["count"] as! Int,
-                                                     _tickArguments["specifier"] as! String) ?? { x in x.description } )
+                                                    _tickArguments["specifier"] as! String) ?? { x in x.description } )
         let spacing = max(_tickSizeInner, 0) + _tickPadding
         let range = _scale.range
         let range0 = range.first! + 0.5
         let range1 = range.last! + 0.5
         // TODO: center for band scale
         let position = _scale.scale
-//        let selection = context
+        //        let selection = context
         let path0 = context.selectAll(NSPredicate(format: "cls = 'domain'")).data([[]])
         
         let tickKeyFunc: SelectionData.KeyFunc = { (layer, datum, idx, keyArg) -> String in
@@ -210,6 +173,8 @@ public class Axis<D, S: Scale> where S.DomainType == D, S.RangeType == CGFloat {
         let path1 = path0.merge(path0.enter()
             .insert(name: .shape, before: tickPred)
             .property("cls", value: "domain")
+            .property("lineWidth", value: 1.0)
+            .property("fillColor", value: nil)
             .style(name: "strokeColor", value: UIColor.black.cgColor))
         
         
@@ -219,19 +184,19 @@ public class Axis<D, S: Scale> where S.DomainType == D, S.RangeType == CGFloat {
         line1Path.addLine(to: _orient.isVertical ? CGPoint(x: _k * _tickSizeInner, y: 0.5): CGPoint(x: 0.5, y: _k * _tickSizeInner))
         
         
-        let line1 = line0.merge(tickEnter.append(name: .shape)
+        _ = line0.merge(tickEnter.append(name: .shape)
             .property("cls", value: "line")
             .property("strokeColor", value: UIColor.black.cgColor)
+            .property("lineWidth", value: 1.0)
             .property("path", value: line1Path.cgPath))
         
         let text1 = text0.merge(tickEnter.append(name: .text)
             .property("cls", value: "text")
-            .property("bounds", value: CGRect(x: 0, y: 0, width: spacing, height: 12))
+            .property("fontSize", value: 10)
+            .property("truncationMode", value: kCATruncationNone)
+            .property("frame", value: CGRect(x: 0, y: 0, width: spacing * 2.0, height: 15))
             .property("foregroundColor", value: UIColor.black.cgColor)
-            .property("position", value: _orient.isVertical ? CGPoint(x: _k * spacing, y: 0.5) : CGPoint(x:0.5, y: _k * spacing))
-            .property("borderColor", value: UIColor.red.cgColor)
-            .property("borderWidth", value: 2.0)
-            .property("backgroundColor", value: UIColor.red.cgColor)
+            .property("position", value: _orient.isVertical ? CGPoint(x: _k * spacing * 1.5, y: 0.5) : CGPoint(x:0.5, y: _k * spacing))
         )
         // TODO: transition
         
@@ -240,28 +205,28 @@ public class Axis<D, S: Scale> where S.DomainType == D, S.RangeType == CGFloat {
         let path1Path = UIBezierPath()
         path1Path.move(to: _orient.isVertical
             ?
-            CGPoint(x: _k * _tickSizeOuter, y: CGFloat(range0))
+                CGPoint(x: _k * _tickSizeOuter, y: CGFloat(range0))
             :
             CGPoint(x: CGFloat(range0), y: _k * _tickSizeOuter))
         path1Path.addLine(to: _orient.isVertical
             ?
-            CGPoint(x: 0.5, y: CGFloat(range0))
+                CGPoint(x: 0.5, y: CGFloat(range0))
             :
             CGPoint(x: CGFloat(range0), y: 0.5))
         path1Path.addLine(to: _orient.isVertical ? CGPoint(x: 0.5, y: range1) : CGPoint(x: range1, y: 0.5))
         path1Path.addLine(to: _orient.isVertical
             ?
-            CGPoint(x: _k * _tickSizeOuter, y: CGFloat(range1))
+                CGPoint(x: _k * _tickSizeOuter, y: CGFloat(range1))
             :
             CGPoint(x: CGFloat(range1), y: _k * _tickSizeOuter))
         _ = path1.property("path", value: path1Path.cgPath)
         
         _ = tick1.property("alpha", value: CGFloat(1.0))
-            .property("transform") { (_, datum, _, _) in
-                _transform(CGFloat(position(datum as! D)))
-            }
+            .property("position") { (_, datum, _, _) in
+                CGPoint(x: 0, y:(CGFloat(position(datum as! D))))
+        }
         
-
+        
         _ = text1.property("string") {(layer, datum, _, _) in
             if let d = datum as? Double {
                 return tf(d)
@@ -274,25 +239,25 @@ public class Axis<D, S: Scale> where S.DomainType == D, S.RangeType == CGFloat {
         
         _ = context.filter({ layer, _, _, _ in layer.value(forKey: "__axis") == nil})
             .property("fillColor", value: nil)
-            .property("fontSize", value: 10)
             .property("anchorPoint") { layer, _, _, _ in
                 if layer is CATextLayer {
                     switch _orient {
                     case .left:
-                        return CGPoint(x: 1, y: 1)
+                        return CGPoint(x: 1, y: 0.5)
                     case .right:
-                        return CGPoint(x: 0, y: 1)
+                        return CGPoint(x: 0.5, y: 1)
                     default:
                         return CGPoint(x: 0.5, y: 1.0)
                     }
                 } else {
-                    return CGPoint(x: 0.5, y: 0.5)
+                    return CGPoint(x: 0, y: 0)
                 }
         }
         
         _ = context.each({ (layer, datum, index, group) in
             layer.setValue(position, forKey: "__axis")
         })
+
     }
     
     
