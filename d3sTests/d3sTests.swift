@@ -26,6 +26,26 @@ class d3sTests: XCTestCase {
         view = nil
     }
     
+    func testNestedSelector() {
+        let layer1 = CALayer()
+        let layer2 = CALayer()
+        let layer3 = CALayer()
+        layer1.setValue("fancy", forKeyPath: "cls")
+        layer2.setValue("fancy", forKeyPath: "cls")
+        layer3.setValue("fancy", forKeyPath: "cls")
+        
+        view?.layer.addSublayer(layer1)
+        layer1.addSublayer(layer2)
+        layer1.addSublayer(layer3)
+        
+        let sel = view!.selectAll(NSPredicate(format: "cls = 'fancy'"))
+        
+        XCTAssertEqual(sel._groups[0].count, 3)
+//        XCTAssertTrue(sel._groups.count == 3)
+        
+        layer1.removeFromSuperlayer()
+    }
+    
     func testDataAppend() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

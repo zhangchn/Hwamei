@@ -13,10 +13,29 @@ extension CALayer {
         guard let p = p else {
             return nil
         }
-        if let sublayers = sublayers {
-            for l in sublayers {
-                if p.evaluate(with: l) {
-                    return l
+        var stack = IndexPath()
+        
+        var current: CALayer?
+        if let layer = sublayers?.first {
+            stack.append(0)
+            current = layer
+        }
+        
+        while !stack.isEmpty {
+            if p.evaluate(with: current) {
+                return current
+            } else if !(current?.sublayers?.isEmpty ?? true) {
+                stack.append(0)
+                current = current?.sublayers!.first
+            } else {
+                while let last = stack.popLast() {
+                    if last < current!.superlayer!.sublayers!.count - 1{
+                        stack.append(last + 1)
+                        current = current!.superlayer!.sublayers![last + 1]
+                        break
+                    } else {
+                        current = current!.superlayer
+                    }
                 }
             }
         }
@@ -27,9 +46,38 @@ extension CALayer {
         guard let p = p else {
             return []
         }
-        if let sublayers = sublayers {
-            return sublayers.filter { p.evaluate(with: $0) }
+//        if let sublayers = sublayers {
+//            return sublayers.filter { p.evaluate(with: $0) }
+//        }
+//        return []
+        var matches :[CALayer] = []
+        var stack = IndexPath()
+        
+        var current: CALayer?
+        if let layer = sublayers?.first {
+            stack.append(0)
+            current = layer
         }
-        return []
+        
+        while !stack.isEmpty {
+            if p.evaluate(with: current) {
+                matches.append(current!)
+            }
+            if !(current?.sublayers?.isEmpty ?? true) {
+                stack.append(0)
+                current = current?.sublayers!.first
+            } else {
+                while let last = stack.popLast() {
+                    if last < current!.superlayer!.sublayers!.count - 1{
+                        stack.append(last + 1)
+                        current = current!.superlayer!.sublayers![last + 1]
+                        break
+                    } else {
+                        current = current!.superlayer
+                    }
+                }
+            }
+        }
+        return matches
     }
 }
