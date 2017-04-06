@@ -14,8 +14,23 @@ func deinterpolateLinear<T: FloatingPoint>(a: T, b: T) -> (T) -> T {
     return d != 0 ? { x in (x - a) / d } : { _ in b }
 }
 
+public protocol LinearScale: Scale {
+    func nice(count: Int) -> Self
+    func ticks(count: Int) -> [DomainType]
+}
 
-public class Linear<S: ReversibleInterpolatable & Tickable, T: ReversibleInterpolatable>: Continuous<S,T> {
+extension LinearScale {
+    var ticks : (([String: Any]) -> [DomainType])? {
+        get {
+            return { (arguments: [String: Any]) -> [DomainType] in
+                let count: Int = (arguments["count"] as? Int) ?? 10
+                return self.ticks(count: count)
+            }
+        }
+    }
+}
+
+public class Linear<S: ReversibleInterpolatable & Tickable, T: ReversibleInterpolatable>: Continuous<S,T>, LinearScale {
     typealias TickType = S
     
     public override init(deinterpolate deinterp: @escaping DeinterpolateDomain, reinterpolate reinterp: @escaping InterpolateDomain) {
@@ -23,14 +38,6 @@ public class Linear<S: ReversibleInterpolatable & Tickable, T: ReversibleInterpo
     }
     public init() {
         super.init(deinterpolate: S.reverseInterpolate, reinterpolate: S.interpolate)
-    }
-    public override var ticks : (([String: Any]) -> [S])? {
-        get {
-            return { (arguments: [String: Any]) -> [S] in
-                let count: Int = (arguments["count"] as? Int) ?? 10
-                return self.ticks(count: count)
-            }
-        }
     }
     
     public func ticks(count: Int) -> [S] {
@@ -64,7 +71,6 @@ public class Linear<S: ReversibleInterpolatable & Tickable, T: ReversibleInterpo
         step = tickStep(start: floor(start/step)*step, stop: ceil(stop/step)*step, count: count)
         d[0] = floor(start / step) * step
         d[i] = ceil(stop / step) * step
-        _ = domain(d)
-        return self
+        return domain(d)
     }
 }

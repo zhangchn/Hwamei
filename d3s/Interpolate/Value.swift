@@ -184,3 +184,27 @@ public func interpolateNoGamma(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor {
         return result!
     }
 }
+
+//public func interpolateHue(a: CGFloat, b: CGFloat) -> (CGFloat) -> CGFloat {
+//    let d = b - a
+//    if d != 0 {
+//        return linearInterpolate(a: a, d: d)
+//    } else {
+//        let c = a.isNaN ? b : a
+//        return { _ in c }
+//    }
+//}
+
+public func interpolateHSB(a: UIColor, b: UIColor) -> (CGFloat) -> UIColor {
+    var ha: CGFloat = 0, sa: CGFloat = 0, ba: CGFloat = 0, aa: CGFloat = 0
+    var hb: CGFloat = 0, sb: CGFloat = 0, bb: CGFloat = 0, ab: CGFloat = 0
+    a.getHue(&ha, saturation: &sa, brightness: &ba, alpha: &aa)
+    b.getHue(&hb, saturation: &sb, brightness: &bb, alpha: &ab)
+    return { t in
+        let h = nogammaInterpolate(a: ha, b: hb)(t)
+        let s = nogammaInterpolate(a: sa, b: sb)(t)
+        let b = nogammaInterpolate(a: ba, b: bb)(t)
+        let a = nogammaInterpolate(a: aa, b: ab)(t)
+        return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
+    }
+}
