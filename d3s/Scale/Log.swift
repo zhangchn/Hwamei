@@ -53,16 +53,16 @@ func reflect(_ f: @escaping (Double) -> Double) -> (Double) -> Double {
     }
 }
 
-class Log: Continuous<Double, Double> {
+public class Log<T: ReversibleInterpolatable>: Continuous<Double, T> {
     var _base: Double = 10
     var _logs: (Double) -> Double = log10
     var _pows: (Double) -> Double = powp(10)
-    init() {
+    public init() {
         super.init(deinterpolate: deinterpolateLog, reinterpolate: reinterpolateLog)
     }
     
     
-    override func rescale() -> Self {
+    override public func rescale() -> Self {
         _logs = logp(_base)
         _pows = powp(_base)
         if domain[0] < 0 {
@@ -72,7 +72,7 @@ class Log: Continuous<Double, Double> {
         return self
     }
     
-    var base: Double { 
+    public var base: Double {
         get {
             return _base
         }
@@ -81,12 +81,12 @@ class Log: Continuous<Double, Double> {
             _ = rescale()
         }
     }
-    func base(_ b: Double) -> Self {
+    public func base(_ b: Double) -> Self {
         _base = b
         return rescale()
     }
     
-    func nice() -> Self {
+    public func nice() -> Self {
         let niced = d3s.nice(domain: super.domain,
                              floor: { _pows(floor(_logs($0))) },
                              ceil: {_pows(ceil(_logs($0))) }

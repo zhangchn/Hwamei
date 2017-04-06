@@ -39,7 +39,7 @@ func deinterpolatePow(exponent: Double) -> (Double, Double) -> (Double) -> Doubl
     }
 }
 
-public class Power: Linear<Double, Double> {
+public class Power<T: ReversibleInterpolatable>: Linear<Double, T> {
 
     var _exponent: Double
     public var exponent: Double { get { return _exponent } }

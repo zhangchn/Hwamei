@@ -67,7 +67,7 @@ func rebind(view: UIView, data: [Any]) {
 //view
 //rebind(view: view, data: [2, 3, 5])
 //view
-
+//
 //rebind(view: view, data: [11, 12, 5, 7, 9])
 //view
 
@@ -148,12 +148,14 @@ func testPath(p: CGPath, view: UIView) {
 //
 //format(".02")(3)
 
-let s = Linear<Double, CGFloat>(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
-s.range([300, 10]).domain([0, 1000])
+//let s = Linear<Double, CGFloat>()
+let s = Log<CGFloat>()
+s.range([300, 10]).domain([1, 10])
 s.scale(1000)
 
 let a1 = Axis(orientation: AxisOrientation.left, scale: s)
-    .tickValues([0, 100, 200, 300, 400, 500, 700])
+//    .tickArguments(["count": 5, "specifier": ""])
+    .tickValues([1, 10, 100, 1000])
 let view3 = UIView.init(frame: CGRect(x: 0, y:0 , width: 320, height: 320))
 view3.select(NSPredicate(format:"cls=graph")).data([[]])
     .enter()
