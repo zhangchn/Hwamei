@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Continuous<S: ReversibleInterpolatable, T: ReversibleInterpolatable>: Scale {
+public class Continuous<S: ReversibleInterpolatable, T: ReversibleInterpolatable>: InvertibleScale {
 
     public var ticks: (([String : Any]) -> [S])? { get { return nil } }
     public var tickFormat: ((Int, String) -> FormatFunc)?  { get { return nil } }

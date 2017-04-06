@@ -30,7 +30,7 @@ func translate(y: CGFloat) -> CATransform3D {
     return CATransform3DMakeScale(0, y, 0)
 }
 
-public class Axis<D, S: Scale> where S.DomainType == D, S.RangeType == CGFloat {
+public class Axis<D, S: RangedScale> where S.DomainType == D, S.RangeType == CGFloat {
     
     var _scale: S
     public var scale: S {
