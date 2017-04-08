@@ -9,8 +9,17 @@
 import CoreGraphics
 
 
-let epsilon: CGFloat = 1e-12
-let tau: CGFloat = .pi * 2
+//let epsilon: CGFloat = 1e-12
+//let tau: CGFloat = .pi * 2
+
+extension CGFloat {
+    static let tau: CGFloat = .pi * 2
+    static let epsilon: CGFloat = 1e-12
+}
+extension Double {
+    static let tau: Double = .pi * 2
+    static let epsilon: Double = 1e-12
+}
 
 func intersect(_ x0: CGFloat, _ y0: CGFloat, _ x1: CGFloat, _ y1: CGFloat,
                _ x2: CGFloat, _ y2: CGFloat, _ x3: CGFloat, _ y3: CGFloat) -> CGPoint {
@@ -135,13 +144,13 @@ public class Arc {
         da = abs(a1 - a0),
         cw = a1 > a0
         
-        if !(r1 > epsilon) {
+        if !(r1 > .epsilon) {
             _ = context.move(to: .zero)
-        } else if da > tau - epsilon {
+        } else if da > .tau - .epsilon {
             _ = context.move(to: CGPoint(x: r1 * cos(a0),
                                          y: r1 * sin(a0)))
             _ = context.arc(center: .zero, radius: r1, start: a0, end: a1, anticlockwise: !cw)
-            if r0 > epsilon {
+            if r0 > .epsilon {
 //                _ = context.move(to: CGPoint(x:r0 * cos(a1), y:r0 * sin(a1)))
                 _ = context.line(to: CGPoint(x:r0 * cos(a1), y:r0 * sin(a1)))
                 _ = context.arc(center: .zero, radius: r0, start: a1, end: a0, anticlockwise: cw)
@@ -151,19 +160,19 @@ public class Arc {
             a11 = a1, a10 = a1,
             da0 = da, da1 = da,
             ap = padAngle / 2,
-            rp = (ap > epsilon) ? padRadius : 0,
+            rp = (ap > .epsilon) ? padRadius : 0,
             rc = min(abs(r1 - r0) / 2, cornerRadius),
             rc0 = rc,
             rc1 = rc
             var t0 : (CGFloat, CGFloat, CGFloat, CGFloat, CGFloat, CGFloat),
             t1: (CGFloat, CGFloat, CGFloat, CGFloat, CGFloat, CGFloat)
             
-            if rp > epsilon {
+            if rp > .epsilon {
                 var p0 = asin(rp / r0 * sin(ap)),
                 p1 = asin(rp / r1 * sin(ap))
                 
                 da0 -= p0 * 2
-                if da0 > epsilon {
+                if da0 > .epsilon {
                     p0 *= (cw ? 1 : -1)
                     a00 += p0
                     a10 -= p0
@@ -174,7 +183,7 @@ public class Arc {
                 }
                 
                 da1 -= p1 * 2
-                if da1 > epsilon {
+                if da1 > .epsilon {
                     p1 *= (cw ? 1 : -1)
                     a01 += p1
                     a11 -= p1
@@ -192,14 +201,14 @@ public class Arc {
             ax:CGFloat, ay:CGFloat, bx:CGFloat, by:CGFloat, kc:CGFloat,
             lc:CGFloat
 
-            if (rc > epsilon) {
+            if (rc > .epsilon) {
                 x11 = r1 * cos(a11)
                 y11 = r1 * sin(a11)
                 x00 = r0 * cos(a00)
                 y00 = r0 * sin(a00)
                 
                 if (da < .pi) {
-                    let oc = da0 > epsilon ? intersect(x01, y01, x00, y00, x11, y11, x10, y10) : CGPoint(x: x10, y: y10)
+                    let oc = da0 > .epsilon ? intersect(x01, y01, x00, y00, x11, y11, x10, y10) : CGPoint(x: x10, y: y10)
                     ax = x01 - oc.x
                     ay = y01 - oc.y
                     bx = x11 - oc.x
@@ -213,9 +222,9 @@ public class Arc {
                     
                 }
             }
-            if !(da1 > epsilon) { _ = context.move(to: CGPoint(x: x01, y: y01)) }
+            if !(da1 > .epsilon) { _ = context.move(to: CGPoint(x: x01, y: y01)) }
             
-            else if rc1 > epsilon {
+            else if rc1 > .epsilon {
                 t0 = cornerTangents(x0: x00, y0: y00, x1: x01, y1: y01, r1: r1, rc: rc1, cw: cw)
                 t1 = cornerTangents(x0: x11, y0: y11, x1: x10, y1: y10, r1: r1, rc: rc1, cw: cw)
                 
@@ -238,10 +247,10 @@ public class Arc {
                 _ = context.move(to: CGPoint(x: x01, y: y01))
                 _ = context.arc(center: .zero, radius: r1, start:a01, end:a11, anticlockwise: !cw)
             }
-            if !(r0 > epsilon) || !(da0 > epsilon) {
+            if !(r0 > .epsilon) || !(da0 > .epsilon) {
                 _ = context.line(to: CGPoint(x:x10, y:y10))
             }
-            else if rc0 > epsilon {
+            else if rc0 > .epsilon {
                 t0 = cornerTangents(x0: x10, y0: y10, x1: x11, y1: y11, r1: r0, rc: -rc0, cw: cw)
                 t1 = cornerTangents(x0: x01, y0: y01, x1: x00, y1: y00, r1: r0, rc: -rc0, cw: cw)
                 

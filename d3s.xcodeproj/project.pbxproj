@@ -48,6 +48,7 @@
 		DB7511CC1E88F5120014F778 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7511CB1E88F5120014F778 /* Format.swift */; };
 		DB7511CE1E8906DE0014F778 /* Nice.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7511CD1E8906DE0014F778 /* Nice.swift */; };
 		DB7511D01E8910C60014F778 /* TickFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB7511CF1E8910C60014F778 /* TickFormat.swift */; };
+		DB8A637B1E9795C000E91BF0 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8A637A1E9795C000E91BF0 /* Chord.swift */; };
 		DB8E5E841E96768C0068D89D /* Sequential.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8E5E831E96768C0068D89D /* Sequential.swift */; };
 		DB98D5D21E830B97003AAC86 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB98D5D11E830B97003AAC86 /* Value.swift */; };
 		DB9946C61E820E9C008B161B /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9946C51E820E9C008B161B /* Arc.swift */; };
@@ -108,6 +109,7 @@
 		DB7511CB1E88F5120014F778 /* Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Format.swift; path = Format/Format.swift; sourceTree = "<group>"; };
 		DB7511CD1E8906DE0014F778 /* Nice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Nice.swift; path = Scale/Nice.swift; sourceTree = "<group>"; };
 		DB7511CF1E8910C60014F778 /* TickFormat.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TickFormat.swift; path = Scale/TickFormat.swift; sourceTree = "<group>"; };
+		DB8A637A1E9795C000E91BF0 /* Chord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Chord.swift; path = Chord/Chord.swift; sourceTree = "<group>"; };
 		DB8E5E831E96768C0068D89D /* Sequential.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Sequential.swift; path = Scale/Sequential.swift; sourceTree = "<group>"; };
 		DB98D5D11E830B97003AAC86 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Value.swift; path = Interpolate/Value.swift; sourceTree = "<group>"; };
 		DB9946C51E820E9C008B161B /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Arc.swift; path = Shape/Arc.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				DB3B64451E779A3F00474CBD /* d3s.h */,
 				DB41F4E91E8C1F7D00108E50 /* Axis */,
 				DB6BDC7A1E84217900330892 /* Array */,
+				DB8A63791E97958800E91BF0 /* Chord */,
 				DB7511CA1E88F4F60014F778 /* Format */,
 				DB9946C31E8206A2008B161B /* Path */,
 				DB0000A21E80152D00531CD6 /* Hexbin */,
@@ -245,6 +248,14 @@
 				DB7511CB1E88F5120014F778 /* Format.swift */,
 			);
 			name = Format;
+			sourceTree = "<group>";
+		};
+		DB8A63791E97958800E91BF0 /* Chord */ = {
+			isa = PBXGroup;
+			children = (
+				DB8A637A1E9795C000E91BF0 /* Chord.swift */,
+			);
+			name = Chord;
 			sourceTree = "<group>";
 		};
 		DB9511BD1E78E789000E253F /* Selection */ = {
@@ -417,6 +428,7 @@
 				DB7511C31E88A32F0014F778 /* Log.swift in Sources */,
 				DB8E5E841E96768C0068D89D /* Sequential.swift in Sources */,
 				DB41F4E81E8C09E700108E50 /* Quantile.swift in Sources */,
+				DB8A637B1E9795C000E91BF0 /* Chord.swift in Sources */,
 				DB6BDC8B1E855E9B00330892 /* Linear.swift in Sources */,
 				DB41F4F91E8FB90700108E50 /* Insert.swift in Sources */,
 				DB7511CE1E8906DE0014F778 /* Nice.swift in Sources */,
