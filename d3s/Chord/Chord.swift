@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct ChordSubgroup {
+public struct ChordSubgroup {
     var index: Int
     var subindex: Int
     var startAngle: Double
@@ -17,26 +17,28 @@ struct ChordSubgroup {
     var value: Double
 }
 
-struct ChordGroup {
+public struct ChordGroup {
     var index: Int
     var startAngle: Double
     var endAngle: Double
     var value: Double
 }
 
-class Chord {
-    var padAngle: Double = 0
-    func padAngle(_ a: Double) -> Self {
+public class Chord {
+    public var padAngle: Double = 0
+    public func padAngle(_ a: Double) -> Self {
         self.padAngle = a
         return self
     }
+    public init() {
+        
+    }
+    public var sortGroups : ((Double, Double) -> Bool)?
+    public var sortSubgroups : ((Double, Double) -> Bool)?
+    public var sortChords: ((Double, Double) -> Bool)?
     
-    var sortGroups : ((Double, Double) -> Bool)?
-    var sortSubgroups : ((Double, Double) -> Bool)?
-    var sortChords: ((Double, Double) -> Bool)?
-    
-    typealias SubgroupPair = (source: ChordSubgroup, target: ChordSubgroup)
-    func chord(_ matrix: [[Double]]) -> ([SubgroupPair], [ChordGroup]) {
+    public typealias SubgroupPair = (source: ChordSubgroup, target: ChordSubgroup)
+    public func chord(_ matrix: [[Double]]) -> ([SubgroupPair], [ChordGroup]) {
         let placeholder0 = ChordGroup(index: -1, startAngle: 0, endAngle: 0, value: 0)
         let placeholder1 = ChordSubgroup(index: -1, subindex: -1, startAngle: 0, endAngle: 0, radius: nil, value: 0)
         let n = matrix.count
@@ -93,7 +95,7 @@ class Chord {
         for i in 0..<n {
             for j in 0..<n {
                 let source = subgroups[j * n + i]
-                let target = subgroups[i * n + i]
+                let target = subgroups[i * n + j]
                 if source.value != 0 || target.value != 0 {
                     chords.append(source.value < target.value ?
                         (source: target, target: source) :
@@ -111,4 +113,12 @@ class Chord {
         return (chords, groups)
     }
     
+}
+
+extension Arc {
+    public func arc(chordGroup: ChordGroup) -> Path {
+        let param = [ArcParameter.startAngle: CGFloat(chordGroup.startAngle),
+                     ArcParameter.endAngle: CGFloat(chordGroup.endAngle)]
+        return arc(param)
+    }
 }

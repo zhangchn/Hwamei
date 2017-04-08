@@ -8,14 +8,14 @@
 
 import Foundation
 
-class Ribbon {
+public class Ribbon {
     var _radius : Double
     
-    init(radius: Double) {
+    public init(radius: Double) {
         _radius = radius
     }
     
-    func ribbon(_ chordPair: Chord.SubgroupPair) -> Path {
+    public func ribbon(_ chordPair: Chord.SubgroupPair) -> Path {
         let s = chordPair.source
         let t = chordPair.target
         let sr = s.radius ?? _radius
