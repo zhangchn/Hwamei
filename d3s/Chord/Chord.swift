@@ -13,6 +13,7 @@ struct ChordSubgroup {
     var subindex: Int
     var startAngle: Double
     var endAngle: Double
+    var radius: Double?
     var value: Double
 }
 
@@ -37,7 +38,7 @@ class Chord {
     typealias SubgroupPair = (source: ChordSubgroup, target: ChordSubgroup)
     func chord(_ matrix: [[Double]]) -> ([SubgroupPair], [ChordGroup]) {
         let placeholder0 = ChordGroup(index: -1, startAngle: 0, endAngle: 0, value: 0)
-        let placeholder1 = ChordSubgroup(index: -1, subindex: -1, startAngle: 0, endAngle: 0, value: 0)
+        let placeholder1 = ChordSubgroup(index: -1, subindex: -1, startAngle: 0, endAngle: 0, radius: nil, value: 0)
         let n = matrix.count
         var groupSums: [Double] = []
         var groupIndex = Array(0..<n)
@@ -82,7 +83,7 @@ class Chord {
                 let a0 = x
                 x += v * q
                 let a1 = x
-                subgroups[dj * n + di] = ChordSubgroup(index: di, subindex: dj, startAngle: a0, endAngle: a1, value: v)
+                subgroups[dj * n + di] = ChordSubgroup(index: di, subindex: dj, startAngle: a0, endAngle: a1, radius: nil, value: v)
             }
             groups[di] = ChordGroup(index: di, startAngle: x0, endAngle: x, value: groupSums[di])
             x += dx
