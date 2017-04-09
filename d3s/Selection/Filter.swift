@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import QuartzCore
 
 extension Selection {
     public typealias MatchFunc = (CALayer, Any?, Int, [CALayer]) -> Bool

@@ -120,10 +120,10 @@ public func interpolateColor(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor {
         case .monochrome:
             return interpolateNoGamma(a: a, b: b)
         default:
-            return { _ in UIColor.clear.cgColor }
+            return { _ in CGColor.clear }
         }
     } else {
-        return {_ in UIColor.clear.cgColor }
+        return {_ in CGColor.clear }
     }
 }
 

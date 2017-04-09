@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import QuartzCore
 
 extension Selection {
     public func each (_ callback: (CALayer, Any?, Int, [CALayer]) -> () ) -> Selection {

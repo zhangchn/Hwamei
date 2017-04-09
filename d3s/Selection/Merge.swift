@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import QuartzCore
 
 extension Selection {
     public func merge(_ selection: Selection) -> Selection {

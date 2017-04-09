@@ -19,6 +19,10 @@ public class Path {
         _path.move(to: start)
     }
     
+    public init() {
+        _path = CGMutablePath()
+    }
+    
     public func copy() -> Path {
         return Path(_path.copy()!)
     }

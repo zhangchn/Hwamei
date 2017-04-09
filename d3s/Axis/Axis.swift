@@ -8,7 +8,7 @@
 
 import QuartzCore
 import CoreGraphics
-import UIKit
+//import UIKit
 
 public enum AxisOrientation {
     case top
@@ -158,6 +158,8 @@ public class Axis<D, S: RangedScale> where S.DomainType == D, S.RangeType == CGF
         let tickKeyFunc: SelectionData.KeyFunc = { (layer, datum, idx, keyArg) -> String in
             return "\(self._scale.scale(datum as! D))"
         }
+        let defaultColorComponents : [CGFloat] = [0, 0, 0, 1]
+        let defaultColor = CGColor.init(colorSpace: CGColorSpace(name: CGColorSpace.sRGB)! , components: defaultColorComponents)
         
         let tickPred = NSPredicate(format: "cls = 'tick'")
         let tick0: Selection = context.selectAll(tickPred).data(tvs, key: tickKeyFunc)
@@ -175,51 +177,51 @@ public class Axis<D, S: RangedScale> where S.DomainType == D, S.RangeType == CGF
             .property("cls", value: "domain")
             .property("lineWidth", value: 1.0)
             .property("fillColor", value: nil)
-            .style(name: "strokeColor", value: UIColor.black.cgColor))
+            .style(name: "strokeColor", value: defaultColor))
         
         
         let tick1 = tick0.merge(tickEnter)
-        let line1Path = UIBezierPath()
-        line1Path.move(to: _orient.isVertical ? CGPoint(x: 0, y: 0.5): CGPoint(x: 0.5, y: 0))
-        line1Path.addLine(to: _orient.isVertical ? CGPoint(x: _k * _tickSizeInner, y: 0.5): CGPoint(x: 0.5, y: _k * _tickSizeInner))
+        let line1Path = Path()
+            .move(to: _orient.isVertical ? CGPoint(x: 0, y: 0.5): CGPoint(x: 0.5, y: 0))
+            .line(to: _orient.isVertical ? CGPoint(x: _k * _tickSizeInner, y: 0.5): CGPoint(x: 0.5, y: _k * _tickSizeInner))
         
         
         _ = line0.merge(tickEnter.append(name: .shape)
             .property("cls", value: "line")
-            .property("strokeColor", value: UIColor.black.cgColor)
+            .property("strokeColor", value: defaultColor)
             .property("lineWidth", value: 1.0)
-            .property("path", value: line1Path.cgPath))
+            .property("path", value: line1Path.path))
         
         let text1 = text0.merge(tickEnter.append(name: .text)
             .property("cls", value: "text")
             .property("fontSize", value: 10)
             .property("truncationMode", value: kCATruncationNone)
             .property("frame", value: CGRect(x: 0, y: 0, width: spacing * 2.0, height: 15))
-            .property("foregroundColor", value: UIColor.black.cgColor)
+            .property("foregroundColor", value: defaultColor)
             .property("position", value: _orient.isVertical ? CGPoint(x: _k * spacing * 1.5, y: 0.5) : CGPoint(x:0.5, y: _k * spacing))
         )
         // TODO: transition
         
         _ = tickExit.remove()
         
-        let path1Path = UIBezierPath()
-        path1Path.move(to: _orient.isVertical
+        let path1Path = Path()
+        _ = path1Path.move(to: _orient.isVertical
             ?
                 CGPoint(x: _k * _tickSizeOuter, y: CGFloat(range0))
             :
             CGPoint(x: CGFloat(range0), y: _k * _tickSizeOuter))
-        path1Path.addLine(to: _orient.isVertical
+        .line(to: _orient.isVertical
             ?
                 CGPoint(x: 0.5, y: CGFloat(range0))
             :
             CGPoint(x: CGFloat(range0), y: 0.5))
-        path1Path.addLine(to: _orient.isVertical ? CGPoint(x: 0.5, y: range1) : CGPoint(x: range1, y: 0.5))
-        path1Path.addLine(to: _orient.isVertical
+        .line(to: _orient.isVertical ? CGPoint(x: 0.5, y: range1) : CGPoint(x: range1, y: 0.5))
+        .line(to: _orient.isVertical
             ?
                 CGPoint(x: _k * _tickSizeOuter, y: CGFloat(range1))
             :
             CGPoint(x: CGFloat(range1), y: _k * _tickSizeOuter))
-        _ = path1.property("path", value: path1Path.cgPath)
+        _ = path1.property("path", value: path1Path.path)
         
         _ = tick1.property("alpha", value: CGFloat(1.0))
             .property("position") { (_, datum, _, _) in
