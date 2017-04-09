@@ -7,7 +7,13 @@
 //
 
 import Foundation
+import CoreGraphics
 
+#if os(iOS) || os(watchOS)
+    extension CGColor {
+        static let clear : CGColor = UIColor.clear.cgColor
+    }
+#endif
 
 public protocol Interpolatable: Bisectible {
     static var one: Self {get}
