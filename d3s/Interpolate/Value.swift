@@ -201,6 +201,7 @@ public func interpolateNoGamma(a: CGColor, b: CGColor) -> (CGFloat) -> CGColor {
 //    }
 //}
 
+#if os(iOS)
 public func interpolateHSB(a: UIColor, b: UIColor) -> (CGFloat) -> UIColor {
     var ha: CGFloat = 0, sa: CGFloat = 0, ba: CGFloat = 0, aa: CGFloat = 0
     var hb: CGFloat = 0, sb: CGFloat = 0, bb: CGFloat = 0, ab: CGFloat = 0
@@ -214,3 +215,4 @@ public func interpolateHSB(a: UIColor, b: UIColor) -> (CGFloat) -> UIColor {
         return UIColor(hue: h, saturation: s, brightness: b, alpha: a)
     }
 }
+#endif

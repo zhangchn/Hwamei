@@ -34,7 +34,9 @@ extension Selection {
     public func append(name: SelectorFunc ) -> Selection {
         return select() { (node, data, index, group) -> CALayer? in
             if let layer = name(node, data, index, group) {
-                layer.contentsScale = UIScreen.main.scale
+                #if os(iOS)
+                    layer.contentsScale = UIScreen.main.nativeScale
+                #endif
                 layer.masksToBounds = false
                 if layer.style == nil {
                     layer.style = [:]
@@ -72,7 +74,9 @@ extension EnterSelection {
     public func append(name: @escaping SelectorFunc) -> Selection {
         return select() { (node, data, index, group) -> CALayer? in
             if let layer = name(node, data, index, group) {
-                layer.contentsScale = UIScreen.main.scale
+                #if os(iOS)
+                    layer.contentsScale = UIScreen.main.nativeScale
+                #endif
                 layer.masksToBounds = false
                 if layer.style == nil {
                     layer.style = [:]

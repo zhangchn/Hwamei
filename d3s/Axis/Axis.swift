@@ -8,7 +8,6 @@
 
 import QuartzCore
 import CoreGraphics
-//import UIKit
 
 public enum AxisOrientation {
     case top
@@ -17,9 +16,6 @@ public enum AxisOrientation {
     case right
     var isHorizontal : Bool { return self == .top || self == .bottom }
     var isVertical : Bool { return self == .left || self == .right }
-//    var coordinate: Coordinate {
-//        return isHorizontal ? .x : .y
-//    }
 }
 
 func translate(x: CGFloat) -> CATransform3D {
@@ -259,8 +255,5 @@ public class Axis<D, S: RangedScale> where S.DomainType == D, S.RangeType == CGF
         _ = context.each({ (layer, datum, index, group) in
             layer.setValue(position, forKey: "__axis")
         })
-
     }
-    
-    
 }
