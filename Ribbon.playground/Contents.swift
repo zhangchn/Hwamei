@@ -1,7 +1,7 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
-import d3s
+import Hwamei
 
 let width: CGFloat = 1024
 let height: CGFloat = 1024

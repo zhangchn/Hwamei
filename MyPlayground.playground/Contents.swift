@@ -1,7 +1,7 @@
 //: Playground - noun: a place where people can play
 
 import UIKit
-import d3s
+import Hwamei
 
 var str = "Hello, playground"
 
