@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DB3B644C1E779A3F00474CBD /* Hwamei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* Hwamei.framework */; };
 		DB3B64511E779A3F00474CBD /* HwameiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3B64501E779A3F00474CBD /* HwameiTests.swift */; };
-		DB3B64531E779A3F00474CBD /* Hwamei.h in Headers */ = {isa = PBXBuildFile; fileRef = DB3B64451E779A3F00474CBD /* Hwamei.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DB9129C61EA9F17400448443 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C51EA9F17400448443 /* Axis.swift */; };
 		DB9129FC1EA9F19800448443 /* Bisect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C81EA9F19800448443 /* Bisect.swift */; };
 		DB9129FD1EA9F19800448443 /* Quantile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C91EA9F19800448443 /* Quantile.swift */; };
@@ -54,6 +53,7 @@
 		DB912A241EA9F19800448443 /* UIView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F91EA9F19800448443 /* UIView+Selection.swift */; };
 		DB912A251EA9F19800448443 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129FB1EA9F19800448443 /* Arc.swift */; };
 		DB912A271EA9F1AA00448443 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB912A261EA9F1AA00448443 /* Info.plist */; };
+		DB912A2A1EAB077200448443 /* Hwamei.h in Headers */ = {isa = PBXBuildFile; fileRef = DB912A281EAB063600448443 /* Hwamei.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,7 +68,6 @@
 
 /* Begin PBXFileReference section */
 		DB3B64421E779A3F00474CBD /* Hwamei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hwamei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB3B64451E779A3F00474CBD /* Hwamei.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Hwamei.h; path = ../Hwamei/Hwamei.h; sourceTree = "<group>"; };
 		DB3B644B1E779A3F00474CBD /* HwameiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HwameiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB3B64501E779A3F00474CBD /* HwameiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwameiTests.swift; sourceTree = "<group>"; };
 		DB3B64521E779A3F00474CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		DB9129F91EA9F19800448443 /* UIView+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Selection.swift"; sourceTree = "<group>"; };
 		DB9129FB1EA9F19800448443 /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		DB912A261EA9F1AA00448443 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Hwamei/Info.plist; sourceTree = SOURCE_ROOT; };
+		DB912A281EAB063600448443 /* Hwamei.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hwamei.h; path = Hwamei/Hwamei.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,6 +142,7 @@
 			children = (
 				DB3B64441E779A3F00474CBD /* Hwamei */,
 				DB912A261EA9F1AA00448443 /* Info.plist */,
+				DB912A281EAB063600448443 /* Hwamei.h */,
 				DB3B644F1E779A3F00474CBD /* HwameiTests */,
 				DB3B64431E779A3F00474CBD /* Products */,
 			);
@@ -159,7 +160,6 @@
 		DB3B64441E779A3F00474CBD /* Hwamei */ = {
 			isa = PBXGroup;
 			children = (
-				DB3B64451E779A3F00474CBD /* Hwamei.h */,
 				DB9129C71EA9F19800448443 /* Array */,
 				DB41F4E91E8C1F7D00108E50 /* Axis */,
 				DB9129CC1EA9F19800448443 /* Chord */,
@@ -331,7 +331,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB3B64531E779A3F00474CBD /* Hwamei.h in Headers */,
+				DB912A2A1EAB077200448443 /* Hwamei.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

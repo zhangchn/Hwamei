@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:HexbinFill.playground">
+   </FileRef>
+   <FileRef
       location = "group:Hwamei.xcodeproj">
    </FileRef>
    <FileRef
