@@ -58,7 +58,13 @@ public class Path {
     }
     
     public func arc(center: CGPoint, radius: CGFloat, start: CGFloat, end: CGFloat, anticlockwise: Bool = false) -> Path {
-        _path.addArc(center: center, radius: radius, startAngle: start, endAngle: end, clockwise: anticlockwise)
+        
+        #if os(iOS)
+        let isFlipped = true
+        #elseif os(OSX)
+        let isFlipped = false
+        #endif
+        _path.addArc(center: center, radius: radius, startAngle: start, endAngle: end, clockwise: isFlipped ? anticlockwise : !anticlockwise)
         return self
     }
     
