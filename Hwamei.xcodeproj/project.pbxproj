@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB3B644C1E779A3F00474CBD /* Hwamei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* Hwamei.framework */; };
-		DB3B64511E779A3F00474CBD /* HwameiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3B64501E779A3F00474CBD /* HwameiTests.swift */; };
+		DB2AD4921EAB9E6B0056F776 /* HwameiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */; };
+		DB2AD4941EAB9E6B0056F776 /* Hwamei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* Hwamei.framework */; };
 		DB9129C61EA9F17400448443 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C51EA9F17400448443 /* Axis.swift */; };
 		DB9129FC1EA9F19800448443 /* Bisect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C81EA9F19800448443 /* Bisect.swift */; };
 		DB9129FD1EA9F19800448443 /* Quantile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C91EA9F19800448443 /* Quantile.swift */; };
@@ -57,20 +57,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		DB3B644D1E779A3F00474CBD /* PBXContainerItemProxy */ = {
+		DB2AD4951EAB9E6B0056F776 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DB3B64391E779A3F00474CBD /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = DB3B64411E779A3F00474CBD;
-			remoteInfo = d3s;
+			remoteInfo = Hwamei;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB2AD48F1EAB9E6B0056F776 /* HwameiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HwameiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwameiTests.swift; sourceTree = "<group>"; };
+		DB2AD4931EAB9E6B0056F776 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3B64421E779A3F00474CBD /* Hwamei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hwamei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB3B644B1E779A3F00474CBD /* HwameiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HwameiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DB3B64501E779A3F00474CBD /* HwameiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwameiTests.swift; sourceTree = "<group>"; };
-		DB3B64521E779A3F00474CBD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB9129C51EA9F17400448443 /* Axis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Axis.swift; path = Hwamei/Axis/Axis.swift; sourceTree = SOURCE_ROOT; };
 		DB9129C81EA9F19800448443 /* Bisect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bisect.swift; sourceTree = "<group>"; };
 		DB9129C91EA9F19800448443 /* Quantile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantile.swift; sourceTree = "<group>"; };
@@ -119,6 +119,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		DB2AD48C1EAB9E6B0056F776 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB2AD4941EAB9E6B0056F776 /* Hwamei.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB3B643E1E779A3F00474CBD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -126,24 +134,25 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DB3B64481E779A3F00474CBD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB3B644C1E779A3F00474CBD /* Hwamei.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB2AD4901EAB9E6B0056F776 /* HwameiTests */ = {
+			isa = PBXGroup;
+			children = (
+				DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */,
+				DB2AD4931EAB9E6B0056F776 /* Info.plist */,
+			);
+			path = HwameiTests;
+			sourceTree = "<group>";
+		};
 		DB3B64381E779A3F00474CBD = {
 			isa = PBXGroup;
 			children = (
 				DB3B64441E779A3F00474CBD /* Hwamei */,
 				DB912A261EA9F1AA00448443 /* Info.plist */,
 				DB912A281EAB063600448443 /* Hwamei.h */,
-				DB3B644F1E779A3F00474CBD /* HwameiTests */,
+				DB2AD4901EAB9E6B0056F776 /* HwameiTests */,
 				DB3B64431E779A3F00474CBD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -152,7 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				DB3B64421E779A3F00474CBD /* Hwamei.framework */,
-				DB3B644B1E779A3F00474CBD /* HwameiTests.xctest */,
+				DB2AD48F1EAB9E6B0056F776 /* HwameiTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,16 +183,6 @@
 			);
 			name = Hwamei;
 			path = d3s;
-			sourceTree = "<group>";
-		};
-		DB3B644F1E779A3F00474CBD /* HwameiTests */ = {
-			isa = PBXGroup;
-			children = (
-				DB3B64501E779A3F00474CBD /* HwameiTests.swift */,
-				DB3B64521E779A3F00474CBD /* Info.plist */,
-			);
-			name = HwameiTests;
-			path = d3sTests;
 			sourceTree = "<group>";
 		};
 		DB41F4E91E8C1F7D00108E50 /* Axis */ = {
@@ -338,6 +337,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		DB2AD48E1EAB9E6B0056F776 /* HwameiTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DB2AD4971EAB9E6B0056F776 /* Build configuration list for PBXNativeTarget "HwameiTests" */;
+			buildPhases = (
+				DB2AD48B1EAB9E6B0056F776 /* Sources */,
+				DB2AD48C1EAB9E6B0056F776 /* Frameworks */,
+				DB2AD48D1EAB9E6B0056F776 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DB2AD4961EAB9E6B0056F776 /* PBXTargetDependency */,
+			);
+			name = HwameiTests;
+			productName = HwameiTests;
+			productReference = DB2AD48F1EAB9E6B0056F776 /* HwameiTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		DB3B64411E779A3F00474CBD /* Hwamei */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = DB3B64561E779A3F00474CBD /* Build configuration list for PBXNativeTarget "Hwamei" */;
@@ -356,44 +373,25 @@
 			productReference = DB3B64421E779A3F00474CBD /* Hwamei.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DB3B644A1E779A3F00474CBD /* HwameiTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DB3B64591E779A3F00474CBD /* Build configuration list for PBXNativeTarget "HwameiTests" */;
-			buildPhases = (
-				DB3B64471E779A3F00474CBD /* Sources */,
-				DB3B64481E779A3F00474CBD /* Frameworks */,
-				DB3B64491E779A3F00474CBD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DB3B644E1E779A3F00474CBD /* PBXTargetDependency */,
-			);
-			name = HwameiTests;
-			productName = d3sTests;
-			productReference = DB3B644B1E779A3F00474CBD /* HwameiTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		DB3B64391E779A3F00474CBD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0820;
+				LastSwiftUpdateCheck = 0830;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Zhang Chen";
 				TargetAttributes = {
+					DB2AD48E1EAB9E6B0056F776 = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 45474498ZK;
+						ProvisioningStyle = Automatic;
+					};
 					DB3B64411E779A3F00474CBD = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 45474498ZK;
 						LastSwiftMigration = 0820;
-						ProvisioningStyle = Automatic;
-					};
-					DB3B644A1E779A3F00474CBD = {
-						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 45474498ZK;
-						LastSwiftMigration = 0830;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -411,12 +409,19 @@
 			projectRoot = "";
 			targets = (
 				DB3B64411E779A3F00474CBD /* Hwamei */,
-				DB3B644A1E779A3F00474CBD /* HwameiTests */,
+				DB2AD48E1EAB9E6B0056F776 /* HwameiTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		DB2AD48D1EAB9E6B0056F776 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB3B64401E779A3F00474CBD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -425,16 +430,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DB3B64491E779A3F00474CBD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		DB2AD48B1EAB9E6B0056F776 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB2AD4921EAB9E6B0056F776 /* HwameiTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		DB3B643D1E779A3F00474CBD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -485,25 +491,45 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DB3B64471E779A3F00474CBD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DB3B64511E779A3F00474CBD /* HwameiTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		DB3B644E1E779A3F00474CBD /* PBXTargetDependency */ = {
+		DB2AD4961EAB9E6B0056F776 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = DB3B64411E779A3F00474CBD /* Hwamei */;
-			targetProxy = DB3B644D1E779A3F00474CBD /* PBXContainerItemProxy */;
+			targetProxy = DB2AD4951EAB9E6B0056F776 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		DB2AD4981EAB9E6B0056F776 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 45474498ZK;
+				INFOPLIST_FILE = HwameiTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.HwameiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		DB2AD4991EAB9E6B0056F776 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				DEVELOPMENT_TEAM = 45474498ZK;
+				INFOPLIST_FILE = HwameiTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.HwameiTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		DB3B64541E779A3F00474CBD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -644,35 +670,17 @@
 			};
 			name = Release;
 		};
-		DB3B645A1E779A3F00474CBD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 45474498ZK;
-				INFOPLIST_FILE = HwameiTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.HwameiTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Debug;
-		};
-		DB3B645B1E779A3F00474CBD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = 45474498ZK;
-				INFOPLIST_FILE = HwameiTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.HwameiTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		DB2AD4971EAB9E6B0056F776 /* Build configuration list for PBXNativeTarget "HwameiTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DB2AD4981EAB9E6B0056F776 /* Debug */,
+				DB2AD4991EAB9E6B0056F776 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		DB3B643C1E779A3F00474CBD /* Build configuration list for PBXProject "Hwamei" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -687,15 +695,6 @@
 			buildConfigurations = (
 				DB3B64571E779A3F00474CBD /* Debug */,
 				DB3B64581E779A3F00474CBD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DB3B64591E779A3F00474CBD /* Build configuration list for PBXNativeTarget "HwameiTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DB3B645A1E779A3F00474CBD /* Debug */,
-				DB3B645B1E779A3F00474CBD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
