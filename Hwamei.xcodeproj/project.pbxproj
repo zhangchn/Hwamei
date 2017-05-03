@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB1C899C1EB2CF8500A61625 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1C899B1EB2CF8500A61625 /* Line.swift */; };
 		DB2AD4921EAB9E6B0056F776 /* HwameiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */; };
 		DB2AD4941EAB9E6B0056F776 /* Hwamei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* Hwamei.framework */; };
 		DB9129C61EA9F17400448443 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C51EA9F17400448443 /* Axis.swift */; };
@@ -46,14 +47,13 @@
 		DB912A1D1EA9F19800448443 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F21EA9F19800448443 /* Node.swift */; };
 		DB912A1E1EA9F19800448443 /* Property.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F31EA9F19800448443 /* Property.swift */; };
 		DB912A1F1EA9F19800448443 /* Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F41EA9F19800448443 /* Remove.swift */; };
-		DB912A201EA9F19800448443 /* Select.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F51EA9F19800448443 /* Select.swift */; };
-		DB912A211EA9F19800448443 /* SelectAll.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F61EA9F19800448443 /* SelectAll.swift */; };
 		DB912A221EA9F19800448443 /* Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F71EA9F19800448443 /* Selection.swift */; };
 		DB912A231EA9F19800448443 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F81EA9F19800448443 /* Style.swift */; };
 		DB912A241EA9F19800448443 /* UIView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F91EA9F19800448443 /* UIView+Selection.swift */; };
 		DB912A251EA9F19800448443 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129FB1EA9F19800448443 /* Arc.swift */; };
 		DB912A271EA9F1AA00448443 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB912A261EA9F1AA00448443 /* Info.plist */; };
 		DB912A2A1EAB077200448443 /* Hwamei.h in Headers */ = {isa = PBXBuildFile; fileRef = DB912A281EAB063600448443 /* Hwamei.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		DBA2370C1EB968E00032AD89 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA2370B1EB968E00032AD89 /* Transition.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +67,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB1C899B1EB2CF8500A61625 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		DB2AD48F1EAB9E6B0056F776 /* HwameiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HwameiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwameiTests.swift; sourceTree = "<group>"; };
 		DB2AD4931EAB9E6B0056F776 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -108,14 +109,13 @@
 		DB9129F21EA9F19800448443 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		DB9129F31EA9F19800448443 /* Property.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Property.swift; sourceTree = "<group>"; };
 		DB9129F41EA9F19800448443 /* Remove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Remove.swift; sourceTree = "<group>"; };
-		DB9129F51EA9F19800448443 /* Select.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Select.swift; sourceTree = "<group>"; };
-		DB9129F61EA9F19800448443 /* SelectAll.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectAll.swift; sourceTree = "<group>"; };
 		DB9129F71EA9F19800448443 /* Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Selection.swift; sourceTree = "<group>"; };
 		DB9129F81EA9F19800448443 /* Style.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
 		DB9129F91EA9F19800448443 /* UIView+Selection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Selection.swift"; sourceTree = "<group>"; };
 		DB9129FB1EA9F19800448443 /* Arc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Arc.swift; sourceTree = "<group>"; };
 		DB912A261EA9F1AA00448443 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Hwamei/Info.plist; sourceTree = SOURCE_ROOT; };
 		DB912A281EAB063600448443 /* Hwamei.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hwamei.h; path = Hwamei/Hwamei.h; sourceTree = "<group>"; };
+		DBA2370B1EB968E00032AD89 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transition.swift; path = Hwamei/Transition/Transition.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +180,7 @@
 				DB9129DA1EA9F19800448443 /* Scale */,
 				DB9129E61EA9F19800448443 /* Selection */,
 				DB9129FA1EA9F19800448443 /* Shape */,
+				DBA2370A1EB968AE0032AD89 /* Transition */,
 			);
 			name = Hwamei;
 			path = d3s;
@@ -304,8 +305,6 @@
 				DB9129F21EA9F19800448443 /* Node.swift */,
 				DB9129F31EA9F19800448443 /* Property.swift */,
 				DB9129F41EA9F19800448443 /* Remove.swift */,
-				DB9129F51EA9F19800448443 /* Select.swift */,
-				DB9129F61EA9F19800448443 /* SelectAll.swift */,
 				DB9129F71EA9F19800448443 /* Selection.swift */,
 				DB9129F81EA9F19800448443 /* Style.swift */,
 				DB9129F91EA9F19800448443 /* UIView+Selection.swift */,
@@ -318,10 +317,20 @@
 			isa = PBXGroup;
 			children = (
 				DB9129FB1EA9F19800448443 /* Arc.swift */,
+				DB1C899B1EB2CF8500A61625 /* Line.swift */,
 			);
 			name = Shape;
 			path = Hwamei/Shape;
 			sourceTree = SOURCE_ROOT;
+		};
+		DBA2370A1EB968AE0032AD89 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				DBA2370B1EB968E00032AD89 /* Transition.swift */,
+			);
+			name = Transition;
+			path = ../Hwamei/Shape;
+			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
@@ -445,15 +454,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBA2370C1EB968E00032AD89 /* Transition.swift in Sources */,
 				DB912A251EA9F19800448443 /* Arc.swift in Sources */,
 				DB912A071EA9F19800448443 /* Continuous.swift in Sources */,
-				DB912A211EA9F19800448443 /* SelectAll.swift in Sources */,
 				DB912A0F1EA9F19800448443 /* ScaleQuantile.swift in Sources */,
 				DB912A021EA9F19800448443 /* Format.swift in Sources */,
 				DB912A091EA9F19800448443 /* Log.swift in Sources */,
 				DB912A181EA9F19800448443 /* Enter.swift in Sources */,
 				DB912A231EA9F19800448443 /* Style.swift in Sources */,
 				DB912A0B1EA9F19800448443 /* Ordinal.swift in Sources */,
+				DB1C899C1EB2CF8500A61625 /* Line.swift in Sources */,
 				DB912A1D1EA9F19800448443 /* Node.swift in Sources */,
 				DB912A081EA9F19800448443 /* Linear.swift in Sources */,
 				DB912A0A1EA9F19800448443 /* Nice.swift in Sources */,
@@ -476,7 +486,6 @@
 				DB912A141EA9F19800448443 /* Call.swift in Sources */,
 				DB912A1F1EA9F19800448443 /* Remove.swift in Sources */,
 				DB912A191EA9F19800448443 /* Exit.swift in Sources */,
-				DB912A201EA9F19800448443 /* Select.swift in Sources */,
 				DB912A241EA9F19800448443 /* UIView+Selection.swift in Sources */,
 				DB912A131EA9F19800448443 /* CALayer+DOM.swift in Sources */,
 				DB9129FD1EA9F19800448443 /* Quantile.swift in Sources */,
@@ -680,6 +689,7 @@
 				DB2AD4991EAB9E6B0056F776 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		DB3B643C1E779A3F00474CBD /* Build configuration list for PBXProject "Hwamei" */ = {
 			isa = XCConfigurationList;
