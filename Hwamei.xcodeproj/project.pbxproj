@@ -54,6 +54,7 @@
 		DB912A271EA9F1AA00448443 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB912A261EA9F1AA00448443 /* Info.plist */; };
 		DB912A2A1EAB077200448443 /* Hwamei.h in Headers */ = {isa = PBXBuildFile; fileRef = DB912A281EAB063600448443 /* Hwamei.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBA2370C1EB968E00032AD89 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA2370B1EB968E00032AD89 /* Transition.swift */; };
+		DBA237141EBA37ED0032AD89 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA237131EBA37ED0032AD89 /* Pie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,6 +117,7 @@
 		DB912A261EA9F1AA00448443 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Hwamei/Info.plist; sourceTree = SOURCE_ROOT; };
 		DB912A281EAB063600448443 /* Hwamei.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Hwamei.h; path = Hwamei/Hwamei.h; sourceTree = "<group>"; };
 		DBA2370B1EB968E00032AD89 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transition.swift; path = Hwamei/Transition/Transition.swift; sourceTree = SOURCE_ROOT; };
+		DBA237131EBA37ED0032AD89 /* Pie.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -317,6 +319,7 @@
 			isa = PBXGroup;
 			children = (
 				DB9129FB1EA9F19800448443 /* Arc.swift */,
+				DBA237131EBA37ED0032AD89 /* Pie.swift */,
 				DB1C899B1EB2CF8500A61625 /* Line.swift */,
 			);
 			name = Shape;
@@ -484,6 +487,7 @@
 				DB912A1C1EA9F19800448443 /* Merge.swift in Sources */,
 				DB912A101EA9F19800448443 /* Sequential.swift in Sources */,
 				DB912A141EA9F19800448443 /* Call.swift in Sources */,
+				DBA237141EBA37ED0032AD89 /* Pie.swift in Sources */,
 				DB912A1F1EA9F19800448443 /* Remove.swift in Sources */,
 				DB912A191EA9F19800448443 /* Exit.swift in Sources */,
 				DB912A241EA9F19800448443 /* UIView+Selection.swift in Sources */,
