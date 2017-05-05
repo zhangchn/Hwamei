@@ -9,11 +9,15 @@
 import Foundation
 
 class Line {
-    fileprivate var _x: (Any, Int, [Any]) -> CGFloat = {(p, _, _) -> CGFloat in (p as! CGPoint).x }
-    fileprivate var _y: (Any, Int, [Any]) -> CGFloat = {(p, _, _) -> CGFloat in (p as! CGPoint).y }
-    fileprivate var _defined: (Any?, Int, [Any?]) -> Bool = {(p, _, _) -> Bool in true }
+    fileprivate var _x: (Any, Int, [Any]) -> CGFloat = {(p, _, _) in (p as! CGPoint).x }
+    fileprivate var _y: (Any, Int, [Any]) -> CGFloat = {(p, _, _) in (p as! CGPoint).y }
+    fileprivate var _defined: (Any?, Int, [Any?]) -> Bool = {(p, _, _) in true }
     
     fileprivate var _context : Path?
+    
+    fileprivate var _curve : (Path) -> Curve = { context in
+        return LinearCurve(context)
+    }
     
     init(_ context: Path) {
         _context = context
@@ -31,25 +35,29 @@ extension Line {
         return self
     }
     
-    func line(_ data: [Any?]) -> Path {
+    
+    
+    func line(_ data: [Any]) -> Path {
         let buffer = _context ?? Path()
+        let output = _curve(buffer)
         var flag = false
         for (idx, datum) in data.enumerated() {
             if _defined(datum, idx, data) != flag {
                 flag = !flag
                 if flag {
-                    // TODO: lineStart
+                    output.lineStart()
                 } else {
-                    // TODO: lineEnd
+                    output.lineEnd()
                 }
             }
             if flag {
-                // TODO: output.point(_x(datum, idx, data), _y(datum, idx, data))
+                output.point(x: _x(datum, idx, data),
+                             y: _y(datum, idx, data))
             }
         }
         
         if flag == false {
-            // TODO: lineEnd
+            output.lineEnd()
         }
         
         return buffer

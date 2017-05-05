@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB174E471EBC16A600C0D214 /* CurveLinear.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E461EBC16A600C0D214 /* CurveLinear.swift */; };
+		DB174E491EBC19CC00C0D214 /* LinearClosed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E481EBC19CC00C0D214 /* LinearClosed.swift */; };
+		DB174E4B1EBC1B4400C0D214 /* Curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E4A1EBC1B4400C0D214 /* Curve.swift */; };
+		DB174E4D1EBC1BAA00C0D214 /* Basis.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E4C1EBC1BAA00C0D214 /* Basis.swift */; };
+		DB174E4F1EBC48E400C0D214 /* BasisClosed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E4E1EBC48E400C0D214 /* BasisClosed.swift */; };
+		DB174E511EBC613000C0D214 /* Radial.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E501EBC613000C0D214 /* Radial.swift */; };
 		DB1C899C1EB2CF8500A61625 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1C899B1EB2CF8500A61625 /* Line.swift */; };
 		DB2AD4921EAB9E6B0056F776 /* HwameiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */; };
 		DB2AD4941EAB9E6B0056F776 /* Hwamei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* Hwamei.framework */; };
@@ -68,6 +74,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB174E461EBC16A600C0D214 /* CurveLinear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveLinear.swift; sourceTree = "<group>"; };
+		DB174E481EBC19CC00C0D214 /* LinearClosed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearClosed.swift; sourceTree = "<group>"; };
+		DB174E4A1EBC1B4400C0D214 /* Curve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curve.swift; sourceTree = "<group>"; };
+		DB174E4C1EBC1BAA00C0D214 /* Basis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Basis.swift; sourceTree = "<group>"; };
+		DB174E4E1EBC48E400C0D214 /* BasisClosed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisClosed.swift; sourceTree = "<group>"; };
+		DB174E501EBC613000C0D214 /* Radial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Radial.swift; sourceTree = "<group>"; };
 		DB1C899B1EB2CF8500A61625 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		DB2AD48F1EAB9E6B0056F776 /* HwameiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HwameiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwameiTests.swift; sourceTree = "<group>"; };
@@ -139,6 +151,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB174E451EBC169100C0D214 /* Curve */ = {
+			isa = PBXGroup;
+			children = (
+				DB174E4C1EBC1BAA00C0D214 /* Basis.swift */,
+				DB174E4E1EBC48E400C0D214 /* BasisClosed.swift */,
+				DB174E4A1EBC1B4400C0D214 /* Curve.swift */,
+				DB174E461EBC16A600C0D214 /* CurveLinear.swift */,
+				DB174E481EBC19CC00C0D214 /* LinearClosed.swift */,
+				DB174E501EBC613000C0D214 /* Radial.swift */,
+			);
+			name = Curve;
+			sourceTree = "<group>";
+		};
 		DB2AD4901EAB9E6B0056F776 /* HwameiTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,6 +346,7 @@
 				DB9129FB1EA9F19800448443 /* Arc.swift */,
 				DBA237131EBA37ED0032AD89 /* Pie.swift */,
 				DB1C899B1EB2CF8500A61625 /* Line.swift */,
+				DB174E451EBC169100C0D214 /* Curve */,
 			);
 			name = Shape;
 			path = Hwamei/Shape;
@@ -457,20 +483,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB174E491EBC19CC00C0D214 /* LinearClosed.swift in Sources */,
 				DBA2370C1EB968E00032AD89 /* Transition.swift in Sources */,
 				DB912A251EA9F19800448443 /* Arc.swift in Sources */,
 				DB912A071EA9F19800448443 /* Continuous.swift in Sources */,
 				DB912A0F1EA9F19800448443 /* ScaleQuantile.swift in Sources */,
+				DB174E4B1EBC1B4400C0D214 /* Curve.swift in Sources */,
 				DB912A021EA9F19800448443 /* Format.swift in Sources */,
 				DB912A091EA9F19800448443 /* Log.swift in Sources */,
+				DB174E4D1EBC1BAA00C0D214 /* Basis.swift in Sources */,
 				DB912A181EA9F19800448443 /* Enter.swift in Sources */,
 				DB912A231EA9F19800448443 /* Style.swift in Sources */,
 				DB912A0B1EA9F19800448443 /* Ordinal.swift in Sources */,
+				DB174E511EBC613000C0D214 /* Radial.swift in Sources */,
 				DB1C899C1EB2CF8500A61625 /* Line.swift in Sources */,
 				DB912A1D1EA9F19800448443 /* Node.swift in Sources */,
 				DB912A081EA9F19800448443 /* Linear.swift in Sources */,
 				DB912A0A1EA9F19800448443 /* Nice.swift in Sources */,
 				DB912A111EA9F19800448443 /* TickFormat.swift in Sources */,
+				DB174E471EBC16A600C0D214 /* CurveLinear.swift in Sources */,
 				DB912A001EA9F19800448443 /* Chord.swift in Sources */,
 				DB912A051EA9F19800448443 /* Value.swift in Sources */,
 				DB912A011EA9F19800448443 /* Ribbon.swift in Sources */,
@@ -493,6 +524,7 @@
 				DB912A241EA9F19800448443 /* UIView+Selection.swift in Sources */,
 				DB912A131EA9F19800448443 /* CALayer+DOM.swift in Sources */,
 				DB9129FD1EA9F19800448443 /* Quantile.swift in Sources */,
+				DB174E4F1EBC48E400C0D214 /* BasisClosed.swift in Sources */,
 				DB912A0D1EA9F19800448443 /* Quantize.swift in Sources */,
 				DB912A041EA9F19800448443 /* HexBin.swift in Sources */,
 				DB912A031EA9F19800448443 /* Area.swift in Sources */,
