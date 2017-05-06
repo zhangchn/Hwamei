@@ -402,11 +402,15 @@ public class Arc {
             _ = padRadius(c)
         }
     }
-    public func padRadius(_ v: CGFloat) -> Arc {
-        _padRadius = constant(v)
+    public func padRadius(_ v: CGFloat?) -> Arc {
+        if let v = v {
+            _padRadius = constant(v)
+        } else {
+            _padRadius = nil
+        }
         return self
     }
-    public func padRadius(_ f: @escaping ([ArcParameter: CGFloat]) -> CGFloat ) -> Arc {
+    public func padRadius(_ f: (([ArcParameter: CGFloat]) -> CGFloat)? ) -> Arc {
         _padRadius = f
         return self
     }
