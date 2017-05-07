@@ -88,3 +88,9 @@ public class Pie<S: Comparable> {
         return self
     }
 }
+
+extension Arc {
+    public func arc<S: Comparable>(_ slice: Pie<S>.SliceTuple) -> Path {
+        return arc(slice.3)
+    }
+}
