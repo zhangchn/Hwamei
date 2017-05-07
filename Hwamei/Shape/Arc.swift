@@ -264,7 +264,7 @@ public class Arc {
                 // Otherwise, draw the two corners and the ring.
                 else {
                     _ = context.arc(center: CGPoint(x: t0.0, y: t0.1), radius: rc0, start:atan2(t0.3, t0.2), end:atan2(t0.5, t0.4), anticlockwise: !cw)
-                    _ = context.arc(center: .zero, radius: r0, start:atan2(t0.1 + t0.5, t0.0 + t0.4), end:atan2(t1.1 + t1.4, t1.0 + t1.5), anticlockwise: cw)
+                    _ = context.arc(center: .zero, radius: r0, start:atan2(t0.1 + t0.5, t0.0 + t0.4), end:atan2(t1.1 + t1.5, t1.0 + t1.4), anticlockwise: cw)
                     _ = context.arc(center: CGPoint(x: t1.0, y: t1.1), radius: rc0, start:atan2(t1.5, t1.4), end:atan2(t1.3, t1.2), anticlockwise: !cw)
                 }
             }
