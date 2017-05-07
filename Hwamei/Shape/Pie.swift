@@ -12,6 +12,8 @@ public class Pie<S: Comparable> {
     public typealias SliceTuple = (S, CGFloat, Int, Arc.ArcParameters)
     var _value: (S, Int, [S]) -> CGFloat = { x, _, _ in x as! CGFloat }
     var _sortValues: ((CGFloat, CGFloat) -> Bool)? = (<)
+    var _sort: ((S, S) -> Bool)? = (<)
+
     var _startAngle : ([S]) -> CGFloat = { _ in 0 }
     var _endAngle : ([S]) -> CGFloat = { _ in .tau }
     var _padAngle : ([S]) -> CGFloat = { _ in 0 }
@@ -33,9 +35,13 @@ public class Pie<S: Comparable> {
             acc + v
         }
         if let sv = _sortValues {
-            index.sort(by: { (i, j) -> Bool in
+            index.sort() { (i, j) in
                 sv(vs[i], vs[j])
-            })
+            }
+        } else if let sd = _sort {
+            index.sort() { (i, j) in
+                sd(data[i], data[j])
+            }
         }
         
         var a1: CGFloat
@@ -57,13 +63,28 @@ public class Pie<S: Comparable> {
         }
         return arcs
     }
-    func value(_ f: @escaping (S, Int, [S]) -> CGFloat) -> Pie {
+    
+    public func value(_ f: @escaping (S, Int, [S]) -> CGFloat) -> Pie {
         _value = f
         return self
     }
     
-    func sort(_ f: ((CGFloat, CGFloat) -> Bool)?) -> Pie {
+    public func sortValues(_ f: ((CGFloat, CGFloat) -> Bool)?) -> Pie {
         _sortValues = f
+        return self
+    }
+    public func sort(_ f: ((S, S) -> Bool)?) -> Pie {
+        _sort = f
+        return self
+    }
+    
+    public func padAngle(_ f: @escaping ([S]) -> CGFloat) -> Pie {
+        _padAngle = f
+        return self
+    }
+    
+    public func padAngle(_ v: CGFloat) -> Pie {
+        _padAngle = {_ in v }
         return self
     }
 }
