@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Line {
+public class Line {
     fileprivate var _x: (Any, Int, [Any]) -> CGFloat = {(p, _, _) in (p as! CGPoint).x }
     fileprivate var _y: (Any, Int, [Any]) -> CGFloat = {(p, _, _) in (p as! CGPoint).y }
     fileprivate var _defined: (Any?, Int, [Any?]) -> Bool = {(p, _, _) in true }
@@ -19,25 +19,28 @@ class Line {
         return LinearCurve(context)
     }
     
-    init(_ context: Path) {
+    public init(_ context: Path) {
         _context = context
     }
 }
 
-extension Line {
+public extension Line {
     
-    func x(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
+    public func x(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
         _x = f
         return self
     }
-    func y(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
+    public func y(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
         _y = f
         return self
     }
     
+    public func curve(_ f: @escaping(Path) -> Curve) -> Self {
+        _curve = f
+        return self
+    }
     
-    
-    func line(_ data: [Any]) -> Path {
+    public func line(_ data: [Any]) -> Path {
         let buffer = _context ?? Path()
         let output = _curve(buffer)
         var flag = false
@@ -56,7 +59,7 @@ extension Line {
             }
         }
         
-        if flag == false {
+        if flag == true {
             output.lineEnd()
         }
         
