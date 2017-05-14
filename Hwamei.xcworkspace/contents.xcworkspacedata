@@ -2,6 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:Lines.playground">
+   </FileRef>
+   <FileRef
+      location = "group:Hwamei.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:SimplePie.playground">
    </FileRef>
    <FileRef
@@ -9,9 +15,6 @@
    </FileRef>
    <FileRef
       location = "group:HexbinFill.playground">
-   </FileRef>
-   <FileRef
-      location = "group:Hwamei.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Ribbon.playground">

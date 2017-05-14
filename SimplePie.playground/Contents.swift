@@ -39,7 +39,7 @@ view3.select(NSPredicate(format: "cls=pie")).data([0])
 
 view3
 
-//:
+// The following chart is derived from https://bl.ocks.org/mbostock/raw/99f0a6533f7c949cf8b8/
 func testArcs<T: Comparable>(template: Arc, arcs: [Pie<T>.SliceTuple], view: UIView) {
     let center = CGPoint(x: view.bounds.maxX / 2, y: view.bounds.maxY / 2)
     let colors = [#colorLiteral(red: 0.1215686275, green: 0.4666666667, blue: 0.7058823529, alpha: 1), #colorLiteral(red: 1, green: 0.4980392157, blue: 0.05490196078, alpha: 1), #colorLiteral(red: 0.1725490196, green: 0.6274509804, blue: 0.1725490196, alpha: 1), #colorLiteral(red: 0.8392156863, green: 0.1529411765, blue: 0.1568627451, alpha: 1), #colorLiteral(red: 0.5803921569, green: 0.4039215686, blue: 0.7411764706, alpha: 1), #colorLiteral(red: 0.5490196078, green: 0.337254902, blue: 0.2941176471, alpha: 1), #colorLiteral(red: 0.8901960784, green: 0.4666666667, blue: 0.7607843137, alpha: 1), #colorLiteral(red: 0.4980392157, green: 0.4980392157, blue: 0.4980392157, alpha: 1), #colorLiteral(red: 0.737254902, green: 0.7411764706, blue: 0.1333333333, alpha: 1), #colorLiteral(red: 0.09019607843, green: 0.7450980392, blue: 0.8117647059, alpha: 1)]
