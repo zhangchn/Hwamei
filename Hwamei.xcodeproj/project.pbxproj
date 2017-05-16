@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB104F7C1EC98B6C00860C6F /* Cardinal.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB104F7B1EC98B6B00860C6F /* Cardinal.swift */; };
 		DB174E471EBC16A600C0D214 /* CurveLinear.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E461EBC16A600C0D214 /* CurveLinear.swift */; };
 		DB174E491EBC19CC00C0D214 /* LinearClosed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E481EBC19CC00C0D214 /* LinearClosed.swift */; };
 		DB174E4B1EBC1B4400C0D214 /* Curve.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E4A1EBC1B4400C0D214 /* Curve.swift */; };
@@ -16,6 +17,7 @@
 		DB1C899C1EB2CF8500A61625 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1C899B1EB2CF8500A61625 /* Line.swift */; };
 		DB2AD4921EAB9E6B0056F776 /* HwameiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */; };
 		DB2AD4941EAB9E6B0056F776 /* Hwamei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* Hwamei.framework */; };
+		DB71972D1EC99F98000BF4B2 /* BasisOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB71972C1EC99F98000BF4B2 /* BasisOpen.swift */; };
 		DB9129C61EA9F17400448443 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C51EA9F17400448443 /* Axis.swift */; };
 		DB9129FC1EA9F19800448443 /* Bisect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C81EA9F19800448443 /* Bisect.swift */; };
 		DB9129FD1EA9F19800448443 /* Quantile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C91EA9F19800448443 /* Quantile.swift */; };
@@ -74,6 +76,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DB104F7B1EC98B6B00860C6F /* Cardinal.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cardinal.swift; sourceTree = "<group>"; };
 		DB174E461EBC16A600C0D214 /* CurveLinear.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurveLinear.swift; sourceTree = "<group>"; };
 		DB174E481EBC19CC00C0D214 /* LinearClosed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearClosed.swift; sourceTree = "<group>"; };
 		DB174E4A1EBC1B4400C0D214 /* Curve.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curve.swift; sourceTree = "<group>"; };
@@ -85,6 +88,7 @@
 		DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwameiTests.swift; sourceTree = "<group>"; };
 		DB2AD4931EAB9E6B0056F776 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3B64421E779A3F00474CBD /* Hwamei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hwamei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB71972C1EC99F98000BF4B2 /* BasisOpen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisOpen.swift; sourceTree = "<group>"; };
 		DB9129C51EA9F17400448443 /* Axis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Axis.swift; path = Hwamei/Axis/Axis.swift; sourceTree = SOURCE_ROOT; };
 		DB9129C81EA9F19800448443 /* Bisect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bisect.swift; sourceTree = "<group>"; };
 		DB9129C91EA9F19800448443 /* Quantile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantile.swift; sourceTree = "<group>"; };
@@ -156,8 +160,10 @@
 			children = (
 				DB174E4C1EBC1BAA00C0D214 /* Basis.swift */,
 				DB174E4E1EBC48E400C0D214 /* BasisClosed.swift */,
+				DB71972C1EC99F98000BF4B2 /* BasisOpen.swift */,
 				DB174E4A1EBC1B4400C0D214 /* Curve.swift */,
 				DB174E461EBC16A600C0D214 /* CurveLinear.swift */,
+				DB104F7B1EC98B6B00860C6F /* Cardinal.swift */,
 				DB174E481EBC19CC00C0D214 /* LinearClosed.swift */,
 				DB174E501EBC613000C0D214 /* Radial.swift */,
 			);
@@ -515,6 +521,7 @@
 				DB912A0C1EA9F19800448443 /* Pow.swift in Sources */,
 				DB912A1B1EA9F19800448443 /* Insert.swift in Sources */,
 				DB912A121EA9F19800448443 /* Append.swift in Sources */,
+				DB104F7C1EC98B6C00860C6F /* Cardinal.swift in Sources */,
 				DB912A1C1EA9F19800448443 /* Merge.swift in Sources */,
 				DB912A101EA9F19800448443 /* Sequential.swift in Sources */,
 				DB912A141EA9F19800448443 /* Call.swift in Sources */,
@@ -532,6 +539,7 @@
 				DB912A0E1EA9F19800448443 /* Scale.swift in Sources */,
 				DB912A151EA9F19800448443 /* Data.swift in Sources */,
 				DB9129FE1EA9F19800448443 /* Range.swift in Sources */,
+				DB71972D1EC99F98000BF4B2 /* BasisOpen.swift in Sources */,
 				DB912A171EA9F19800448443 /* Each.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

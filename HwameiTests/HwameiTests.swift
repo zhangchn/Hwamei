@@ -121,6 +121,18 @@ class HwameiTests: XCTestCase {
         XCTAssert(true)
     }
     
+    func testLine() {
+        let line = Line(Path())
+        let points = [(4, 9), (8, 3), (11, 1), (13, 1),
+                      (16, 7), (22, 7), (26, 3), (31, 5),
+                      (34, 7), (37, 6), (40, 9)].map { CGPoint(x: $0.0 * 20 + 10, y: $0.1 * 20 + 10) }
+        
+
+        line.curve({ ctx in Cardinal(ctx) })
+        let linePath = line.line(points).path
+
+    }
+    
     func testAxis() {
         let s = Linear<Double, CGFloat>(deinterpolate: Double.reverseInterpolate, reinterpolate: Double.interpolate)
         _ = s.range([0, 320]).domain([0, 1000])

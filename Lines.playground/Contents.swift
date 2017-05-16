@@ -42,7 +42,7 @@ func drawGrid(in view: UIView) {
     }
 }
 
-func drawCurve(in view: UIView, through points: [CGPoint], liner: Line) {
+func drawCurve(in view: UIView, through points: [CGPoint], liner: Line, strokeColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)) {
     let predPoint = NSPredicate(format: "cls = 'point'")
     let linePath = liner.line(points).path
     let pointPath = Path().arc(center: .zero, radius: 3.0, start: 0, end: CGFloat.pi * 2).path
@@ -53,12 +53,12 @@ func drawCurve(in view: UIView, through points: [CGPoint], liner: Line) {
         .property("lineWidth", value: 0.5)
         .property("position") {_, datum, idx, _ in return datum }
         .property("path", value: pointPath)
+    
     view.selectAll(nil).data([0]).enter().append(name: .shape)
-        .property("strokeColor", value: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor)
+        .property("strokeColor", value: strokeColor.cgColor)
         .property("lineWidth", value: 1.0)
         .property("fillColor", value: nil)
         .property("path", value: linePath)
-
 }
 
 let points = [(4, 9), (8, 3), (11, 1), (13, 1),
@@ -77,6 +77,14 @@ drawGrid(in: view2)
 drawCurve(in: view2, through: points, liner: line2)
 view2
 
+let view6 = UIView(frame: CGRect(x: 0, y: 0, width: 880, height: 240))
+let line6 = Line(Path())
+line6.curve({ ctx in BasisOpen(ctx) })
+drawGrid(in: view6)
+drawCurve(in: view6, through: points, liner: line6)
+view6
+
+
 let view3 = UIView(frame: CGRect(x: 0, y: 0, width: 880, height: 240))
 let line3 = Line(Path())
 line3.curve({ ctx in BasisClosed(ctx) })
@@ -90,3 +98,16 @@ line4.curve({ ctx in LinearClosedCurve(ctx) })
 drawGrid(in: view4)
 drawCurve(in: view4, through: points, liner: line4)
 view4
+
+let view5 = UIView(frame: CGRect(x: 0, y: 0, width: 880, height: 240))
+
+drawGrid(in: view5)
+for (i, c) in [#colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.1921568662, alpha: 1), #colorLiteral(red: 0.5725490451, green: 0, blue: 0.2313725501, alpha: 1), #colorLiteral(red: 0.8078431487, green: 0.02745098062, blue: 0.3333333433, alpha: 1), #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1), #colorLiteral(red: 0.9098039269, green: 0.4784313738, blue: 0.6431372762, alpha: 1)].enumerated() {
+    let line5 = Line(Path())
+    let tension :CGFloat = CGFloat(i) * CGFloat(0.25)
+    line5.curve({ ctx in Cardinal(ctx, tension: tension) })
+    
+    drawCurve(in: view5, through: points, liner: line5, strokeColor: c)
+}
+
+view5
