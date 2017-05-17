@@ -111,3 +111,40 @@ for (i, c) in [#colorLiteral(red: 0.4392156899, green: 0.01176470611, blue: 0.19
 }
 
 view5
+
+
+
+func drawArea(in view: UIView, through points: [CGPoint], area: Area, fillColor: UIColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)) {
+    let predPoint = NSPredicate(format: "cls = 'point'")
+    let areaPath = area.area(points).path
+    let pointPath = Path().arc(center: .zero, radius: 5.0, start: 0, end: CGFloat.pi * 2).path
+    
+    view.selectAll(nil).data([0]).enter().append(name: .shape)
+        .property("strokeColor", value: nil)
+        .property("lineWidth", value: 1.0)
+        .property("fillColor", value: fillColor.withAlphaComponent(0.4).cgColor)
+        .property("path", value: areaPath)
+    view.selectAll(predPoint).data(points)
+        .enter().append(name: .shape)
+        .property("strokeColor", value: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1).cgColor)
+        .property("fillColor", value: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1).cgColor)
+        .property("lineWidth", value: 0.5)
+        .property("position") {_, datum, idx, _ in return datum }
+        .property("path", value: pointPath)
+    
+}
+
+
+let view7 = UIView(frame: CGRect(x: 0, y: 0, width: 880, height: 240))
+drawGrid(in: view7)
+let area = Area(Path()).curve { (ctx) -> AreaCurve in
+    LinearCurve(ctx)
+    } .defined { _, idx, _ -> Bool in
+        return (idx % 4) != 3
+}
+
+area.y0({_, _, _ in CGFloat(240) })
+drawArea(in: view7, through: points, area: area)
+
+view7
+

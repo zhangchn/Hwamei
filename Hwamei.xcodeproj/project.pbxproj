@@ -18,6 +18,7 @@
 		DB2AD4921EAB9E6B0056F776 /* HwameiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */; };
 		DB2AD4941EAB9E6B0056F776 /* Hwamei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* Hwamei.framework */; };
 		DB71972D1EC99F98000BF4B2 /* BasisOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB71972C1EC99F98000BF4B2 /* BasisOpen.swift */; };
+		DB71973B1ECC0223000BF4B2 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB71973A1ECC0223000BF4B2 /* Area.swift */; };
 		DB9129C61EA9F17400448443 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C51EA9F17400448443 /* Axis.swift */; };
 		DB9129FC1EA9F19800448443 /* Bisect.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C81EA9F19800448443 /* Bisect.swift */; };
 		DB9129FD1EA9F19800448443 /* Quantile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C91EA9F19800448443 /* Quantile.swift */; };
@@ -26,7 +27,7 @@
 		DB912A001EA9F19800448443 /* Chord.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129CD1EA9F19800448443 /* Chord.swift */; };
 		DB912A011EA9F19800448443 /* Ribbon.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129CE1EA9F19800448443 /* Ribbon.swift */; };
 		DB912A021EA9F19800448443 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129D01EA9F19800448443 /* Format.swift */; };
-		DB912A031EA9F19800448443 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129D31EA9F19800448443 /* Area.swift */; };
+		DB912A031EA9F19800448443 /* GeoArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129D31EA9F19800448443 /* GeoArea.swift */; };
 		DB912A041EA9F19800448443 /* HexBin.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129D51EA9F19800448443 /* HexBin.swift */; };
 		DB912A051EA9F19800448443 /* Value.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129D71EA9F19800448443 /* Value.swift */; };
 		DB912A061EA9F19800448443 /* Path.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129D91EA9F19800448443 /* Path.swift */; };
@@ -89,6 +90,7 @@
 		DB2AD4931EAB9E6B0056F776 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3B64421E779A3F00474CBD /* Hwamei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hwamei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB71972C1EC99F98000BF4B2 /* BasisOpen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisOpen.swift; sourceTree = "<group>"; };
+		DB71973A1ECC0223000BF4B2 /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		DB9129C51EA9F17400448443 /* Axis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Axis.swift; path = Hwamei/Axis/Axis.swift; sourceTree = SOURCE_ROOT; };
 		DB9129C81EA9F19800448443 /* Bisect.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bisect.swift; sourceTree = "<group>"; };
 		DB9129C91EA9F19800448443 /* Quantile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Quantile.swift; sourceTree = "<group>"; };
@@ -97,7 +99,7 @@
 		DB9129CD1EA9F19800448443 /* Chord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Chord.swift; sourceTree = "<group>"; };
 		DB9129CE1EA9F19800448443 /* Ribbon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ribbon.swift; sourceTree = "<group>"; };
 		DB9129D01EA9F19800448443 /* Format.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
-		DB9129D31EA9F19800448443 /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
+		DB9129D31EA9F19800448443 /* GeoArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeoArea.swift; sourceTree = "<group>"; };
 		DB9129D51EA9F19800448443 /* HexBin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HexBin.swift; sourceTree = "<group>"; };
 		DB9129D71EA9F19800448443 /* Value.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Value.swift; sourceTree = "<group>"; };
 		DB9129D91EA9F19800448443 /* Path.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Path.swift; sourceTree = "<group>"; };
@@ -270,7 +272,7 @@
 		DB9129D21EA9F19800448443 /* Path */ = {
 			isa = PBXGroup;
 			children = (
-				DB9129D31EA9F19800448443 /* Area.swift */,
+				DB9129D31EA9F19800448443 /* GeoArea.swift */,
 			);
 			path = Path;
 			sourceTree = "<group>";
@@ -352,6 +354,7 @@
 				DB9129FB1EA9F19800448443 /* Arc.swift */,
 				DBA237131EBA37ED0032AD89 /* Pie.swift */,
 				DB1C899B1EB2CF8500A61625 /* Line.swift */,
+				DB71973A1ECC0223000BF4B2 /* Area.swift */,
 				DB174E451EBC169100C0D214 /* Curve */,
 			);
 			name = Shape;
@@ -512,6 +515,7 @@
 				DB912A051EA9F19800448443 /* Value.swift in Sources */,
 				DB912A011EA9F19800448443 /* Ribbon.swift in Sources */,
 				DB9129FF1EA9F19800448443 /* Ticks.swift in Sources */,
+				DB71973B1ECC0223000BF4B2 /* Area.swift in Sources */,
 				DB912A1A1EA9F19800448443 /* Filter.swift in Sources */,
 				DB912A221EA9F19800448443 /* Selection.swift in Sources */,
 				DB9129C61EA9F17400448443 /* Axis.swift in Sources */,
@@ -534,7 +538,7 @@
 				DB174E4F1EBC48E400C0D214 /* BasisClosed.swift in Sources */,
 				DB912A0D1EA9F19800448443 /* Quantize.swift in Sources */,
 				DB912A041EA9F19800448443 /* HexBin.swift in Sources */,
-				DB912A031EA9F19800448443 /* Area.swift in Sources */,
+				DB912A031EA9F19800448443 /* GeoArea.swift in Sources */,
 				DB912A061EA9F19800448443 /* Path.swift in Sources */,
 				DB912A0E1EA9F19800448443 /* Scale.swift in Sources */,
 				DB912A151EA9F19800448443 /* Data.swift in Sources */,
