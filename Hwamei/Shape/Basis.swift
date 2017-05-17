@@ -15,16 +15,19 @@ public class Basis: AreaCurve {
     }
     var _context: Path
     var _line = false
+    var _area = false
     var _point: Int = 0
     var _x0 = CGFloat(0)
     var _y0 = CGFloat(0)
     var _x1 = CGFloat(0)
     var _y1 = CGFloat(0)
     public func areaStart() {
-        _line = false
+        //_line = false
+        _area = false
     }
     public func areaEnd() {
         //_line = .nan
+        _area = true
     }
     
     public func lineStart() {
@@ -48,7 +51,7 @@ public class Basis: AreaCurve {
             break
         }
         
-        if _line || (_line && _point == 1) {
+        if _line || (_area && _point == 1) {
             _ = _context.closePath()
         }
         _line = !_line

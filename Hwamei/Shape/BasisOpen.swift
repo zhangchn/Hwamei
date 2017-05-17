@@ -10,7 +10,7 @@ import Foundation
 
 public class BasisOpen: Basis {
     public override func lineEnd() {
-        if _line || _line != false && _point == 3 {
+        if _line || _area && _point == 3 {
             _ = _context.closePath()
         }
         _line = !_line
@@ -26,7 +26,7 @@ public class BasisOpen: Basis {
             _point = 3
             _x0 = (_x0 + 4 * _x1 + p.x) / 6
             _y0 = (_y0 + 4 * _y1 + p.y) / 6
-            if _line {
+            if _line || _area {
                 _ = _context.line(to: CGPoint(x: _x0, y: _y0))
             } else {
                 _ = _context.move(to: CGPoint(x: _x0, y: _y0))
