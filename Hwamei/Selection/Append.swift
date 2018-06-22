@@ -59,7 +59,7 @@ extension EnterSelection {
 
     public func select(_ s: @escaping SelectorFunc) -> Selection {
         let subgroups : [[CALayer]] = _enterGroups.map { group -> [CALayer] in
-            let subgroup : [CALayer] = group.enumerated().flatMap({ (p: (index: Int, node: EnterNode)) -> CALayer? in
+            let subgroup : [CALayer] = group.enumerated().compactMap({ (p: (index: Int, node: EnterNode)) -> CALayer? in
                 let subnode = s(p.node, p.node._data, p.index, group)
                 if let nodeData = p.node._data {
                     subnode?.setValue(nodeData, forKey: "__data__")

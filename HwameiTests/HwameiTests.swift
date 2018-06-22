@@ -92,7 +92,7 @@ class HwameiTests: XCTestCase {
         }
         f1( [2, 3, 4])
         f1( [11, 2, 4, 5, 7])
-        let v = view1.layer.sublayers!.flatMap { layer in
+        let v = view1.layer.sublayers!.compactMap { layer in
             layer.value(forKey: "v")
         } as! [Int]
         XCTAssertTrue(v.contains(11))

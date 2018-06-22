@@ -191,7 +191,7 @@ public class Axis<D, S: RangedScale> where S.DomainType == D, S.RangeType == CGF
         let text1 = text0.merge(tickEnter.append(name: .text)
             .property("cls", value: "text")
             .property("fontSize", value: 10)
-            .property("truncationMode", value: kCATruncationNone)
+            .property("truncationMode", value: CATextLayerTruncationMode.none.rawValue)
             .property("frame", value: CGRect(x: 0, y: 0, width: spacing * 2.0, height: 15))
             .property("foregroundColor", value: defaultColor)
             .property("position", value: _orient.isVertical ? CGPoint(x: _k * spacing * 1.5, y: 0.5) : CGPoint(x:0.5, y: _k * spacing))
@@ -227,9 +227,9 @@ public class Axis<D, S: RangedScale> where S.DomainType == D, S.RangeType == CGF
         
         _ = text1.property("string") {(layer, datum, _, _) in
             if let d = datum as? Double {
-                return tf(d)
+                return tf!(d)
             } else if let d = datum as? String {
-                return tf(d)
+                return tf!(d)
             } else {
                 return "x"
             }

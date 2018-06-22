@@ -60,7 +60,6 @@
 		DB912A231EA9F19800448443 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F81EA9F19800448443 /* Style.swift */; };
 		DB912A241EA9F19800448443 /* UIView+Selection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129F91EA9F19800448443 /* UIView+Selection.swift */; };
 		DB912A251EA9F19800448443 /* Arc.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129FB1EA9F19800448443 /* Arc.swift */; };
-		DB912A271EA9F1AA00448443 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DB912A261EA9F1AA00448443 /* Info.plist */; };
 		DB912A2A1EAB077200448443 /* Hwamei.h in Headers */ = {isa = PBXBuildFile; fileRef = DB912A281EAB063600448443 /* Hwamei.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DBA2370C1EB968E00032AD89 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA2370B1EB968E00032AD89 /* Transition.swift */; };
 		DBA237141EBA37ED0032AD89 /* Pie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA237131EBA37ED0032AD89 /* Pie.swift */; };
@@ -433,12 +432,13 @@
 					DB2AD48E1EAB9E6B0056F776 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 45474498ZK;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 					DB3B64411E779A3F00474CBD = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 45474498ZK;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -473,7 +473,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DB912A271EA9F1AA00448443 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -569,7 +568,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.HwameiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -583,7 +583,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.HwameiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -703,7 +704,8 @@
 				PRODUCT_NAME = Hwamei;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -723,7 +725,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.Hwamei;
 				PRODUCT_NAME = Hwamei;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};

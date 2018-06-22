@@ -18,7 +18,7 @@ extension UIView {
     }
 
     public func select(_ p: NSPredicate?) -> Selection {
-        return Selection([[self.layer.querySelector(p)].flatMap { $0 }], parents:[self.layer])
+        return Selection([[self.layer.querySelector(p)].compactMap { $0 }], parents:[self.layer])
     }
     
     public func select(_ l: CALayer) -> Selection {
