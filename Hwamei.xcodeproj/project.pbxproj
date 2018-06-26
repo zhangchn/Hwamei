@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 48;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,8 +15,10 @@
 		DB174E4F1EBC48E400C0D214 /* BasisClosed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E4E1EBC48E400C0D214 /* BasisClosed.swift */; };
 		DB174E511EBC613000C0D214 /* Radial.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB174E501EBC613000C0D214 /* Radial.swift */; };
 		DB1C899C1EB2CF8500A61625 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1C899B1EB2CF8500A61625 /* Line.swift */; };
+		DB204F6E1ECD93F500AA0BFE /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB204F6D1ECD93F500AA0BFE /* Link.swift */; };
 		DB2AD4921EAB9E6B0056F776 /* HwameiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */; };
 		DB2AD4941EAB9E6B0056F776 /* Hwamei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* Hwamei.framework */; };
+		DB3F28881EF7B1A70004DECA /* PointRadical.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F28871EF7B1A70004DECA /* PointRadical.swift */; };
 		DB71972D1EC99F98000BF4B2 /* BasisOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB71972C1EC99F98000BF4B2 /* BasisOpen.swift */; };
 		DB71973B1ECC0223000BF4B2 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB71973A1ECC0223000BF4B2 /* Area.swift */; };
 		DB9129C61EA9F17400448443 /* Axis.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB9129C51EA9F17400448443 /* Axis.swift */; };
@@ -85,10 +87,12 @@
 		DB174E4E1EBC48E400C0D214 /* BasisClosed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisClosed.swift; sourceTree = "<group>"; };
 		DB174E501EBC613000C0D214 /* Radial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Radial.swift; sourceTree = "<group>"; };
 		DB1C899B1EB2CF8500A61625 /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		DB204F6D1ECD93F500AA0BFE /* Link.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		DB2AD48F1EAB9E6B0056F776 /* HwameiTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HwameiTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwameiTests.swift; sourceTree = "<group>"; };
 		DB2AD4931EAB9E6B0056F776 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3B64421E779A3F00474CBD /* Hwamei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hwamei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB3F28871EF7B1A70004DECA /* PointRadical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointRadical.swift; sourceTree = "<group>"; };
 		DB71972C1EC99F98000BF4B2 /* BasisOpen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisOpen.swift; sourceTree = "<group>"; };
 		DB71973A1ECC0223000BF4B2 /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
 		DB9129C51EA9F17400448443 /* Axis.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Axis.swift; path = Hwamei/Axis/Axis.swift; sourceTree = SOURCE_ROOT; };
@@ -218,7 +222,6 @@
 				DBA2370A1EB968AE0032AD89 /* Transition */,
 			);
 			name = Hwamei;
-			path = d3s;
 			sourceTree = "<group>";
 		};
 		DB41F4E91E8C1F7D00108E50 /* Axis */ = {
@@ -355,6 +358,8 @@
 				DBA237131EBA37ED0032AD89 /* Pie.swift */,
 				DB1C899B1EB2CF8500A61625 /* Line.swift */,
 				DB71973A1ECC0223000BF4B2 /* Area.swift */,
+				DB204F6D1ECD93F500AA0BFE /* Link.swift */,
+				DB3F28871EF7B1A70004DECA /* PointRadical.swift */,
 				DB174E451EBC169100C0D214 /* Curve */,
 			);
 			name = Shape;
@@ -367,7 +372,7 @@
 				DBA2370B1EB968E00032AD89 /* Transition.swift */,
 			);
 			name = Transition;
-			path = ../Hwamei/Shape;
+			path = Hwamei;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,18 +438,19 @@
 					DB2AD48E1EAB9E6B0056F776 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = 45474498ZK;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 					DB3B64411E779A3F00474CBD = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 45474498ZK;
-						LastSwiftMigration = 0820;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
 			buildConfigurationList = DB3B643C1E779A3F00474CBD /* Build configuration list for PBXProject "Hwamei" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -507,10 +513,12 @@
 				DB174E511EBC613000C0D214 /* Radial.swift in Sources */,
 				DB1C899C1EB2CF8500A61625 /* Line.swift in Sources */,
 				DB912A1D1EA9F19800448443 /* Node.swift in Sources */,
+				DB204F6E1ECD93F500AA0BFE /* Link.swift in Sources */,
 				DB912A081EA9F19800448443 /* Linear.swift in Sources */,
 				DB912A0A1EA9F19800448443 /* Nice.swift in Sources */,
 				DB912A111EA9F19800448443 /* TickFormat.swift in Sources */,
 				DB174E471EBC16A600C0D214 /* CurveLinear.swift in Sources */,
+				DB3F28881EF7B1A70004DECA /* PointRadical.swift in Sources */,
 				DB912A001EA9F19800448443 /* Chord.swift in Sources */,
 				DB912A051EA9F19800448443 /* Value.swift in Sources */,
 				DB912A011EA9F19800448443 /* Ribbon.swift in Sources */,
@@ -569,7 +577,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.HwameiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -583,7 +592,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.HwameiTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
@@ -703,7 +713,8 @@
 				PRODUCT_NAME = Hwamei;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -723,7 +734,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.Hwamei;
 				PRODUCT_NAME = Hwamei;
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

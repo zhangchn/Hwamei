@@ -3,7 +3,6 @@
 import UIKit
 import Hwamei
 
-let view1 = UIView(frame: CGRect(x: 0, y: 0, width: 880, height: 240))
 
 func drawGrid(in view: UIView) {
     let layer = view.layer
@@ -65,6 +64,7 @@ let points = [(4, 9), (8, 3), (11, 1), (13, 1),
               (16, 7), (22, 7), (26, 3), (31, 5),
               (34, 7), (37, 6), (40, 9)].map { CGPoint(x: $0.0 * 20 + 10, y: $0.1 * 20 + 10) }
 
+let view1 = UIView(frame: CGRect(x: 0, y: 0, width: 880, height: 240))
 let line = Line(Path())
 
 drawGrid(in: view1)

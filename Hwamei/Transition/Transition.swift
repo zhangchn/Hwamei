@@ -15,6 +15,7 @@ public class Transition: Selection {
         _name = name
         _id = id
         super.init(groups, parents: parents)
+        doSchedule()
     }
     
     public override func select(_ s: Selection.SelectorFunc) -> Transition {
@@ -50,6 +51,23 @@ public class Transition: Selection {
             }
         }
         return Transition(groups: subgroups, parents: parents, name: _name, id: _id)
+    }
+    
+    public func selection() -> Selection {
+        return Selection(_groups, parents: _parents)
+    }
+    
+    func doSchedule() {
+        DispatchQueue.main.async {
+            for children in self._groups {
+                for (i, child) in children.enumerated() {
+                    // Collect each and every transactions to be commited;
+                    // Pop up to nodes up in the view hierarchy;
+                    // Combine these transactions into a tree of CATransactions;
+                    // Commit a CATransaction, iff all its subtransactions are combined.
+                }
+            }
+        }
     }
 }
 
