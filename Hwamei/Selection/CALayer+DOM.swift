@@ -86,7 +86,7 @@ extension CALayer {
     func recursiveUpdateStyle() {
         if var sublayers = self.sublayers {
             while !sublayers.isEmpty {
-                sublayers = sublayers.flatMap({ (sublayer: CALayer) -> [CALayer]? in
+                sublayers = sublayers.compactMap({ (sublayer: CALayer) -> [CALayer]? in
                     if sublayer.style == nil {
                         sublayer.style = [:]
                     }

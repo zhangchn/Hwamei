@@ -42,7 +42,7 @@ public class Selection {
     
     public func select(_ s: SelectorFunc) -> Selection {
         let subgroups : [[CALayer]] = _groups.map { group -> [CALayer] in
-            let subgroup : [CALayer] = group.enumerated().flatMap({ (p: (index: Int, node: CALayer)) -> CALayer? in
+            let subgroup : [CALayer] = group.enumerated().compactMap({ (p: (index: Int, node: CALayer)) -> CALayer? in
                 let subnode = s(p.node, p.node.value(forKey: "__data__"), p.index, group)
                 if let nodeData = p.node.value(forKey: "__data__") {
                     subnode?.setValue(nodeData, forKey: "__data__")
