@@ -443,7 +443,7 @@
 					DB3B64411E779A3F00474CBD = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 45474498ZK;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -453,6 +453,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = DB3B64381E779A3F00474CBD;
@@ -711,8 +712,7 @@
 				PRODUCT_NAME = Hwamei;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -732,8 +732,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.tgfbeta.Hwamei;
 				PRODUCT_NAME = Hwamei;
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};

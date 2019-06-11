@@ -56,7 +56,7 @@ public class Quantize: Linear<Double, Double> {
     }
     
     public func invert(extent y: Double) -> [Double] {
-        if let i = _range.index(of: y) {
+        if let i = _range.firstIndex(of: y) {
             if i < 1 {
                 return [x0, _domain[0]]
             } else if i >= n {

@@ -40,7 +40,7 @@ class ScaleQuantile<S: Bisectible & FloatingPoint & IntConvertible, T: Comparabl
     var quantiles: [S] { get { return _thresholds } }
     
     func invertExtent(_ y: T) -> [S] {
-        if let i = _range.index(where: { $0 == y }) {
+        if let i = _range.firstIndex(where: { $0 == y }) {
             return [ i > 0 ? _thresholds[i - 1]: _domain.first!, i < _thresholds.count ? _thresholds[i] : _domain.last!]
         } else {
             return [.nan, .nan]

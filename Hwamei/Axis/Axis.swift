@@ -227,9 +227,9 @@ public class Axis<D, S: RangedScale> where S.DomainType == D, S.RangeType == CGF
         
         _ = text1.property("string") {(layer, datum, _, _) in
             if let d = datum as? Double {
-                return tf!(d)
+                return tf(d)
             } else if let d = datum as? String {
-                return tf!(d)
+                return tf(d)
             } else {
                 return "x"
             }
