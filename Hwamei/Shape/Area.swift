@@ -29,31 +29,31 @@ public class Area {
 
 public extension Area {
     
-    public func x0(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
+    func x0(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
         _x0 = f
         return self
     }
-    public func y0(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
+    func y0(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
         _y0 = f
         return self
     }
-    public func x1(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
+    func x1(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
         _x0 = f
         return self
     }
-    public func y1(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
+    func y1(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
         _y0 = f
         return self
     }
-    public func curve(_ f: @escaping(Path) -> AreaCurve) -> Self {
+    func curve(_ f: @escaping(Path) -> AreaCurve) -> Self {
         _curve = f
         return self
     }
-    public func defined(_ f: @escaping(Any?, Int, [Any?]) -> Bool) -> Self {
+    func defined(_ f: @escaping(Any?, Int, [Any?]) -> Bool) -> Self {
         _defined = f
         return self
     }
-    public func area(_ data: [Any]) -> Path {
+    func area(_ data: [Any]) -> Path {
         let buffer = _context ?? Path()
         let output = _curve(buffer)
         var flag = false

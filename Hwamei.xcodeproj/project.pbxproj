@@ -18,6 +18,7 @@
 		DB204F6E1ECD93F500AA0BFE /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB204F6D1ECD93F500AA0BFE /* Link.swift */; };
 		DB2AD4921EAB9E6B0056F776 /* HwameiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */; };
 		DB2AD4941EAB9E6B0056F776 /* Hwamei.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB3B64421E779A3F00474CBD /* Hwamei.framework */; };
+		DB3D93E222E47CB200C16377 /* TransitionDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3D93E122E47CB200C16377 /* TransitionDuration.swift */; };
 		DB3F28881EF7B1A70004DECA /* PointRadical.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB3F28871EF7B1A70004DECA /* PointRadical.swift */; };
 		DB71972D1EC99F98000BF4B2 /* BasisOpen.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB71972C1EC99F98000BF4B2 /* BasisOpen.swift */; };
 		DB71973B1ECC0223000BF4B2 /* Area.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB71973A1ECC0223000BF4B2 /* Area.swift */; };
@@ -91,6 +92,7 @@
 		DB2AD4911EAB9E6B0056F776 /* HwameiTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HwameiTests.swift; sourceTree = "<group>"; };
 		DB2AD4931EAB9E6B0056F776 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DB3B64421E779A3F00474CBD /* Hwamei.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Hwamei.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DB3D93E122E47CB200C16377 /* TransitionDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TransitionDuration.swift; path = Transition/TransitionDuration.swift; sourceTree = "<group>"; };
 		DB3F28871EF7B1A70004DECA /* PointRadical.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PointRadical.swift; sourceTree = "<group>"; };
 		DB71972C1EC99F98000BF4B2 /* BasisOpen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasisOpen.swift; sourceTree = "<group>"; };
 		DB71973A1ECC0223000BF4B2 /* Area.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Area.swift; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			isa = PBXGroup;
 			children = (
 				DBA2370B1EB968E00032AD89 /* Transition.swift */,
+				DB3D93E122E47CB200C16377 /* TransitionDuration.swift */,
 			);
 			name = Transition;
 			path = Hwamei;
@@ -541,6 +544,7 @@
 				DB912A191EA9F19800448443 /* Exit.swift in Sources */,
 				DB912A241EA9F19800448443 /* UIView+Selection.swift in Sources */,
 				DB912A131EA9F19800448443 /* CALayer+DOM.swift in Sources */,
+				DB3D93E222E47CB200C16377 /* TransitionDuration.swift in Sources */,
 				DB9129FD1EA9F19800448443 /* Quantile.swift in Sources */,
 				DB174E4F1EBC48E400C0D214 /* BasisClosed.swift in Sources */,
 				DB912A0D1EA9F19800448443 /* Quantize.swift in Sources */,

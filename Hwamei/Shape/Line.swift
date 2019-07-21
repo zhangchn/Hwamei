@@ -26,21 +26,21 @@ public class Line {
 
 public extension Line {
     
-    public func x(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
+    func x(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
         _x = f
         return self
     }
-    public func y(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
+    func y(_ f: @escaping (Any, Int, [Any]) -> CGFloat) -> Self {
         _y = f
         return self
     }
     
-    public func curve(_ f: @escaping(Path) -> Curve) -> Self {
+    func curve(_ f: @escaping(Path) -> Curve) -> Self {
         _curve = f
         return self
     }
     
-    public func line(_ data: [Any]) -> Path {
+    func line(_ data: [Any]) -> Path {
         let buffer = _context ?? Path()
         let output = _curve(buffer)
         var flag = false
